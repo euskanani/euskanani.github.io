@@ -1,0 +1,146 @@
+/* ── gallery.css — Art profile specific styles ── */
+
+/* Back-link to entry */
+.back-link {
+  display: none; /* gallery is standalone, no link needed */
+}
+
+/* Gallery filter bar */
+.gallery-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+/* Extended works grid — 4 cols on wide screens */
+@media (min-width: 1200px) {
+  .works-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Lightbox overlay */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(26,24,20,0.92);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox.open { display: flex; }
+
+.lightbox-inner {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.lightbox-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: #ddd8cc;
+  margin-bottom: 1.5rem;
+}
+
+.lightbox-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--paper);
+  margin-bottom: 0.4rem;
+}
+
+.lightbox-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.45);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.lightbox-close:hover { color: var(--paper); }
+
+/* Exhibition timeline */
+.exhibitions {
+  background: var(--paper-warm);
+  padding: 7rem 6rem;
+}
+
+.exhibitions h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+.exhibition-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exhibition-item {
+  display: grid;
+  grid-template-columns: 5rem 1fr auto;
+  gap: 2rem;
+  align-items: baseline;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ex-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.ex-title {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.ex-place {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .exhibitions { padding: 4rem 1.5rem; }
+  .exhibition-item { grid-template-columns: 4rem 1fr; gap: 1rem; }
+  .ex-place { grid-column: 2; text-align: left; }
+}

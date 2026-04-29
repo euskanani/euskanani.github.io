@@ -1,0 +1,348 @@
+/* ── portfolio.css — Data Engineer portfolio styles ── */
+
+:root {
+  /* Override palette for the DE portfolio — dark, technical, precise */
+  --ink: #e8e4df;
+  --ink-soft: #a8a09a;
+  --ink-muted: #6a6460;
+  --paper: #0f0e0c;
+  --paper-warm: #161410;
+  --paper-card: #1e1c18;
+  --accent: #c8a96a;
+  --accent-dark: #a88a4a;
+  --accent-green: #6abf8a;
+  --rule: rgba(232,228,223,0.08);
+}
+
+body { background: var(--paper); }
+
+/* ── NAV override ── */
+nav {
+  background: var(--paper);
+  border-bottom-color: var(--rule);
+}
+
+.nav-logo { color: var(--ink); }
+.nav-links a { color: var(--ink-soft); }
+.nav-links a:hover { color: var(--ink); }
+
+/* Active nav link */
+.nav-links a.active {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+/* ── HERO — DE version ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  background: var(--paper);
+}
+
+.hero-text { padding: 6rem 4rem 6rem 6rem; }
+
+.hero-eyebrow { color: var(--accent); }
+
+.hero-name em { color: var(--accent); }
+
+.hero-tagline { color: var(--ink-soft); }
+
+.hero-cta {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+.hero-cta:hover { color: var(--accent); border-color: var(--accent); }
+
+.hero-visual {
+  background: var(--paper-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+/* Data pipeline SVG illustration area */
+.pipeline-visual {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ── SKILLS SECTION ── */
+#skills {
+  background: var(--paper-warm);
+  padding: 7rem 6rem;
+}
+
+#skills .section-label { color: var(--accent); }
+#skills .section-label::after { background: var(--rule); }
+
+#skills h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 3rem;
+  line-height: 1.25;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  padding: 2rem;
+  transition: border-color 0.3s;
+}
+
+.skill-card:hover { border-color: rgba(200,169,106,0.35); }
+
+.skill-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.skill-card h3 {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+/* ── PROJECTS SECTION ── */
+#projects {
+  background: var(--paper);
+  padding: 7rem 6rem;
+}
+
+#projects .section-label { color: var(--accent); }
+
+#projects h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 3rem;
+  line-height: 1.25;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.project-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.project-item:hover { background: var(--paper-card); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+
+.project-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.project-desc {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 1rem;
+}
+
+.project-stack {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.stack-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid rgba(106,191,138,0.3);
+  color: var(--accent-green);
+}
+
+.project-arrow {
+  font-size: 1.2rem;
+  color: var(--ink-muted);
+  margin-top: 0.25rem;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.project-item:hover .project-arrow {
+  transform: translate(4px, -4px);
+  color: var(--accent);
+}
+
+/* ── EXPERIENCE ── */
+#experience {
+  background: var(--paper-warm);
+  padding: 7rem 6rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+#experience .section-header { position: sticky; top: 8rem; }
+
+#experience .section-label { color: var(--accent); }
+
+#experience h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-item {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0;
+}
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.exp-role {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.exp-period {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.exp-company {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.exp-desc {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+/* ── ABOUT — DE version ── */
+#about {
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  padding: 7rem 6rem;
+}
+
+#about .about-body h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+#about .about-body p {
+  color: var(--ink-soft);
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+#about .about-stats {
+  border-left-color: var(--rule);
+}
+
+.stat-num { color: var(--ink); }
+.stat-label { color: var(--ink-muted); }
+
+/* ── CONTACT — DE version ── */
+#contact {
+  background: var(--paper-card);
+  border-top: 1px solid var(--rule);
+}
+
+#contact .section-label { color: var(--accent); }
+#contact h2 { color: var(--ink); }
+#contact p { color: var(--ink-soft); }
+
+.contact-email { color: var(--ink); }
+.contact-socials a { color: var(--ink-muted); }
+.contact-socials a:hover { color: var(--ink); }
+
+/* ── FOOTER override ── */
+footer {
+  background: var(--paper);
+  border-top-color: var(--rule);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #skills { padding: 4rem 1.5rem; }
+  .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+  #projects { padding: 4rem 1.5rem; }
+  #experience { padding: 4rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
+  #experience .section-header { position: static; }
+  #about { padding: 4rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
+}
