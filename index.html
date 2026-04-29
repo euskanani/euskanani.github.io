@@ -8,22 +8,21 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── Light side tokens ── */
     :root {
-      --ink: #1a1814;
-      --ink-soft: #4a4640;
-      --ink-muted: #9a9590;
-      --paper: #faf9f6;
-      --paper-warm: #f2f0eb;
-      --accent: #b8a98a;
-      --accent-dark: #7c6d55;
-      --rule: rgba(26,24,20,0.1);
+      --light-ink:    #1a1814;
+      --light-muted:  #9a9590;
+      --light-soft:   #4a4640;
+      --light-paper:  #faf9f6;
+      --light-warm:   #f2f0eb;
+      --light-accent: #7c6d55;
+      --light-rule:   rgba(26,24,20,0.1);
     }
 
     html, body {
       height: 100%;
       font-family: 'Jost', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
+      background: var(--light-paper);
       font-weight: 300;
       overflow: hidden;
     }
@@ -34,7 +33,6 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    /* Left — Art gallery */
     .side {
       position: relative;
       overflow: hidden;
@@ -47,8 +45,11 @@
       text-decoration: none;
     }
 
-    .side-art  { background: var(--paper-warm); flex: 1; }
-    .side-tech { background: #0f0e0c; flex: 1; }
+    /* LEFT — Portfolio (light) */
+    .side-portfolio { background: var(--light-warm); flex: 1; color: var(--light-ink); }
+
+    /* RIGHT — Gallery (dark) */
+    .side-gallery   { background: #0f0e0c;           flex: 1; color: #e8e4df; }
 
     .side::after {
       content: '';
@@ -58,26 +59,21 @@
       transition: opacity 0.4s;
     }
 
-    .side-art::after  { background: rgba(26,24,20,0.06); }
-    .side-tech::after { background: rgba(200,169,106,0.06); }
+    .side-portfolio::after { background: rgba(26,24,20,0.06); }
+    .side-gallery::after   { background: rgba(200,169,106,0.06); }
 
     .side:hover::after { opacity: 1; }
-    .entry:has(.side-art:hover)  .side-tech { flex: 0.72; }
-    .entry:has(.side-tech:hover) .side-art  { flex: 0.72; }
+    .entry:has(.side-portfolio:hover) .side-gallery   { flex: 0.72; }
+    .entry:has(.side-gallery:hover)   .side-portfolio { flex: 0.72; }
 
-    /* Vertical label */
+    /* ── Centred label ── */
     .side-label {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       pointer-events: none;
-      transition: opacity 0.3s;
     }
-
-    .side-art  .side-label { opacity: 1; }
-    .side-tech .side-label { opacity: 1; }
 
     .label-eyebrow {
       font-size: 0.6rem;
@@ -87,22 +83,23 @@
       display: block;
     }
 
-    .side-art  .label-eyebrow { color: var(--ink-muted); }
-    .side-tech .label-eyebrow { color: rgba(200,169,106,0.6); }
+    .side-portfolio .label-eyebrow { color: var(--light-muted); }
+    .side-gallery   .label-eyebrow { color: rgba(200,169,106,0.6); }
 
     .label-name {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       line-height: 1.1;
       display: block;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
     }
 
-    .side-art  .label-name { font-size: clamp(2.2rem, 4vw, 3.5rem); color: var(--ink); }
-    .side-tech .label-name { font-size: clamp(2.2rem, 4vw, 3.5rem); color: #e8e4df; }
+    .side-portfolio .label-name { color: var(--light-ink); }
+    .side-gallery   .label-name { color: #e8e4df; }
 
     .label-name em { font-style: italic; }
-    .side-art  .label-name em { color: var(--accent-dark); }
-    .side-tech .label-name em { color: #c8a96a; }
+    .side-portfolio .label-name em { color: var(--light-accent); }
+    .side-gallery   .label-name em { color: #c8a96a; }
 
     .label-sub {
       display: block;
@@ -112,10 +109,10 @@
       margin-top: 1.5rem;
     }
 
-    .side-art  .label-sub { color: var(--ink-soft); }
-    .side-tech .label-sub { color: rgba(200,169,106,0.7); }
+    .side-portfolio .label-sub { color: var(--light-soft); }
+    .side-gallery   .label-sub { color: rgba(200,169,106,0.7); }
 
-    /* Bottom corner cue */
+    /* ── Bottom CTA ── */
     .side-cta {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
@@ -128,43 +125,32 @@
       transition: opacity 0.3s, transform 0.3s;
     }
 
-    .side-art  .side-cta { color: var(--ink-muted); }
-    .side-tech .side-cta { color: rgba(200,169,106,0.6); }
+    .side-portfolio .side-cta { color: var(--light-muted); }
+    .side-gallery   .side-cta { color: rgba(200,169,106,0.6); }
 
-    .side:hover .side-cta {
-      opacity: 1;
-      transform: none;
-    }
+    .side:hover .side-cta { opacity: 1; transform: none; }
 
-    /* Divider */
+    /* ── Divider ── */
     .divider {
       position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
+      left: 50%; top: 0; bottom: 0;
       width: 1px;
-      background: var(--rule);
+      background: rgba(26,24,20,0.12);
       pointer-events: none;
       z-index: 2;
     }
 
-    /* SVG art flourish */
-    .art-bg {
+    /* ── Decorative SVG backgrounds ── */
+    .art-bg, .tech-bg {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.15;
       pointer-events: none;
     }
 
-    /* Tech grid bg */
-    .tech-bg {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.12;
-      pointer-events: none;
-    }
+    .art-bg  { opacity: 0.12; }
+    .tech-bg { opacity: 0.1; }
 
-    /* Signature bottom */
+    /* ── Footer ── */
     .entry-footer {
       position: fixed;
       bottom: 1.8rem;
@@ -173,15 +159,15 @@
       font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--ink-muted);
+      color: var(--light-muted);
       z-index: 10;
       white-space: nowrap;
     }
 
     @media (max-width: 600px) {
-      .entry { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
-      .entry:has(.side-art:hover)  .side-tech { flex: 1; }
-      .entry:has(.side-tech:hover) .side-art  { flex: 1; }
+      .entry { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; overflow: hidden; }
+      .entry:has(.side-portfolio:hover) .side-gallery   { flex: 1; }
+      .entry:has(.side-gallery:hover)   .side-portfolio { flex: 1; }
     }
   </style>
 </head>
@@ -189,45 +175,24 @@
 
 <div class="entry">
 
-  <!-- ART SIDE -->
-  <a class="side side-art" href="gallery/index.html">
-    <!-- Soft painterly background shapes -->
-    <svg class="art-bg" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <ellipse cx="250" cy="300" rx="200" ry="250" fill="#c4b49a"/>
-      <ellipse cx="150" cy="180" rx="130" ry="110" fill="#d4b88a"/>
-      <ellipse cx="340" cy="420" rx="90" ry="120" fill="#b8a080"/>
-    </svg>
-
-    <div class="side-label">
-      <span class="label-eyebrow">Artist &amp; Painter</span>
-      <span class="label-name">Marc<br><em>Kanani</em></span>
-      <span class="label-sub">Gallery</span>
-    </div>
-
-    <span class="side-cta">Enter gallery →</span>
-  </a>
-
-  <!-- TECH SIDE -->
-  <a class="side side-tech" href="portfolio/index.html">
-    <!-- Data grid background -->
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║  LEFT — PORTFOLIO (light theme)      ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <a class="side side-portfolio" href="portfolio/index.html">
+    <!-- Soft grid bg -->
     <svg class="tech-bg" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <g stroke="#c8a96a" stroke-width="0.5" fill="none">
-        <line x1="0" y1="100" x2="500" y2="100"/>
-        <line x1="0" y1="200" x2="500" y2="200"/>
-        <line x1="0" y1="300" x2="500" y2="300"/>
-        <line x1="0" y1="400" x2="500" y2="400"/>
-        <line x1="0" y1="500" x2="500" y2="500"/>
-        <line x1="0" y1="600" x2="500" y2="600"/>
-        <line x1="100" y1="0" x2="100" y2="700"/>
-        <line x1="200" y1="0" x2="200" y2="700"/>
-        <line x1="300" y1="0" x2="300" y2="700"/>
-        <line x1="400" y1="0" x2="400" y2="700"/>
+      <g stroke="#7c6d55" stroke-width="0.5" fill="none">
+        <line x1="0" y1="100" x2="500" y2="100"/> <line x1="0" y1="200" x2="500" y2="200"/>
+        <line x1="0" y1="300" x2="500" y2="300"/> <line x1="0" y1="400" x2="500" y2="400"/>
+        <line x1="0" y1="500" x2="500" y2="500"/> <line x1="0" y1="600" x2="500" y2="600"/>
+        <line x1="100" y1="0" x2="100" y2="700"/> <line x1="200" y1="0" x2="200" y2="700"/>
+        <line x1="300" y1="0" x2="300" y2="700"/> <line x1="400" y1="0" x2="400" y2="700"/>
       </g>
-      <circle cx="200" cy="250" r="4" fill="#c8a96a"/>
-      <circle cx="300" cy="350" r="4" fill="#c8a96a"/>
-      <circle cx="100" cy="450" r="4" fill="#c8a96a"/>
-      <line x1="200" y1="250" x2="300" y2="350" stroke="#c8a96a" stroke-width="1"/>
-      <line x1="300" y1="350" x2="100" y2="450" stroke="#c8a96a" stroke-width="1"/>
+      <circle cx="200" cy="250" r="4" fill="#7c6d55"/>
+      <circle cx="300" cy="350" r="4" fill="#7c6d55"/>
+      <circle cx="100" cy="450" r="4" fill="#7c6d55"/>
+      <line x1="200" y1="250" x2="300" y2="350" stroke="#7c6d55" stroke-width="1"/>
+      <line x1="300" y1="350" x2="100" y2="450" stroke="#7c6d55" stroke-width="1"/>
     </svg>
 
     <div class="side-label">
@@ -237,6 +202,26 @@
     </div>
 
     <span class="side-cta">Enter portfolio →</span>
+  </a>
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║  RIGHT — GALLERY (dark theme)        ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <a class="side side-gallery" href="gallery/index.html">
+    <!-- Painterly bg shapes -->
+    <svg class="art-bg" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <ellipse cx="250" cy="300" rx="200" ry="250" fill="#c8a96a"/>
+      <ellipse cx="150" cy="180" rx="130" ry="110" fill="#a88a4a"/>
+      <ellipse cx="340" cy="420" rx="90"  ry="120" fill="#8a6a30"/>
+    </svg>
+
+    <div class="side-label">
+      <span class="label-eyebrow">Artist &amp; Painter</span>
+      <span class="label-name">Marc<br><em>Kanani</em></span>
+      <span class="label-sub">Gallery</span>
+    </div>
+
+    <span class="side-cta">Enter gallery →</span>
   </a>
 
 </div>

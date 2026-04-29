@@ -5,24 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marc Kanani — Data Engineer</title>
   <link href="../styles/google_fonts.css" rel="stylesheet" />
-  <link href="../styles/index.css" rel="stylesheet" />
+  <link href="../styles/base.css" rel="stylesheet" />
   <link href="../styles/portfolio.css" rel="stylesheet" />
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Marc Kanani</a>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  NAV  (factorized via layout.js)     ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<!-- rendered by JS below -->
 
-<!-- HERO -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  HERO                                ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section class="hero">
   <div class="hero-text">
     <p class="hero-eyebrow">Data Engineer — Paris</p>
@@ -33,17 +28,11 @@
 
   <div class="hero-visual">
     <div class="pipeline-visual">
-      <!-- Data pipeline SVG illustration -->
       <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" width="100%">
         <defs>
           <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#c8a96a" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#c8a96a" stop-opacity="0.05"/>
-          </linearGradient>
-          <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#c8a96a" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#c8a96a" stop-opacity="0.8"/>
-            <stop offset="100%" stop-color="#c8a96a" stop-opacity="0"/>
+            <stop offset="0%"   stop-color="#7c6d55" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#7c6d55" stop-opacity="0.04"/>
           </linearGradient>
           <style>
             .flow-dot { animation: flowMove 2.2s linear infinite; }
@@ -62,89 +51,67 @@
             }
           </style>
         </defs>
-
         <!-- Background grid -->
-        <g stroke="rgba(200,169,106,0.07)" stroke-width="1">
-          <line x1="0" y1="60" x2="420" y2="60"/>
-          <line x1="0" y1="120" x2="420" y2="120"/>
-          <line x1="0" y1="180" x2="420" y2="180"/>
-          <line x1="0" y1="240" x2="420" y2="240"/>
-          <line x1="0" y1="300" x2="420" y2="300"/>
-          <line x1="70" y1="0" x2="70" y2="340"/>
-          <line x1="140" y1="0" x2="140" y2="340"/>
-          <line x1="210" y1="0" x2="210" y2="340"/>
-          <line x1="280" y1="0" x2="280" y2="340"/>
-          <line x1="350" y1="0" x2="350" y2="340"/>
+        <g stroke="rgba(124,109,85,0.1)" stroke-width="1">
+          <line x1="0" y1="60"  x2="420" y2="60"/>  <line x1="0" y1="120" x2="420" y2="120"/>
+          <line x1="0" y1="180" x2="420" y2="180"/> <line x1="0" y1="240" x2="420" y2="240"/>
+          <line x1="0" y1="300" x2="420" y2="300"/> <line x1="70" y1="0"  x2="70"  y2="340"/>
+          <line x1="140" y1="0" x2="140" y2="340"/> <line x1="210" y1="0" x2="210" y2="340"/>
+          <line x1="280" y1="0" x2="280" y2="340"/> <line x1="350" y1="0" x2="350" y2="340"/>
         </g>
-
         <!-- Connector lines -->
-        <line x1="90" y1="90" x2="160" y2="130" stroke="rgba(200,169,106,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="90" y1="170" x2="160" y2="130" stroke="rgba(200,169,106,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="90" y1="250" x2="160" y2="130" stroke="rgba(200,169,106,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="200" y1="130" x2="270" y2="130" stroke="rgba(200,169,106,0.5)" stroke-width="1.5"/>
-        <line x1="310" y1="100" x2="370" y2="80" stroke="rgba(106,191,138,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="310" y1="160" x2="370" y2="180" stroke="rgba(106,191,138,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="310" y1="130" x2="370" y2="260" stroke="rgba(106,191,138,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
-
-        <!-- Animated flow dots on main line -->
-        <circle class="flow-dot" cx="200" cy="130" r="3" fill="#c8a96a"/>
-        <circle class="flow-dot" cx="225" cy="130" r="3" fill="#c8a96a"/>
-        <circle class="flow-dot" cx="250" cy="130" r="3" fill="#c8a96a"/>
-
-        <!-- Source nodes (left) -->
-        <g>
-          <rect x="20" y="68" width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(200,169,106,0.4)" stroke-width="1"/>
-          <text x="55" y="87" font-family="'Jost', sans-serif" font-size="7.5" fill="#c8a96a" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">POSTGRES</text>
-          <text x="55" y="99" font-family="'Jost', sans-serif" font-size="6" fill="rgba(200,169,106,0.5)" letter-spacing="1" text-anchor="middle">source</text>
-        </g>
-        <g>
-          <rect x="20" y="148" width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(200,169,106,0.4)" stroke-width="1"/>
-          <text x="55" y="167" font-family="'Jost', sans-serif" font-size="7.5" fill="#c8a96a" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">KAFKA</text>
-          <text x="55" y="179" font-family="'Jost', sans-serif" font-size="6" fill="rgba(200,169,106,0.5)" letter-spacing="1" text-anchor="middle">stream</text>
-        </g>
-        <g>
-          <rect x="20" y="228" width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(200,169,106,0.4)" stroke-width="1"/>
-          <text x="55" y="247" font-family="'Jost', sans-serif" font-size="7.5" fill="#c8a96a" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">REST API</text>
-          <text x="55" y="259" font-family="'Jost', sans-serif" font-size="6" fill="rgba(200,169,106,0.5)" letter-spacing="1" text-anchor="middle">ingest</text>
-        </g>
-
-        <!-- Central processing node -->
+        <line x1="90"  y1="90"  x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="90"  y1="170" x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="90"  y1="250" x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="200" y1="130" x2="270" y2="130" stroke="rgba(124,109,85,0.6)"  stroke-width="1.5"/>
+        <line x1="310" y1="100" x2="370" y2="80"  stroke="rgba(90,140,100,0.4)"  stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="310" y1="160" x2="370" y2="180" stroke="rgba(90,140,100,0.4)"  stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="310" y1="130" x2="370" y2="260" stroke="rgba(90,140,100,0.3)"  stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Animated flow dots -->
+        <circle class="flow-dot" cx="200" cy="130" r="3" fill="#7c6d55"/>
+        <circle class="flow-dot" cx="225" cy="130" r="3" fill="#7c6d55"/>
+        <circle class="flow-dot" cx="250" cy="130" r="3" fill="#7c6d55"/>
+        <!-- Source nodes -->
+        <g><rect x="20" y="68"  width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
+          <text x="55" y="87" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">POSTGRES</text>
+          <text x="55" y="99" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.5)" letter-spacing="1" text-anchor="middle">source</text></g>
+        <g><rect x="20" y="148" width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
+          <text x="55" y="167" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">KAFKA</text>
+          <text x="55" y="179" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.5)" letter-spacing="1" text-anchor="middle">stream</text></g>
+        <g><rect x="20" y="228" width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
+          <text x="55" y="247" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">REST API</text>
+          <text x="55" y="259" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.5)" letter-spacing="1" text-anchor="middle">ingest</text></g>
+        <!-- Central node -->
         <g class="pulse">
-          <rect x="155" y="98" width="70" height="64" rx="4" fill="rgba(200,169,106,0.15)" stroke="#c8a96a" stroke-width="1.5"/>
-          <text x="190" y="122" font-family="'Jost', sans-serif" font-size="7" fill="#c8a96a" letter-spacing="2" text-anchor="middle">AIRFLOW</text>
-          <text x="190" y="135" font-family="'Jost', sans-serif" font-size="6" fill="rgba(200,169,106,0.6)" letter-spacing="1" text-anchor="middle">orchestrate</text>
-          <text x="190" y="150" font-family="'Jost', sans-serif" font-size="7" fill="#c8a96a" letter-spacing="2" text-anchor="middle">+ dbt</text>
+          <rect x="155" y="98" width="70" height="64" rx="4" fill="rgba(184,169,138,0.15)" stroke="#b8a98a" stroke-width="1.5"/>
+          <text x="190" y="122" font-family="'Jost',sans-serif" font-size="7"   fill="#7c6d55" letter-spacing="2"   text-anchor="middle">AIRFLOW</text>
+          <text x="190" y="135" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.55)" letter-spacing="1"   text-anchor="middle">orchestrate</text>
+          <text x="190" y="150" font-family="'Jost',sans-serif" font-size="7"   fill="#7c6d55" letter-spacing="2"   text-anchor="middle">+ dbt</text>
         </g>
-
         <!-- Transform node -->
         <g>
-          <rect x="265" y="105" width="55" height="50" rx="3" fill="rgba(106,191,138,0.1)" stroke="rgba(106,191,138,0.5)" stroke-width="1"/>
-          <text x="292" y="127" font-family="'Jost', sans-serif" font-size="7" fill="#6abf8a" letter-spacing="1.5" text-anchor="middle">BIGQUERY</text>
-          <text x="292" y="142" font-family="'Jost', sans-serif" font-size="6" fill="rgba(106,191,138,0.5)" letter-spacing="1" text-anchor="middle">warehouse</text>
+          <rect x="265" y="105" width="55" height="50" rx="3" fill="rgba(90,140,100,0.08)" stroke="rgba(90,140,100,0.4)" stroke-width="1"/>
+          <text x="292" y="127" font-family="'Jost',sans-serif" font-size="7"   fill="#5a8c64" letter-spacing="1.5" text-anchor="middle">BIGQUERY</text>
+          <text x="292" y="142" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(90,140,100,0.5)" letter-spacing="1" text-anchor="middle">warehouse</text>
         </g>
-
-        <!-- Output nodes (right) -->
-        <g>
-          <rect x="365" y="58" width="50" height="44" rx="3" fill="rgba(106,191,138,0.08)" stroke="rgba(106,191,138,0.3)" stroke-width="1"/>
-          <text x="390" y="77" font-family="'Jost', sans-serif" font-size="6.5" fill="#6abf8a" letter-spacing="1" text-anchor="middle">LOOKER</text>
-          <text x="390" y="89" font-family="'Jost', sans-serif" font-size="5.5" fill="rgba(106,191,138,0.45)" letter-spacing="0.8" text-anchor="middle">dashboard</text>
-        </g>
-        <g>
-          <rect x="365" y="158" width="50" height="44" rx="3" fill="rgba(106,191,138,0.08)" stroke="rgba(106,191,138,0.3)" stroke-width="1"/>
-          <text x="390" y="177" font-family="'Jost', sans-serif" font-size="6.5" fill="#6abf8a" letter-spacing="1" text-anchor="middle">ML MODEL</text>
-          <text x="390" y="189" font-family="'Jost', sans-serif" font-size="5.5" fill="rgba(106,191,138,0.45)" letter-spacing="0.8" text-anchor="middle">feature store</text>
-        </g>
-        <g>
-          <rect x="365" y="238" width="50" height="44" rx="3" fill="rgba(106,191,138,0.08)" stroke="rgba(106,191,138,0.3)" stroke-width="1"/>
-          <text x="390" y="257" font-family="'Jost', sans-serif" font-size="6.5" fill="#6abf8a" letter-spacing="1" text-anchor="middle">REPORTS</text>
-          <text x="390" y="269" font-family="'Jost', sans-serif" font-size="5.5" fill="rgba(106,191,138,0.45)" letter-spacing="0.8" text-anchor="middle">scheduled</text>
-        </g>
+        <!-- Output nodes -->
+        <g><rect x="365" y="58"  width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)" stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
+          <text x="390" y="77"  font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64" letter-spacing="1"   text-anchor="middle">LOOKER</text>
+          <text x="390" y="89"  font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"  letter-spacing="0.8" text-anchor="middle">dashboard</text></g>
+        <g><rect x="365" y="158" width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)" stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
+          <text x="390" y="177" font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64" letter-spacing="1"   text-anchor="middle">ML MODEL</text>
+          <text x="390" y="189" font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"  letter-spacing="0.8" text-anchor="middle">feature store</text></g>
+        <g><rect x="365" y="238" width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)" stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
+          <text x="390" y="257" font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64" letter-spacing="1"   text-anchor="middle">REPORTS</text>
+          <text x="390" y="269" font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"  letter-spacing="0.8" text-anchor="middle">scheduled</text></g>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  SKILLS                              ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="skills">
   <p class="section-label reveal">Technical skills</p>
   <h2 class="reveal" style="transition-delay:0.1s">Tools &amp; technologies<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">of the craft</em></h2>
@@ -153,72 +120,56 @@
       <span class="skill-icon">⬡</span>
       <h3>Data Warehousing</h3>
       <div class="skill-tags">
-        <span class="skill-tag">BigQuery</span>
-        <span class="skill-tag">Snowflake</span>
-        <span class="skill-tag">Redshift</span>
-        <span class="skill-tag">dbt</span>
-        <span class="skill-tag">Looker</span>
+        <span class="skill-tag">BigQuery</span><span class="skill-tag">Snowflake</span>
+        <span class="skill-tag">Redshift</span><span class="skill-tag">dbt</span><span class="skill-tag">Looker</span>
       </div>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.05s">
       <span class="skill-icon">⟳</span>
-      <h3>Orchestration & Pipelines</h3>
+      <h3>Orchestration &amp; Pipelines</h3>
       <div class="skill-tags">
-        <span class="skill-tag">Apache Airflow</span>
-        <span class="skill-tag">Prefect</span>
-        <span class="skill-tag">Dagster</span>
-        <span class="skill-tag">Kafka</span>
-        <span class="skill-tag">Spark</span>
+        <span class="skill-tag">Apache Airflow</span><span class="skill-tag">Prefect</span>
+        <span class="skill-tag">Dagster</span><span class="skill-tag">Kafka</span><span class="skill-tag">Spark</span>
       </div>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.1s">
       <span class="skill-icon">☁</span>
-      <h3>Cloud & Infrastructure</h3>
+      <h3>Cloud &amp; Infrastructure</h3>
       <div class="skill-tags">
-        <span class="skill-tag">GCP</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Terraform</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">GCP</span><span class="skill-tag">AWS</span>
+        <span class="skill-tag">Terraform</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span>
       </div>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.15s">
       <span class="skill-icon">∑</span>
       <h3>Languages</h3>
       <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Scala</span>
-        <span class="skill-tag">Bash</span>
-        <span class="skill-tag">Go</span>
+        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+        <span class="skill-tag">Scala</span><span class="skill-tag">Bash</span><span class="skill-tag">Go</span>
       </div>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.2s">
       <span class="skill-icon">◈</span>
       <h3>Databases</h3>
       <div class="skill-tags">
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">Redis</span>
-        <span class="skill-tag">Cassandra</span>
-        <span class="skill-tag">Elasticsearch</span>
+        <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Redis</span><span class="skill-tag">Cassandra</span><span class="skill-tag">Elasticsearch</span>
       </div>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.25s">
       <span class="skill-icon">⊕</span>
-      <h3>ML & Analytics</h3>
+      <h3>ML &amp; Analytics</h3>
       <div class="skill-tags">
-        <span class="skill-tag">MLflow</span>
-        <span class="skill-tag">Feature Store</span>
-        <span class="skill-tag">Pandas</span>
-        <span class="skill-tag">dbt metrics</span>
-        <span class="skill-tag">Metabase</span>
+        <span class="skill-tag">MLflow</span><span class="skill-tag">Feature Store</span>
+        <span class="skill-tag">Pandas</span><span class="skill-tag">dbt metrics</span><span class="skill-tag">Metabase</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  PROJECTS                            ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="projects">
   <p class="section-label reveal">Selected projects</p>
   <h2 class="reveal" style="transition-delay:0.1s">What I've<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">built</em></h2>
@@ -229,58 +180,44 @@
         <p class="project-title">Real-time Event Streaming Platform</p>
         <p class="project-desc">Designed and deployed an end-to-end event streaming architecture processing 40M+ events/day for a SaaS analytics company. Reduced data latency from 4 hours to under 90 seconds.</p>
         <div class="project-stack">
-          <span class="stack-tag">Kafka</span>
-          <span class="stack-tag">Apache Flink</span>
-          <span class="stack-tag">BigQuery</span>
-          <span class="stack-tag">Terraform</span>
-          <span class="stack-tag">GCP</span>
+          <span class="stack-tag">Kafka</span><span class="stack-tag">Apache Flink</span>
+          <span class="stack-tag">BigQuery</span><span class="stack-tag">Terraform</span><span class="stack-tag">GCP</span>
         </div>
       </div>
       <span class="project-arrow">↗</span>
     </div>
-
     <div class="project-item reveal" style="transition-delay:0.05s">
       <div>
         <p class="project-num">02</p>
         <p class="project-title">Data Lakehouse Migration</p>
         <p class="project-desc">Led the migration of a fragmented data warehouse to a unified Delta Lake architecture. Consolidated 14 source systems, cut query times by 65%, and reduced storage costs by 40%.</p>
         <div class="project-stack">
-          <span class="stack-tag">Databricks</span>
-          <span class="stack-tag">Delta Lake</span>
-          <span class="stack-tag">Spark</span>
-          <span class="stack-tag">dbt</span>
-          <span class="stack-tag">Airflow</span>
+          <span class="stack-tag">Databricks</span><span class="stack-tag">Delta Lake</span>
+          <span class="stack-tag">Spark</span><span class="stack-tag">dbt</span><span class="stack-tag">Airflow</span>
         </div>
       </div>
       <span class="project-arrow">↗</span>
     </div>
-
     <div class="project-item reveal" style="transition-delay:0.1s">
       <div>
         <p class="project-num">03</p>
         <p class="project-title">ML Feature Store Infrastructure</p>
         <p class="project-desc">Built a centralised feature store serving 12 production ML models, enabling reusable feature computation and eliminating training/serving skew across teams.</p>
         <div class="project-stack">
-          <span class="stack-tag">Feast</span>
-          <span class="stack-tag">Redis</span>
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">Kubernetes</span>
-          <span class="stack-tag">MLflow</span>
+          <span class="stack-tag">Feast</span><span class="stack-tag">Redis</span>
+          <span class="stack-tag">Python</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">MLflow</span>
         </div>
       </div>
       <span class="project-arrow">↗</span>
     </div>
-
     <div class="project-item reveal" style="transition-delay:0.15s">
       <div>
         <p class="project-num">04</p>
         <p class="project-title">Automated Data Quality Framework</p>
         <p class="project-desc">Developed a configurable data quality monitoring layer integrated into CI/CD pipelines. Detects schema drift, statistical anomalies, and SLA breaches — alerting before stakeholders notice.</p>
         <div class="project-stack">
-          <span class="stack-tag">Great Expectations</span>
-          <span class="stack-tag">dbt tests</span>
-          <span class="stack-tag">PagerDuty</span>
-          <span class="stack-tag">Grafana</span>
+          <span class="stack-tag">Great Expectations</span><span class="stack-tag">dbt tests</span>
+          <span class="stack-tag">PagerDuty</span><span class="stack-tag">Grafana</span>
         </div>
       </div>
       <span class="project-arrow">↗</span>
@@ -288,7 +225,9 @@
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  EXPERIENCE                          ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="experience">
   <div class="section-header reveal">
     <p class="section-label">Experience</p>
@@ -301,7 +240,7 @@
         <span class="exp-period">2022 — Present</span>
       </div>
       <p class="exp-company">Qonto · Paris</p>
-      <p class="exp-desc">Lead data infrastructure for the analytics platform serving 400k+ business customers. Own the ELT pipelines, data modelling layer, and observability stack. Collaborate closely with product and ML teams to deliver high-reliability data products.</p>
+      <p class="exp-desc">Lead data infrastructure for the analytics platform serving 400k+ business customers. Own the ELT pipelines, data modelling layer, and observability stack.</p>
     </div>
     <div class="exp-item reveal" style="transition-delay:0.05s">
       <div class="exp-top">
@@ -322,7 +261,9 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  ABOUT                               ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="about">
   <div class="about-body reveal">
     <p class="section-label">About</p>
@@ -348,7 +289,9 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  CONTACT                             ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="contact">
   <p class="section-label" style="justify-content:center">Contact</p>
   <h2 class="reveal">Open to new<br>data challenges</h2>
@@ -361,14 +304,28 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2024 Marc Kanani. All rights reserved.</p>
-  <p>Paris, France</p>
-</footer>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  FOOTER  (factorized via layout.js)  ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<!-- rendered by JS below -->
 
 <script type="module">
-  import { initReveal } from '../components/reveal.js';
+  import { renderNav, renderFooter } from '../components/layout.js';
+  import { initReveal }              from '../components/reveal.js';
+
+  renderNav({
+    logoHref: '../index.html',
+    links: [
+      { label: 'Skills',     href: '#skills'     },
+      { label: 'Projects',   href: '#projects'   },
+      { label: 'Experience', href: '#experience' },
+      { label: 'About',      href: '#about'      },
+      { label: 'Contact',    href: '#contact'    },
+      { label: '← Gallery',  href: '../gallery/index.html' },
+    ],
+  });
+
+  renderFooter({ year: 2024 });
   initReveal();
 </script>
 </body>

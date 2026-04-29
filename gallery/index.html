@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marc Kanani — Artist & Painter</title>
+  <title>Marc Kanani — Artist &amp; Painter</title>
   <link href="../styles/google_fonts.css" rel="stylesheet" />
-  <link href="../styles/index.css" rel="stylesheet" />
+  <link href="../styles/base.css" rel="stylesheet" />
   <link href="../styles/gallery.css" rel="stylesheet" />
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Marc Kanani</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#works">Works</a></li>
-    <li><a href="#exhibitions">Exhibitions</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  NAV  (factorized via layout.js)     ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<!-- rendered by JS below -->
 
-<!-- HERO -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  HERO                                ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section class="hero">
   <div class="hero-text">
     <p class="hero-eyebrow">Artist &amp; Painter — Paris</p>
@@ -34,23 +29,25 @@
   <div class="hero-visual">
     <div class="canvas-placeholder">
       <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="400" fill="#ddd4c0"/>
-        <rect x="20" y="30" width="180" height="220" fill="#c4b49a" rx="2"/>
-        <ellipse cx="110" cy="140" rx="70" ry="80" fill="#b08060" opacity="0.5"/>
-        <ellipse cx="150" cy="100" rx="55" ry="45" fill="#e8d5b0" opacity="0.6"/>
-        <rect x="60" y="250" width="160" height="4" fill="#a0907a" rx="2"/>
-        <rect x="40" y="270" width="200" height="2" fill="#a0907a" opacity="0.4" rx="1"/>
-        <rect x="80" y="290" width="120" height="2" fill="#a0907a" opacity="0.3" rx="1"/>
-        <circle cx="200" cy="80" r="30" fill="#d4a870" opacity="0.4"/>
-        <rect x="0" y="360" width="300" height="40" fill="#c8baa8"/>
-        <text x="150" y="386" font-family="Georgia, serif" font-style="italic" font-size="11" fill="#8a7a68" text-anchor="middle">Untitled No. 7, Oil on canvas</text>
+        <rect width="300" height="400" fill="#1e1c18"/>
+        <rect x="20" y="30" width="180" height="220" fill="#2a2620" rx="2"/>
+        <ellipse cx="110" cy="140" rx="70" ry="80" fill="#5a4030" opacity="0.6"/>
+        <ellipse cx="150" cy="100" rx="55" ry="45" fill="#c8a96a" opacity="0.25"/>
+        <rect x="60"  y="250" width="160" height="4"  fill="#4a4038" rx="2"/>
+        <rect x="40"  y="270" width="200" height="2"  fill="#4a4038" opacity="0.4" rx="1"/>
+        <rect x="80"  y="290" width="120" height="2"  fill="#4a4038" opacity="0.3" rx="1"/>
+        <circle cx="200" cy="80" r="30" fill="#c8a96a" opacity="0.15"/>
+        <rect x="0" y="360" width="300" height="40" fill="#161410"/>
+        <text x="150" y="386" font-family="Georgia, serif" font-style="italic" font-size="11" fill="rgba(200,169,106,0.5)" text-anchor="middle">Untitled No. 7, Oil on canvas</text>
       </svg>
     </div>
     <p class="hero-caption">Featured work, 2024</p>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  ABOUT                               ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="about">
   <div class="about-body reveal">
     <p class="section-label">About</p>
@@ -76,7 +73,9 @@
   </div>
 </section>
 
-<!-- WORKS -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  WORKS                               ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="works">
   <div class="works-header reveal">
     <p class="section-label" style="margin-bottom:0">Selected works</p>
@@ -89,90 +88,84 @@
     </div>
   </div>
   <div class="works-grid">
-    <!-- Card 1 -->
     <div class="work-card reveal" style="transition-delay:0.05s" data-category="oil 2024" data-title="Morning Field, Normandy" data-meta="Oil on canvas — 2024 — 80 × 110 cm">
       <div class="work-img">
         <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="320" fill="#c8bfb0"/>
-          <rect x="0" y="0" width="240" height="180" fill="#b8a888"/>
-          <ellipse cx="120" cy="90" rx="80" ry="70" fill="#d4b88a" opacity="0.6"/>
-          <ellipse cx="80" cy="60" rx="45" ry="38" fill="#e8d0a0" opacity="0.5"/>
-          <rect x="0" y="180" width="240" height="140" fill="#7a6a54"/>
-          <ellipse cx="120" cy="185" rx="90" ry="12" fill="#5a4a38" opacity="0.5"/>
+          <rect width="240" height="320" fill="#2a2820"/>
+          <rect x="0" y="0" width="240" height="180" fill="#3a3428"/>
+          <ellipse cx="120" cy="90" rx="80" ry="70" fill="#6a5a38" opacity="0.6"/>
+          <ellipse cx="80"  cy="60" rx="45" ry="38" fill="#c8a96a" opacity="0.25"/>
+          <rect x="0" y="180" width="240" height="140" fill="#1a1810"/>
+          <ellipse cx="120" cy="185" rx="90" ry="12" fill="#0a0808" opacity="0.5"/>
         </svg>
       </div>
       <p class="work-title">Morning Field, Normandy</p>
       <p class="work-meta">Oil on canvas — 2024 — 80 × 110 cm</p>
     </div>
-    <!-- Card 2 -->
     <div class="work-card reveal" style="transition-delay:0.1s" data-category="oil 2023" data-title="Still Life with Golden Light" data-meta="Oil on linen — 2023 — 60 × 80 cm">
       <div class="work-img">
         <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="320" fill="#d8cfc4"/>
-          <circle cx="120" cy="130" r="90" fill="#c0a870" opacity="0.4"/>
-          <circle cx="160" cy="100" r="55" fill="#e8c888" opacity="0.5"/>
-          <rect x="20" y="200" width="200" height="100" fill="#8a7054" opacity="0.7"/>
-          <rect x="50" y="210" width="10" height="90" fill="#4a3828"/>
-          <rect x="80" y="230" width="10" height="70" fill="#4a3828"/>
-          <rect x="150" y="215" width="10" height="85" fill="#4a3828"/>
+          <rect width="240" height="320" fill="#282420"/>
+          <circle cx="120" cy="130" r="90"  fill="#6a5830" opacity="0.4"/>
+          <circle cx="160" cy="100" r="55"  fill="#c8a96a" opacity="0.3"/>
+          <rect x="20"  y="200" width="200" height="100" fill="#1e1810" opacity="0.8"/>
+          <rect x="50"  y="210" width="10"  height="90"  fill="#0a0808"/>
+          <rect x="80"  y="230" width="10"  height="70"  fill="#0a0808"/>
+          <rect x="150" y="215" width="10"  height="85"  fill="#0a0808"/>
         </svg>
       </div>
       <p class="work-title">Still Life with Golden Light</p>
       <p class="work-meta">Oil on linen — 2023 — 60 × 80 cm</p>
     </div>
-    <!-- Card 3 -->
     <div class="work-card reveal" style="transition-delay:0.15s" data-category="oil 2023" data-title="Grey Afternoon, Seine" data-meta="Oil on canvas — 2023 — 90 × 120 cm">
       <div class="work-img">
         <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="320" fill="#b8c0c8"/>
-          <rect x="0" y="0" width="240" height="220" fill="#9098a8"/>
-          <ellipse cx="120" cy="110" rx="100" ry="90" fill="#78889c" opacity="0.7"/>
-          <ellipse cx="90" cy="80" rx="60" ry="50" fill="#c8d0d8" opacity="0.5"/>
-          <rect x="0" y="220" width="240" height="100" fill="#6a7880"/>
-          <ellipse cx="120" cy="220" rx="100" ry="15" fill="#4a5860" opacity="0.5"/>
+          <rect width="240" height="320" fill="#202428"/>
+          <rect x="0" y="0" width="240" height="220" fill="#282e38"/>
+          <ellipse cx="120" cy="110" rx="100" ry="90" fill="#38404c" opacity="0.7"/>
+          <ellipse cx="90"  cy="80"  rx="60"  ry="50" fill="#606878" opacity="0.5"/>
+          <rect x="0" y="220" width="240" height="100" fill="#181c20"/>
+          <ellipse cx="120" cy="220" rx="100" ry="15" fill="#0a0c10" opacity="0.5"/>
         </svg>
       </div>
       <p class="work-title">Grey Afternoon, Seine</p>
       <p class="work-meta">Oil on canvas — 2023 — 90 × 120 cm</p>
     </div>
-    <!-- Card 4 -->
     <div class="work-card reveal" style="transition-delay:0.05s" data-category="oil 2022" data-title="Figure in Warm Shadow" data-meta="Oil on board — 2022 — 50 × 70 cm">
       <div class="work-img">
         <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="320" fill="#e0d0b8"/>
-          <rect x="60" y="40" width="120" height="180" fill="#c89878" opacity="0.6" rx="2"/>
-          <ellipse cx="120" cy="120" rx="55" ry="70" fill="#d8a880" opacity="0.7"/>
-          <ellipse cx="100" cy="90" rx="30" ry="25" fill="#f0c8a0" opacity="0.6"/>
-          <rect x="80" y="280" width="80" height="3" fill="#a08868" rx="1"/>
+          <rect width="240" height="320" fill="#282018"/>
+          <rect x="60" y="40" width="120" height="180" fill="#6a4830" opacity="0.6" rx="2"/>
+          <ellipse cx="120" cy="120" rx="55" ry="70" fill="#8a5838" opacity="0.7"/>
+          <ellipse cx="100" cy="90"  rx="30" ry="25" fill="#c8a96a" opacity="0.3"/>
+          <rect x="80" y="280" width="80" height="3" fill="#3a2818" rx="1"/>
         </svg>
       </div>
       <p class="work-title">Figure in Warm Shadow</p>
       <p class="work-meta">Oil on board — 2022 — 50 × 70 cm</p>
     </div>
-    <!-- Card 5 -->
     <div class="work-card reveal" style="transition-delay:0.1s" data-category="oil 2022" data-title="Belleville Rooftop" data-meta="Oil on canvas — 2022 — 70 × 100 cm">
       <div class="work-img">
         <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="320" fill="#ccc8b8"/>
-          <rect x="0" y="0" width="240" height="160" fill="#e8e0cc"/>
-          <rect x="0" y="160" width="240" height="160" fill="#a8a090"/>
-          <rect x="110" y="100" width="20" height="130" fill="#6a6058"/>
-          <rect x="85" y="115" width="70" height="50" fill="#7a7068"/>
-          <rect x="95" y="145" width="20" height="50" fill="#4a4038" opacity="0.8"/>
+          <rect width="240" height="320" fill="#202018"/>
+          <rect x="0" y="0"   width="240" height="160" fill="#2a2a20"/>
+          <rect x="0" y="160" width="240" height="160" fill="#181818"/>
+          <rect x="110" y="100" width="20" height="130" fill="#0e0e0c"/>
+          <rect x="85"  y="115" width="70" height="50"  fill="#1a1a18"/>
+          <rect x="95"  y="145" width="20" height="50"  fill="#0a0a08" opacity="0.8"/>
         </svg>
       </div>
       <p class="work-title">Belleville Rooftop</p>
       <p class="work-meta">Oil on canvas — 2022 — 70 × 100 cm</p>
     </div>
-    <!-- Card 6 -->
     <div class="work-card reveal" style="transition-delay:0.15s" data-category="mixed 2021" data-title="Interior with Afternoon Sun" data-meta="Mixed media — 2021 — 65 × 85 cm">
       <div class="work-img">
         <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="320" fill="#d4c8a8"/>
-          <ellipse cx="120" cy="160" rx="110" ry="130" fill="#c0a878" opacity="0.5"/>
-          <ellipse cx="120" cy="160" rx="75" ry="90" fill="#e0c890" opacity="0.5"/>
-          <ellipse cx="120" cy="160" rx="40" ry="50" fill="#f0d8a8" opacity="0.6"/>
-          <circle cx="120" cy="160" r="18" fill="#d4b078"/>
+          <rect width="240" height="320" fill="#201c14"/>
+          <ellipse cx="120" cy="160" rx="110" ry="130" fill="#5a4820" opacity="0.5"/>
+          <ellipse cx="120" cy="160" rx="75"  ry="90"  fill="#8a6828" opacity="0.4"/>
+          <ellipse cx="120" cy="160" rx="40"  ry="50"  fill="#c8a96a" opacity="0.35"/>
+          <circle  cx="120" cy="160" r="18"             fill="#a07838"/>
         </svg>
       </div>
       <p class="work-title">Interior with Afternoon Sun</p>
@@ -181,7 +174,9 @@
   </div>
 </section>
 
-<!-- EXHIBITIONS -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  EXHIBITIONS                         ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section class="exhibitions" id="exhibitions">
   <p class="section-label reveal">Selected exhibitions</p>
   <h2 class="reveal" style="transition-delay:0.1s">Where the work<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">has been shown</em></h2>
@@ -214,7 +209,9 @@
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  PROCESS                             ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="process">
   <h2 class="reveal">How the work<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">comes together</em></h2>
   <div class="process-steps">
@@ -249,7 +246,9 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  CONTACT                             ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <section id="contact">
   <p class="section-label" style="justify-content:center">Contact</p>
   <h2 class="reveal">Let's talk about<br>your next piece</h2>
@@ -262,29 +261,45 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2024 Marc Kanani. All rights reserved.</p>
-  <p>Paris, France</p>
-</footer>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  FOOTER  (factorized via layout.js)  ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<!-- rendered by JS below -->
 
-<!-- LIGHTBOX -->
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  LIGHTBOX                            ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightbox-close">×</button>
   <div class="lightbox-inner">
     <div class="lightbox-img" id="lightbox-img"></div>
     <p class="lightbox-title" id="lightbox-title"></p>
-    <p class="lightbox-meta" id="lightbox-meta"></p>
+    <p class="lightbox-meta"  id="lightbox-meta"></p>
   </div>
 </div>
 
 <script type="module">
-  import { initReveal } from '../components/reveal.js';
+  import { renderNav, renderFooter } from '../components/layout.js';
+  import { initReveal }              from '../components/reveal.js';
+
+  renderNav({
+    logoHref: '../index.html',
+    links: [
+      { label: 'About',       href: '#about'       },
+      { label: 'Works',       href: '#works'       },
+      { label: 'Exhibitions', href: '#exhibitions' },
+      { label: 'Process',     href: '#process'     },
+      { label: 'Contact',     href: '#contact'     },
+      { label: '→ Portfolio', href: '../portfolio/index.html' },
+    ],
+  });
+
+  renderFooter({ year: 2024 });
   initReveal();
 
-  // Gallery filter
+  // ── Gallery filter ──
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.work-card');
+  const cards       = document.querySelectorAll('.work-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -298,18 +313,18 @@
     });
   });
 
-  // Lightbox
+  // ── Lightbox ──
   const lightbox = document.getElementById('lightbox');
-  const lbImg   = document.getElementById('lightbox-img');
-  const lbTitle = document.getElementById('lightbox-title');
-  const lbMeta  = document.getElementById('lightbox-meta');
+  const lbImg    = document.getElementById('lightbox-img');
+  const lbTitle  = document.getElementById('lightbox-title');
+  const lbMeta   = document.getElementById('lightbox-meta');
 
   cards.forEach(card => {
     card.addEventListener('click', () => {
       const svg = card.querySelector('svg');
-      lbImg.innerHTML = svg ? svg.outerHTML : '';
-      lbTitle.textContent = card.dataset.title || card.querySelector('.work-title')?.textContent || '';
-      lbMeta.textContent  = card.dataset.meta  || card.querySelector('.work-meta')?.textContent  || '';
+      lbImg.innerHTML      = svg ? svg.outerHTML : '';
+      lbTitle.textContent  = card.dataset.title || card.querySelector('.work-title')?.textContent || '';
+      lbMeta.textContent   = card.dataset.meta  || card.querySelector('.work-meta')?.textContent  || '';
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     });

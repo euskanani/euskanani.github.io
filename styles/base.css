@@ -1,0 +1,392 @@
+/* ─────────────────────────────────────────────
+   base.css — Shared design tokens & components
+   Used by: index.html, portfolio/index.html, gallery/index.html
+───────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── LIGHT THEME (default — used by gallery) ── */
+:root {
+  --ink:        #1a1814;
+  --ink-soft:   #4a4640;
+  --ink-muted:  #9a9590;
+  --paper:      #faf9f6;
+  --paper-warm: #f2f0eb;
+  --paper-card: #edeae3;
+  --accent:     #b8a98a;
+  --accent-dark:#7c6d55;
+  --rule:       rgba(26,24,20,0.1);
+}
+
+/* ── DARK THEME (used by portfolio) ── */
+[data-theme="dark"] {
+  --ink:        #e8e4df;
+  --ink-soft:   #a8a09a;
+  --ink-muted:  #6a6460;
+  --paper:      #0f0e0c;
+  --paper-warm: #161410;
+  --paper-card: #1e1c18;
+  --accent:     #c8a96a;
+  --accent-dark:#a88a4a;
+  --rule:       rgba(232,228,223,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover  { color: var(--ink); }
+.nav-links a.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 4rem 6rem 6rem;
+}
+
+.hero-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 2rem;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--accent-dark);
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  max-width: 340px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.25rem;
+  transition: color 0.2s, border-color 0.2s;
+  width: fit-content;
+}
+
+.hero-cta:hover { color: var(--accent-dark); border-color: var(--accent-dark); }
+
+.hero-visual {
+  background: var(--paper-warm);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Canvas placeholder (gallery) */
+.canvas-placeholder {
+  width: 72%;
+  aspect-ratio: 3/4;
+  background: #e8e0d0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 8px 8px 0 rgba(0,0,0,0.06);
+}
+
+.canvas-placeholder svg { width: 100%; height: 100%; }
+
+.hero-caption {
+  position: absolute;
+  bottom: 2rem;
+  right: 2.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+/* Pipeline visual (portfolio) */
+.pipeline-visual {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ── SECTIONS ── */
+section { padding: 7rem 6rem; }
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  max-width: 60px;
+}
+
+/* ── ABOUT (shared layout) ── */
+#about {
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+}
+
+.about-body h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.about-body p {
+  color: var(--ink-soft);
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2rem;
+  border-left: 1px solid var(--rule);
+  padding-left: 4rem;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 0.25rem;
+}
+
+/* ── CONTACT (shared) ── */
+#contact {
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+}
+
+#contact .section-label { color: var(--accent); }
+#contact .section-label::after { background: rgba(255,255,255,0.15); }
+
+#contact h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+  color: var(--paper);
+}
+
+#contact p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  max-width: 400px;
+  margin: 0 auto 2.5rem;
+}
+
+.contact-email {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--paper);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 0.25rem;
+  transition: border-color 0.2s;
+}
+
+.contact-email:hover { border-color: var(--paper); }
+
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.contact-socials a {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-socials a:hover { color: var(--paper); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 1.5rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+}
+
+/* ── PROCESS (shared structure) ── */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.step {
+  border-top: 1px solid var(--rule);
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1.5rem;
+}
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.step h3 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { gap: 1.5rem; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-text { padding: 6rem 1.5rem 3rem; }
+  .hero-visual { height: 55vw; }
+  section { padding: 4rem 1.5rem; }
+  #about { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-stats {
+    border-left: none; padding-left: 0;
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+    flex-direction: row; flex-wrap: wrap; gap: 1.5rem;
+  }
+  footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
+}
