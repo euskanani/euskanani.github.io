@@ -158,15 +158,31 @@ nav {
 .canvas-placeholder {
   width: 72%;
   aspect-ratio: 3/4;
-  background: #e8e0d0;
+  background: #1e1c18;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 8px 8px 0 rgba(0,0,0,0.06);
+  box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
 }
 
-.canvas-placeholder svg { width: 100%; height: 100%; }
+/* SVG fallback — always rendered underneath */
+.canvas-placeholder .placeholder-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Real image — sits on top, transparent bg shows through */
+.canvas-placeholder img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 
 .hero-caption {
   position: absolute;
