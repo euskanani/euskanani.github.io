@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Marc Kanani — Artist &amp; Painter</title>
+    <title>Marc Kanani — Artiste Peintre</title>
     <link href="../styles/google_fonts.css" rel="stylesheet"/>
     <link href="../styles/base.css" rel="stylesheet"/>
     <link href="../styles/gallery.css" rel="stylesheet"/>
 </head>
 <body>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  NAV  (factorized via layout.js)     ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
-<!-- rendered by JS below -->
+<!-- NAV rendered by JS -->
 
 <!-- ╔══════════════════════════════════════╗ -->
 <!-- ║  HERO                                ║ -->
 <!-- ╚══════════════════════════════════════╝ -->
 <section class="hero">
     <div class="hero-text">
-        <p class="hero-eyebrow">Artist &amp; Painter — Paris</p>
+        <p class="hero-eyebrow">
+            <span data-lang="fr">Artiste Peintre — Paris</span>
+            <span data-lang="en" style="display:none">Artist &amp; Painter — Paris</span>
+        </p>
         <h1 class="hero-name">Marc<br><em>Kanani</em></h1>
-        <p class="hero-tagline">Exploring light, texture, and memory through oil and mixed media. Each painting is a
-            quiet conversation between colour and silence.</p>
-        <a href="#works" class="hero-cta">View works →</a>
+        <p class="hero-tagline">
+            <span data-lang="fr">L'identité, la mémoire et la vie collective du monde contemporain à travers la couleur et le corps.</span>
+            <span data-lang="en" style="display:none">Identity, memory, and the collective life of the contemporary world through colour and the body.</span>
+        </p>
+        <a href="#works" class="hero-cta">
+            <span data-lang="fr">Voir les œuvres →</span>
+            <span data-lang="en" style="display:none">View works →</span>
+        </a>
     </div>
 
     <div class="hero-visual">
         <div class="canvas-placeholder">
             <div class="slideshow">
-                <img src="../images/la_mariee.png" alt="Painting 1" onerror="this.style.display='none'" class="slide active"/>
-                <img src="../images/inconsistences.png" alt="Painting 2" onerror="this.style.display='none'" class="slide"/>
-                <img src="../images/danse_exotique.png" alt="Painting 3" onerror="this.style.display='none'" class="slide"/>
-                <img src="../images/les_enfants_des_mines.png" alt="Painting 4" onerror="this.style.display='none'" class="slide"/>
+                <img src="../images/la_mariee.png" alt="La Mariée" onerror="this.style.display='none'" class="slide active"/>
+                <img src="../images/inconsistences.png" alt="Incohérences" onerror="this.style.display='none'" class="slide"/>
+                <img src="../images/danse_exotique.png" alt="Danse Exotique" onerror="this.style.display='none'" class="slide"/>
+                <img src="../images/les_enfants_des_mines.png" alt="Les Enfants des Mines" onerror="this.style.display='none'" class="slide"/>
             </div>
         </div>
     </div>
-
 </section>
 
 <!-- ╔══════════════════════════════════════╗ -->
@@ -45,28 +49,50 @@
 <!-- ╚══════════════════════════════════════╝ -->
 <section id="about">
     <div class="about-body reveal">
-        <p class="section-label">About</p>
-        <h2>Painting as a form of careful looking</h2>
-        <p>Marc Kanani is a Paris-based artist whose practice centres on oil painting, exploring themes of light,
-            impermanence, and the quiet textures of everyday life. His work moves between the figurative and the
-            abstract, allowing form to dissolve where feeling demands it.</p>
-        <p>Trained at the École des Beaux-Arts de Paris, Kanani has exhibited across France, Belgium, and Italy. His
-            paintings hang in private collections throughout Europe and the United States.</p>
-        <p>He works from a studio in Belleville, where the city's layered light continues to be his primary subject.</p>
+        <p class="section-label" data-i18n="nav_about">À propos</p>
+
+        <!-- FR -->
+        <div data-lang="fr">
+            <h2>La peinture comme engagement sensible</h2>
+            <p>Marc Kanani est un artiste peintre franco-burundais né en 1987, basé à Paris. Autodidacte, il pratique une peinture figurative contemporaine centrée sur l'exploration des identités culturelles, de la vie collective et de la condition humaine.</p>
+            <p>Son parcours s'est construit en dehors des cadres académiques traditionnels, lui permettant de développer une approche personnelle et engagée. La couleur, le corps et la composition sont au cœur de son travail, utilisés comme des outils narratifs et expressifs.</p>
+            <p>Sa démarche artistique s'inscrit dans une volonté d'engagement sensible, par la représentation de la dignité humaine, de la diversité culturelle et de la vie collective comme espace de résistance, de transmission et d'identité.</p>
+        </div>
+
+        <!-- EN -->
+        <div data-lang="en" style="display:none">
+            <h2>Painting as committed expression</h2>
+            <p>Marc Kanani is a Franco-Burundian painter born in 1987, based in Paris. Self-taught, he practises contemporary figurative painting centred on the exploration of cultural identities, collective life, and the human condition.</p>
+            <p>His path was built outside traditional academic frameworks, allowing him to develop a personal and engaged approach to painting. Colour, the body, and composition are at the heart of his work, used as narrative and expressive tools.</p>
+            <p>His artistic approach is rooted in a desire for sensitive engagement — representing human dignity, cultural diversity, and collective life as a space of resistance, transmission, and identity.</p>
+        </div>
     </div>
+
     <div class="about-stats reveal" style="transition-delay:0.15s">
-        <p class="section-label">In numbers</p>
+        <p class="section-label">
+            <span data-lang="fr">En quelques mots</span>
+            <span data-lang="en" style="display:none">At a glance</span>
+        </p>
         <div class="stat-item">
-            <p class="stat-num">14+</p>
-            <p class="stat-label">Years of practice</p>
+            <p class="stat-num">1987</p>
+            <p class="stat-label">
+                <span data-lang="fr">Année de naissance</span>
+                <span data-lang="en" style="display:none">Year of birth</span>
+            </p>
         </div>
         <div class="stat-item">
-            <p class="stat-num">38</p>
-            <p class="stat-label">Exhibitions held</p>
+            <p class="stat-num">12+</p>
+            <p class="stat-label">
+                <span data-lang="fr">Années de pratique</span>
+                <span data-lang="en" style="display:none">Years of practice</span>
+            </p>
         </div>
         <div class="stat-item">
-            <p class="stat-num">200+</p>
-            <p class="stat-label">Works completed</p>
+            <p class="stat-num">12</p>
+            <p class="stat-label">
+                <span data-lang="fr">Œuvres au catalogue</span>
+                <span data-lang="en" style="display:none">Works in catalogue</span>
+            </p>
         </div>
     </div>
 </section>
@@ -76,189 +102,345 @@
 <!-- ╚══════════════════════════════════════╝ -->
 <section id="works">
     <div class="works-header reveal">
-        <p class="section-label" style="margin-bottom:0">Selected works</p>
+        <p class="section-label" style="margin-bottom:0" data-i18n="nav_works">Œuvres</p>
         <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="oil">Oil</button>
-            <button class="filter-btn" data-filter="mixed">Mixed media</button>
-            <button class="filter-btn" data-filter="2024">2024</button>
-            <button class="filter-btn" data-filter="2023">2023</button>
+            <button class="filter-btn active" data-filter="all">
+                <span data-lang="fr">Tout</span><span data-lang="en" style="display:none">All</span>
+            </button>
+            <button class="filter-btn" data-filter="huile">
+                <span data-lang="fr">Huile</span><span data-lang="en" style="display:none">Oil</span>
+            </button>
+            <button class="filter-btn" data-filter="acrylique">
+                <span data-lang="fr">Acrylique</span><span data-lang="en" style="display:none">Acrylic</span>
+            </button>
+            <button class="filter-btn" data-filter="africaines">
+                <span data-lang="fr">Influences africaines</span><span data-lang="en" style="display:none">African influences</span>
+            </button>
+            <button class="filter-btn" data-filter="engagee">
+                <span data-lang="fr">Expression engagée</span><span data-lang="en" style="display:none">Engaged expression</span>
+            </button>
         </div>
     </div>
     <div class="works-grid">
-        <div class="work-card reveal" style="transition-delay:0.05s" data-category="oil 2024"
-             data-title="Danse Exotique" data-meta="Oil on canvas — 2024 — 80 × 110 cm">
+
+        <!-- African influences -->
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="huile africaines"
+             data-title-fr="La Mariée" data-title-en="The Bride"
+             data-meta-fr="Huile sur toile — 2012 — 100 × 80 cm"
+             data-meta-en="Oil on canvas — 2012 — 100 × 80 cm">
             <div class="work-img">
-                <img src="../images/danse_exotique.png" alt="Danse Exotique" onerror="this.style.display='none'"/>
+                <img src="../images/la_mariee.png" alt="La Mariée" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Danse Exotique</p>
-            <p class="work-meta">Oil on canvas — 2024 — 80 × 110 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">La Mariée</span><span data-lang="en" style="display:none">The Bride</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2012 — 100 × 80 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2012 — 100 × 80 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.1s" data-category="oil 2023"
-             data-title="Femmes au Foyer" data-meta="Oil on linen — 2023 — 60 × 80 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile africaines"
+             data-title-fr="Les Femmes Himbas" data-title-en="The Himba Women"
+             data-meta-fr="Huile sur toile, collage — 2012 — 100 × 80 cm"
+             data-meta-en="Oil on canvas, collage — 2012 — 100 × 80 cm">
             <div class="work-img">
-                <img src="../images/femmes_au_foyer.png" alt="Femmes au Foyer" onerror="this.style.display='none'"/>
+                <img src="../images/les_femmes_himbas.png" alt="Les Femmes Himbas" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Femmes au Foyer</p>
-            <p class="work-meta">Oil on linen — 2023 — 60 × 80 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Les Femmes Himbas</span><span data-lang="en" style="display:none">The Himba Women</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile, collage — 2012 — 100 × 80 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas, collage — 2012 — 100 × 80 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.15s" data-category="oil 2023"
-             data-title="Génération Z" data-meta="Oil on canvas — 2023 — 90 × 120 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="acrylique africaines"
+             data-title-fr="Les Modèles" data-title-en="The Models"
+             data-meta-fr="Acrylique sur toile — 2012 — 100 × 80 cm"
+             data-meta-en="Acrylic on canvas — 2012 — 100 × 80 cm">
             <div class="work-img">
-                <img src="../images/generation_z.png" alt="Génération Z" onerror="this.style.display='none'"/>
+                <img src="../images/les_modeles.png" alt="Les Modèles" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Génération Z</p>
-            <p class="work-meta">Oil on canvas — 2023 — 90 × 120 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Les Modèles</span><span data-lang="en" style="display:none">The Models</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Acrylique sur toile — 2012 — 100 × 80 cm</span>
+                <span data-lang="en" style="display:none">Acrylic on canvas — 2012 — 100 × 80 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.05s" data-category="oil 2022"
-             data-title="Hijab" data-meta="Oil on board — 2022 — 50 × 70 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="acrylique africaines"
+             data-title-fr="Hijab" data-title-en="Hijab"
+             data-meta-fr="Acrylique sur toile — 2012 — 150 × 38 cm"
+             data-meta-en="Acrylic on canvas — 2012 — 150 × 38 cm">
             <div class="work-img">
                 <img src="../images/hijab.png" alt="Hijab" onerror="this.style.display='none'"/>
             </div>
             <p class="work-title">Hijab</p>
-            <p class="work-meta">Oil on board — 2022 — 50 × 70 cm</p>
+            <p class="work-meta">
+                <span data-lang="fr">Acrylique sur toile — 2012 — 150 × 38 cm</span>
+                <span data-lang="en" style="display:none">Acrylic on canvas — 2012 — 150 × 38 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.1s" data-category="oil 2022"
-             data-title="Inconsistences" data-meta="Oil on canvas — 2022 — 70 × 100 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile africaines"
+             data-title-fr="Sourire Africain" data-title-en="African Smile"
+             data-meta-fr="Huile sur toile — 2016 — 50 × 40 cm"
+             data-meta-en="Oil on canvas — 2016 — 50 × 40 cm">
             <div class="work-img">
-                <img src="../images/inconsistences.png" alt="Inconsistences" onerror="this.style.display='none'"/>
+                <img src="../images/sourire_africain.png" alt="Sourire Africain" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Inconsistences</p>
-            <p class="work-meta">Oil on canvas — 2022 — 70 × 100 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Sourire Africain</span><span data-lang="en" style="display:none">African Smile</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2016 — 50 × 40 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2016 — 50 × 40 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.15s" data-category="mixed 2021"
-             data-title="Jeune Femme Himba" data-meta="Mixed media — 2021 — 65 × 85 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="huile africaines"
+             data-title-fr="Jeune Femme Himba" data-title-en="Young Himba Woman"
+             data-meta-fr="Huile sur toile — 2016 — 46 × 37 cm"
+             data-meta-en="Oil on canvas — 2016 — 46 × 37 cm">
             <div class="work-img">
                 <img src="../images/jeune_femme_himba.png" alt="Jeune Femme Himba" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Jeune Femme Himba</p>
-            <p class="work-meta">Mixed media — 2021 — 65 × 85 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Jeune Femme Himba</span><span data-lang="en" style="display:none">Young Himba Woman</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2016 — 46 × 37 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2016 — 46 × 37 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.05s" data-category="oil 2024"
-             data-title="La Mariée" data-meta="Oil on canvas — 2024 — 80 × 110 cm">
+
+        <!-- Engaged expression -->
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="huile engagee"
+             data-title-fr="Femmes au Foyer" data-title-en="Housewives"
+             data-meta-fr="Huile sur toile — 2018 — 160 × 160 cm"
+             data-meta-en="Oil on canvas — 2018 — 160 × 160 cm">
             <div class="work-img">
-                <img src="../images/la_mariee.png" alt="La Mariée" onerror="this.style.display='none'"/>
+                <img src="../images/femmes_au_foyer.png" alt="Femmes au Foyer" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">La Mariée</p>
-            <p class="work-meta">Oil on canvas — 2024 — 80 × 110 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Femmes au Foyer</span><span data-lang="en" style="display:none">Housewives</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2018 — 160 × 160 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2018 — 160 × 160 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.1s" data-category="mixed 2022"
-             data-title="Les Enfants des Mines" data-meta="Mixed media — 2022 — 70 × 90 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile engagee"
+             data-title-fr="Génération Z" data-title-en="Generation Z"
+             data-meta-fr="Huile sur toile — 2019 — 90 × 120 cm"
+             data-meta-en="Oil on canvas — 2019 — 90 × 120 cm">
             <div class="work-img">
-                <img src="../images/les_enfants_des_mines.png" alt="Les Enfants des Mines" onerror="this.style.display='none'"/>
+                <img src="../images/generation_z.png" alt="Génération Z" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Les Enfants des Mines</p>
-            <p class="work-meta">Mixed media — 2022 — 70 × 90 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Génération Z</span><span data-lang="en" style="display:none">Generation Z</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2019 — 90 × 120 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2019 — 90 × 120 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.15s" data-category="oil 2021"
-             data-title="Les Femmes Himbas" data-meta="Oil on canvas — 2021 — 80 × 100 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="huile engagee"
+             data-title-fr="Danse Exotique" data-title-en="Exotic Dance"
+             data-meta-fr="Huile sur toile — 2019 — 100 × 130 cm"
+             data-meta-en="Oil on canvas — 2019 — 100 × 130 cm">
             <div class="work-img">
-                <img src="../images/les_femmes_himbas.png" alt="Les Femmes Himbas" onerror="this.style.display='none'"/>
+                <img src="../images/danse_exotique.png" alt="Danse Exotique" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Les Femmes Himbas</p>
-            <p class="work-meta">Oil on canvas — 2021 — 80 × 100 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Danse Exotique</span><span data-lang="en" style="display:none">Exotic Dance</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2019 — 100 × 130 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2019 — 100 × 130 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.05s" data-category="oil 2023"
-             data-title="Les Modèles" data-meta="Oil on linen — 2023 — 60 × 80 cm">
-            <div class="work-img">
-                <img src="../images/les_modeles.png" alt="Les Modèles" onerror="this.style.display='none'"/>
-            </div>
-            <p class="work-title">Les Modèles</p>
-            <p class="work-meta">Oil on linen — 2023 — 60 × 80 cm</p>
-        </div>
-        <div class="work-card reveal" style="transition-delay:0.1s" data-category="mixed 2022"
-             data-title="Solitude" data-meta="Mixed media — 2022 — 55 × 75 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="huile engagee"
+             data-title-fr="Solitude" data-title-en="Solitude"
+             data-meta-fr="Huile sur toile — 2019 — 100 × 50 cm"
+             data-meta-en="Oil on canvas — 2019 — 100 × 50 cm">
             <div class="work-img">
                 <img src="../images/solitude.png" alt="Solitude" onerror="this.style.display='none'"/>
             </div>
             <p class="work-title">Solitude</p>
-            <p class="work-meta">Mixed media — 2022 — 55 × 75 cm</p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2019 — 100 × 50 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2019 — 100 × 50 cm</span>
+            </p>
         </div>
-        <div class="work-card reveal" style="transition-delay:0.15s" data-category="oil 2021"
-             data-title="Sourire Africain" data-meta="Oil on canvas — 2021 — 60 × 80 cm">
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile engagee"
+             data-title-fr="Les Enfants des Mines" data-title-en="The Children of the Mines"
+             data-meta-fr="Huile sur toile — 2025 — 130 × 150 cm"
+             data-meta-en="Oil on canvas — 2025 — 130 × 150 cm">
             <div class="work-img">
-                <img src="../images/sourire_africain.png" alt="Sourire Africain" onerror="this.style.display='none'"/>
+                <img src="../images/les_enfants_des_mines.png" alt="Les Enfants des Mines" onerror="this.style.display='none'"/>
             </div>
-            <p class="work-title">Sourire Africain</p>
-            <p class="work-meta">Oil on canvas — 2021 — 60 × 80 cm</p>
+            <p class="work-title">
+                <span data-lang="fr">Les Enfants des Mines</span><span data-lang="en" style="display:none">The Children of the Mines</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2025 — 130 × 150 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2025 — 130 × 150 cm</span>
+            </p>
         </div>
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="huile engagee"
+             data-title-fr="Incohérences" data-title-en="Incoherences"
+             data-meta-fr="Huile sur toile — 2025 — 130 × 100 cm"
+             data-meta-en="Oil on canvas — 2025 — 130 × 100 cm">
+            <div class="work-img">
+                <img src="../images/inconsistences.png" alt="Incohérences" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Incohérences</span><span data-lang="en" style="display:none">Incoherences</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2025 — 130 × 100 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2025 — 130 × 100 cm</span>
+            </p>
+        </div>
+
     </div>
 </section>
 
 <!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  EXHIBITIONS                         ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
-<section class="exhibitions" id="exhibitions">
-    <p class="section-label reveal">Selected exhibitions</p>
-    <h2 class="reveal" style="transition-delay:0.1s">Where the work<br><em
-            style="font-family:'Cormorant Garamond',serif;font-style:italic">has been shown</em></h2>
-    <div class="exhibition-list">
-        <div class="exhibition-item reveal">
-            <span class="ex-year">2024</span>
-            <span class="ex-title">Lumière Persistante — Group exhibition</span>
-            <span class="ex-place">Galerie Templon, Paris</span>
-        </div>
-        <div class="exhibition-item reveal" style="transition-delay:0.05s">
-            <span class="ex-year">2023</span>
-            <span class="ex-title">Matière et Mémoire — Solo show</span>
-            <span class="ex-place">BOZAR, Brussels</span>
-        </div>
-        <div class="exhibition-item reveal" style="transition-delay:0.1s">
-            <span class="ex-year">2022</span>
-            <span class="ex-title">Paysages Intérieurs</span>
-            <span class="ex-place">Palazzo delle Esposizioni, Rome</span>
-        </div>
-        <div class="exhibition-item reveal" style="transition-delay:0.15s">
-            <span class="ex-year">2021</span>
-            <span class="ex-title">Nouvelle Figuration Française</span>
-            <span class="ex-place">Centre Pompidou, Paris</span>
-        </div>
-        <div class="exhibition-item reveal" style="transition-delay:0.2s">
-            <span class="ex-year">2020</span>
-            <span class="ex-title">Light Studies — Group exhibition</span>
-            <span class="ex-place">Sadie Coles HQ, London</span>
-        </div>
-    </div>
-</section>
-
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  PROCESS                             ║ -->
+<!-- ║  ARTISTIC UNIVERSE                   ║ -->
 <!-- ╚══════════════════════════════════════╝ -->
 <section id="process">
-    <h2 class="reveal">How the work<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">comes
-        together</em></h2>
+
+    <!-- FR -->
+    <div data-lang="fr">
+        <h2>La démarche<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">artistique</em></h2>
+    </div>
+    <!-- EN -->
+    <div data-lang="en" style="display:none">
+        <h2>The artistic<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">approach</em></h2>
+    </div>
+
     <div class="process-steps">
         <div class="step reveal">
             <p class="step-num">01</p>
             <div>
-                <h3>Looking and waiting</h3>
-                <p>Every painting begins with long, unhurried observation — of a place, a quality of light, a particular
-                    hour. Sketches accumulate slowly over days or weeks before paint is mixed.</p>
+                <h3>
+                    <span data-lang="fr">L'humain dans sa dimension collective</span>
+                    <span data-lang="en" style="display:none">The human in its collective dimension</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Mon travail représente des personnes dans des situations sociales concrètes — moments de partage, gestes du quotidien, scènes de rassemblement — et interroge la manière dont les individus existent au sein d'un groupe.</span>
+                    <span data-lang="en" style="display:none">My work depicts people in concrete social situations — moments of sharing, everyday gestures, scenes of gathering — questioning how individuals exist within a group.</span>
+                </p>
             </div>
         </div>
         <div class="step reveal" style="transition-delay:0.1s">
             <p class="step-num">02</p>
             <div>
-                <h3>Laying the ground</h3>
-                <p>Canvases are toned with warm or cool grounds that will breathe through subsequent layers, giving the
-                    finished work its underlying temperature. The ground is never entirely buried.</p>
+                <h3>
+                    <span data-lang="fr">Identité et mémoire</span>
+                    <span data-lang="en" style="display:none">Identity and memory</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Les figures que je peins sont ancrées dans une culture et une histoire. À travers elles, je questionne l'identité, l'appartenance et la transmission, en montrant des scènes simples où le présent dialogue avec la mémoire collective.</span>
+                    <span data-lang="en" style="display:none">The figures I paint are rooted in a culture and a history. Through them, I question identity, belonging, and transmission — showing simple scenes where the present dialogues with collective memory.</span>
+                </p>
             </div>
         </div>
         <div class="step reveal" style="transition-delay:0.2s">
             <p class="step-num">03</p>
             <div>
-                <h3>Building with oil</h3>
-                <p>Paint is applied in thin, transparent layers — fat over lean — allowing each session to dry before
-                    the next. The process is slow and deliberate, trusting time as a collaborator.</p>
+                <h3>
+                    <span data-lang="fr">Une peinture du temps présent</span>
+                    <span data-lang="en" style="display:none">A painting of the present time</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Je cherche à créer des images accessibles dans lesquelles le spectateur peut se reconnaître et se projeter. Mes peintures sont conçues comme des espaces de rencontre entre les figures représentées et celui qui regarde.</span>
+                    <span data-lang="en" style="display:none">I seek to create accessible images in which the viewer can recognise themselves and project their own experience. My paintings are conceived as spaces of encounter between the depicted figures and the viewer.</span>
+                </p>
             </div>
         </div>
         <div class="step reveal" style="transition-delay:0.3s">
             <p class="step-num">04</p>
             <div>
-                <h3>Knowing when to stop</h3>
-                <p>The hardest and most important decision in painting. A work is finished when nothing added would
-                    improve it — which is rarely the same as when everything intended has been done.</p>
+                <h3>
+                    <span data-lang="fr">Engagement par l'expression artistique</span>
+                    <span data-lang="en" style="display:none">Commitment through artistic expression</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Ma démarche s'inscrit dans une volonté d'engagement sensible, par la représentation de la dignité humaine, de la diversité culturelle et de la vie collective comme espace de résistance, de transmission et d'identité.</span>
+                    <span data-lang="en" style="display:none">My approach is rooted in a desire for sensitive commitment — representing human dignity, cultural diversity, and collective life as a space of resistance, transmission, and identity.</span>
+                </p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  TECHNIQUES                          ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="exhibitions" id="techniques">
+    <p class="section-label reveal">
+        <span data-lang="fr">Techniques &amp; médiums</span>
+        <span data-lang="en" style="display:none">Techniques &amp; mediums</span>
+    </p>
+    <h2 class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr">Les outils<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">du peintre</em></span>
+        <span data-lang="en" style="display:none">The painter's<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">tools</em></span>
+    </h2>
+    <div class="exhibition-list">
+        <div class="exhibition-item reveal">
+            <span class="ex-year">
+                <span data-lang="fr">Styles</span><span data-lang="en" style="display:none">Styles</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Expressionnisme, Réalisme</span><span data-lang="en" style="display:none">Expressionism, Realism</span>
+            </span>
+            <span class="ex-place">
+                <span data-lang="fr">Influences d'art africain</span><span data-lang="en" style="display:none">African art influences</span>
+            </span>
+        </div>
+        <div class="exhibition-item reveal" style="transition-delay:0.05s">
+            <span class="ex-year">
+                <span data-lang="fr">Techniques</span><span data-lang="en" style="display:none">Techniques</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Collage, techniques mixtes</span><span data-lang="en" style="display:none">Collage, mixed media</span>
+            </span>
+            <span class="ex-place"></span>
+        </div>
+        <div class="exhibition-item reveal" style="transition-delay:0.1s">
+            <span class="ex-year">
+                <span data-lang="fr">Médiums</span><span data-lang="en" style="display:none">Mediums</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Peinture acrylique</span><span data-lang="en" style="display:none">Acrylic paint</span>
+            </span>
+            <span class="ex-place">
+                <span data-lang="fr">Peinture à l'huile</span><span data-lang="en" style="display:none">Oil paint</span>
+            </span>
+        </div>
+        <div class="exhibition-item reveal" style="transition-delay:0.15s">
+            <span class="ex-year">
+                <span data-lang="fr">Formation</span><span data-lang="en" style="display:none">Education</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Master Informatique — Université de Bordeaux, 2016</span>
+                <span data-lang="en" style="display:none">MSc Computer Science — University of Bordeaux, 2016</span>
+            </span>
+            <span class="ex-place">
+                <span data-lang="fr">Artiste autodidacte</span><span data-lang="en" style="display:none">Self-taught artist</span>
+            </span>
         </div>
     </div>
 </section>
@@ -267,25 +449,24 @@
 <!-- ║  CONTACT                             ║ -->
 <!-- ╚══════════════════════════════════════╝ -->
 <section id="contact">
-    <p class="section-label" style="justify-content:center">Contact</p>
-    <h2 class="reveal">Let's talk about<br>your next piece</h2>
-    <p class="reveal" style="transition-delay:0.1s">Available for commissions, studio visits, and exhibition enquiries.</p>
+    <p class="section-label" style="justify-content:center" data-i18n="nav_contact">Contact</p>
+    <h2 class="reveal">
+        <span data-lang="fr">Entrons en<br>conversation</span>
+        <span data-lang="en" style="display:none">Let's start a<br>conversation</span>
+    </h2>
+    <p class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr">Disponible pour des commandes, des visites d'atelier et des collaborations d'exposition.</span>
+        <span data-lang="en" style="display:none">Available for commissions, studio visits, and exhibition collaborations.</span>
+    </p>
     <a href="mailto:contact@marckanani.fr" class="contact-email reveal" style="transition-delay:0.2s">contact@marckanani.fr</a>
     <div class="contact-socials reveal" style="transition-delay:0.3s">
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Artsy</a>
+        <a href="tel:+33751145292">+33 7 51 14 52 92</a>
     </div>
 </section>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  FOOTER  (factorized via layout.js)  ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
-<!-- rendered by JS below -->
+<!-- FOOTER rendered by JS -->
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  LIGHTBOX                            ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightbox-close">×</button>
     <div class="lightbox-inner">
@@ -296,25 +477,24 @@
 </div>
 
 <script type="module">
-    import { renderNav, renderFooter } from '../components/layout.js';
-    import { initReveal }              from '../components/reveal.js';
+    import { renderNav, renderFooter, getCurrentLang } from '../components/layout.js';
+    import { initReveal } from '../components/reveal.js';
 
     renderNav({
         logoHref: '../index.html',
         links: [
-            { label: 'About',       href: '#about'       },
-            { label: 'Works',       href: '#works'       },
-            { label: 'Exhibitions', href: '#exhibitions' },
-            { label: 'Process',     href: '#process'     },
-            { label: 'Contact',     href: '#contact'     },
-            { label: '→ Portfolio', href: '../portfolio/index.html' },
+            { label: 'À propos / About', href: '#about',      i18nKey: 'nav_about'       },
+            { label: 'Œuvres / Works',   href: '#works',      i18nKey: 'nav_works'       },
+            { label: 'Démarche',         href: '#process',    i18nKey: 'nav_process'     },
+            { label: 'Contact',          href: '#contact',    i18nKey: 'nav_contact'     },
+            { label: '→ Portfolio',      href: '../portfolio/index.html', i18nKey: 'nav_portfolio' },
         ],
     });
 
-    renderFooter({ year: 2024 });
+    renderFooter({ year: 2025 });
     initReveal();
 
-    // ── Hero slideshow — rotate every 7 seconds ──
+    // Hero slideshow
     const slides = document.querySelectorAll('.slideshow .slide');
     let current = 0;
     if (slides.length > 1) {
@@ -325,7 +505,7 @@
         }, 7000);
     }
 
-    // ── Gallery filter ──
+    // Gallery filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const cards       = document.querySelectorAll('.work-card');
 
@@ -341,25 +521,30 @@
         });
     });
 
-    // ── Lightbox — uses real <img> src ──
+    // Lightbox — uses bilingual title/meta
     const lightbox = document.getElementById('lightbox');
     const lbImg    = document.getElementById('lightbox-img');
     const lbTitle  = document.getElementById('lightbox-title');
     const lbMeta   = document.getElementById('lightbox-meta');
 
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            const img = card.querySelector('.work-img img');
-            lbImg.innerHTML = img
-                ? `<img src="${img.src}" alt="${img.alt}" style="max-width:100%;max-height:80vh;width:auto;height:auto;display:block;margin:0 auto;"/>`
-                : '';
-            lbTitle.textContent = card.dataset.title || card.querySelector('.work-title')?.textContent || '';
-            lbMeta.textContent  = card.dataset.meta  || card.querySelector('.work-meta')?.textContent  || '';
-            lightbox.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-    });
+    function openLightbox(card) {
+        const lang  = getCurrentLang();
+        const img   = card.querySelector('.work-img img');
+        const title = card.dataset[`title${lang.charAt(0).toUpperCase()+lang.slice(1)}`]
+            || card.querySelector('.work-title')?.textContent || '';
+        const meta  = card.dataset[`meta${lang.charAt(0).toUpperCase()+lang.slice(1)}`]
+            || card.querySelector('.work-meta')?.textContent  || '';
 
+        lbImg.innerHTML = img
+            ? `<img src="${img.src}" alt="${img.alt}" style="max-width:100%;max-height:80vh;width:auto;height:auto;display:block;margin:0 auto;"/>`
+            : '';
+        lbTitle.textContent = title;
+        lbMeta.textContent  = meta;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    cards.forEach(card => card.addEventListener('click', () => openLightbox(card)));
     document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
