@@ -1,332 +1,554 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marc Kanani — Data Engineer</title>
-  <link href="../styles/google_fonts.css" rel="stylesheet" />
-  <link href="../styles/base.css" rel="stylesheet" />
-  <link href="../styles/portfolio.css" rel="stylesheet" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Marc Kanani — Data Engineer</title>
+    <link href="../styles/google_fonts.css" rel="stylesheet"/>
+    <link href="../styles/base.css" rel="stylesheet"/>
+    <link href="../styles/portfolio.css" rel="stylesheet"/>
 </head>
 <body>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  NAV  (factorized via layout.js)     ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
-<!-- rendered by JS below -->
+<!-- NAV rendered by JS -->
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  HERO                                ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <p class="hero-eyebrow">Data Engineer — Paris</p>
-    <h1 class="hero-name">Marc<br><em>Kanani</em></h1>
-    <p class="hero-tagline">Building robust data pipelines, scalable architectures, and analytical systems that turn raw data into reliable intelligence.</p>
-    <a href="#projects" class="hero-cta">View projects →</a>
-  </div>
-
-  <div class="hero-visual">
-    <div class="pipeline-visual">
-      <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" width="100%">
-        <defs>
-          <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%"   stop-color="#7c6d55" stop-opacity="0.2"/>
-            <stop offset="100%" stop-color="#7c6d55" stop-opacity="0.04"/>
-          </linearGradient>
-          <style>
-            .flow-dot { animation: flowMove 2.2s linear infinite; }
-            .flow-dot:nth-child(2) { animation-delay: 0.7s; }
-            .flow-dot:nth-child(3) { animation-delay: 1.4s; }
-            @keyframes flowMove {
-              0%   { opacity: 0; }
-              10%  { opacity: 1; }
-              90%  { opacity: 1; }
-              100% { opacity: 0; }
-            }
-            .pulse { animation: pulse 2s ease-in-out infinite; }
-            @keyframes pulse {
-              0%, 100% { opacity: 0.5; }
-              50%       { opacity: 1; }
-            }
-          </style>
-        </defs>
-        <!-- Background grid -->
-        <g stroke="rgba(124,109,85,0.1)" stroke-width="1">
-          <line x1="0" y1="60"  x2="420" y2="60"/>  <line x1="0" y1="120" x2="420" y2="120"/>
-          <line x1="0" y1="180" x2="420" y2="180"/> <line x1="0" y1="240" x2="420" y2="240"/>
-          <line x1="0" y1="300" x2="420" y2="300"/> <line x1="70" y1="0"  x2="70"  y2="340"/>
-          <line x1="140" y1="0" x2="140" y2="340"/> <line x1="210" y1="0" x2="210" y2="340"/>
-          <line x1="280" y1="0" x2="280" y2="340"/> <line x1="350" y1="0" x2="350" y2="340"/>
-        </g>
-        <!-- Connector lines -->
-        <line x1="90"  y1="90"  x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="90"  y1="170" x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="90"  y1="250" x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="200" y1="130" x2="270" y2="130" stroke="rgba(124,109,85,0.6)"  stroke-width="1.5"/>
-        <line x1="310" y1="100" x2="370" y2="80"  stroke="rgba(90,140,100,0.4)"  stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="310" y1="160" x2="370" y2="180" stroke="rgba(90,140,100,0.4)"  stroke-width="1" stroke-dasharray="4 3"/>
-        <line x1="310" y1="130" x2="370" y2="260" stroke="rgba(90,140,100,0.3)"  stroke-width="1" stroke-dasharray="4 3"/>
-        <!-- Animated flow dots -->
-        <circle class="flow-dot" cx="200" cy="130" r="3" fill="#7c6d55"/>
-        <circle class="flow-dot" cx="225" cy="130" r="3" fill="#7c6d55"/>
-        <circle class="flow-dot" cx="250" cy="130" r="3" fill="#7c6d55"/>
-        <!-- Source nodes -->
-        <g><rect x="20" y="68"  width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
-          <text x="55" y="87" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">POSTGRES</text>
-          <text x="55" y="99" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.5)" letter-spacing="1" text-anchor="middle">source</text></g>
-        <g><rect x="20" y="148" width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
-          <text x="55" y="167" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">KAFKA</text>
-          <text x="55" y="179" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.5)" letter-spacing="1" text-anchor="middle">stream</text></g>
-        <g><rect x="20" y="228" width="70" height="44" rx="3" fill="url(#nodeGrad)" stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
-          <text x="55" y="247" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">REST API</text>
-          <text x="55" y="259" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.5)" letter-spacing="1" text-anchor="middle">ingest</text></g>
-        <!-- Central node -->
-        <g class="pulse">
-          <rect x="155" y="98" width="70" height="64" rx="4" fill="rgba(184,169,138,0.15)" stroke="#b8a98a" stroke-width="1.5"/>
-          <text x="190" y="122" font-family="'Jost',sans-serif" font-size="7"   fill="#7c6d55" letter-spacing="2"   text-anchor="middle">AIRFLOW</text>
-          <text x="190" y="135" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(124,109,85,0.55)" letter-spacing="1"   text-anchor="middle">orchestrate</text>
-          <text x="190" y="150" font-family="'Jost',sans-serif" font-size="7"   fill="#7c6d55" letter-spacing="2"   text-anchor="middle">+ dbt</text>
-        </g>
-        <!-- Transform node -->
-        <g>
-          <rect x="265" y="105" width="55" height="50" rx="3" fill="rgba(90,140,100,0.08)" stroke="rgba(90,140,100,0.4)" stroke-width="1"/>
-          <text x="292" y="127" font-family="'Jost',sans-serif" font-size="7"   fill="#5a8c64" letter-spacing="1.5" text-anchor="middle">BIGQUERY</text>
-          <text x="292" y="142" font-family="'Jost',sans-serif" font-size="6"   fill="rgba(90,140,100,0.5)" letter-spacing="1" text-anchor="middle">warehouse</text>
-        </g>
-        <!-- Output nodes -->
-        <g><rect x="365" y="58"  width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)" stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
-          <text x="390" y="77"  font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64" letter-spacing="1"   text-anchor="middle">LOOKER</text>
-          <text x="390" y="89"  font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"  letter-spacing="0.8" text-anchor="middle">dashboard</text></g>
-        <g><rect x="365" y="158" width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)" stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
-          <text x="390" y="177" font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64" letter-spacing="1"   text-anchor="middle">ML MODEL</text>
-          <text x="390" y="189" font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"  letter-spacing="0.8" text-anchor="middle">feature store</text></g>
-        <g><rect x="365" y="238" width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)" stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
-          <text x="390" y="257" font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64" letter-spacing="1"   text-anchor="middle">REPORTS</text>
-          <text x="390" y="269" font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"  letter-spacing="0.8" text-anchor="middle">scheduled</text></g>
-      </svg>
+    <div class="hero-text">
+        <p class="hero-eyebrow">Data Engineer — Paris</p>
+        <h1 class="hero-name">Marc<br><em>Kanani</em></h1>
+        <p class="hero-tagline">
+            <span data-lang="fr">Conception de pipelines de données robustes, architectures scalables et systèmes analytiques qui transforment les données brutes en intelligence fiable.</span>
+            <span data-lang="en" style="display:none">Building robust data pipelines, scalable architectures, and analytical systems that turn raw data into reliable intelligence.</span>
+        </p>
+        <a href="#projects" class="hero-cta">
+            <span data-lang="fr">Voir les projets →</span>
+            <span data-lang="en" style="display:none">View projects →</span>
+        </a>
     </div>
-  </div>
+
+    <div class="hero-visual">
+        <div class="pipeline-visual">
+            <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" width="100%">
+                <defs>
+                    <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#7c6d55" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="#7c6d55" stop-opacity="0.04"/>
+                    </linearGradient>
+                    <style>
+                        .flow-dot {
+                            animation: flowMove 2.2s linear infinite;
+                        }
+
+                        .flow-dot:nth-child(2) {
+                            animation-delay: 0.7s;
+                        }
+
+                        .flow-dot:nth-child(3) {
+                            animation-delay: 1.4s;
+                        }
+
+                        @keyframes flowMove {
+                            0% {
+                                opacity: 0;
+                            }
+                            10% {
+                                opacity: 1;
+                            }
+                            90% {
+                                opacity: 1;
+                            }
+                            100% {
+                                opacity: 0;
+                            }
+                        }
+
+                        .pulse {
+                            animation: pulse 2s ease-in-out infinite;
+                        }
+
+                        @keyframes pulse {
+                            0%, 100% {
+                                opacity: 0.5;
+                            }
+                            50% {
+                                opacity: 1;
+                            }
+                        }
+                    </style>
+                </defs>
+                <g stroke="rgba(124,109,85,0.1)" stroke-width="1">
+                    <line x1="0" y1="60" x2="420" y2="60"/>
+                    <line x1="0" y1="120" x2="420" y2="120"/>
+                    <line x1="0" y1="180" x2="420" y2="180"/>
+                    <line x1="0" y1="240" x2="420" y2="240"/>
+                    <line x1="0" y1="300" x2="420" y2="300"/>
+                    <line x1="70" y1="0" x2="70" y2="340"/>
+                    <line x1="140" y1="0" x2="140" y2="340"/>
+                    <line x1="210" y1="0" x2="210" y2="340"/>
+                    <line x1="280" y1="0" x2="280" y2="340"/>
+                    <line x1="350" y1="0" x2="350" y2="340"/>
+                </g>
+                <line x1="90" y1="90" x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1"
+                      stroke-dasharray="4 3"/>
+                <line x1="90" y1="170" x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1"
+                      stroke-dasharray="4 3"/>
+                <line x1="90" y1="250" x2="160" y2="130" stroke="rgba(124,109,85,0.35)" stroke-width="1"
+                      stroke-dasharray="4 3"/>
+                <line x1="200" y1="130" x2="270" y2="130" stroke="rgba(124,109,85,0.6)" stroke-width="1.5"/>
+                <line x1="310" y1="100" x2="370" y2="80" stroke="rgba(90,140,100,0.4)" stroke-width="1"
+                      stroke-dasharray="4 3"/>
+                <line x1="310" y1="160" x2="370" y2="180" stroke="rgba(90,140,100,0.4)" stroke-width="1"
+                      stroke-dasharray="4 3"/>
+                <line x1="310" y1="130" x2="370" y2="260" stroke="rgba(90,140,100,0.3)" stroke-width="1"
+                      stroke-dasharray="4 3"/>
+                <circle class="flow-dot" cx="200" cy="130" r="3" fill="#7c6d55"/>
+                <circle class="flow-dot" cx="225" cy="130" r="3" fill="#7c6d55"/>
+                <circle class="flow-dot" cx="250" cy="130" r="3" fill="#7c6d55"/>
+                <g>
+                    <rect x="20" y="68" width="70" height="44" rx="3" fill="url(#nodeGrad)"
+                          stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
+                    <text x="55" y="87" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55"
+                          letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">POSTGRES
+                    </text>
+                    <text x="55" y="99" font-family="'Jost',sans-serif" font-size="6" fill="rgba(124,109,85,0.5)"
+                          letter-spacing="1" text-anchor="middle">source
+                    </text>
+                </g>
+                <g>
+                    <rect x="20" y="148" width="70" height="44" rx="3" fill="url(#nodeGrad)"
+                          stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
+                    <text x="55" y="167" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55"
+                          letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">KAFKA
+                    </text>
+                    <text x="55" y="179" font-family="'Jost',sans-serif" font-size="6" fill="rgba(124,109,85,0.5)"
+                          letter-spacing="1" text-anchor="middle">stream
+                    </text>
+                </g>
+                <g>
+                    <rect x="20" y="228" width="70" height="44" rx="3" fill="url(#nodeGrad)"
+                          stroke="rgba(124,109,85,0.45)" stroke-width="1"/>
+                    <text x="55" y="247" font-family="'Jost',sans-serif" font-size="7.5" fill="#7c6d55"
+                          letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">REST API
+                    </text>
+                    <text x="55" y="259" font-family="'Jost',sans-serif" font-size="6" fill="rgba(124,109,85,0.5)"
+                          letter-spacing="1" text-anchor="middle">ingest
+                    </text>
+                </g>
+                <g class="pulse">
+                    <rect x="155" y="98" width="70" height="64" rx="4" fill="rgba(184,169,138,0.15)" stroke="#b8a98a"
+                          stroke-width="1.5"/>
+                    <text x="190" y="122" font-family="'Jost',sans-serif" font-size="7" fill="#7c6d55"
+                          letter-spacing="2" text-anchor="middle">AIRFLOW
+                    </text>
+                    <text x="190" y="135" font-family="'Jost',sans-serif" font-size="6" fill="rgba(124,109,85,0.55)"
+                          letter-spacing="1" text-anchor="middle">orchestrate
+                    </text>
+                    <text x="190" y="150" font-family="'Jost',sans-serif" font-size="7" fill="#7c6d55"
+                          letter-spacing="2" text-anchor="middle">+ dbt
+                    </text>
+                </g>
+                <g>
+                    <rect x="265" y="105" width="55" height="50" rx="3" fill="rgba(90,140,100,0.08)"
+                          stroke="rgba(90,140,100,0.4)" stroke-width="1"/>
+                    <text x="292" y="127" font-family="'Jost',sans-serif" font-size="7" fill="#5a8c64"
+                          letter-spacing="1.5" text-anchor="middle">BIGQUERY
+                    </text>
+                    <text x="292" y="142" font-family="'Jost',sans-serif" font-size="6" fill="rgba(90,140,100,0.5)"
+                          letter-spacing="1" text-anchor="middle">warehouse
+                    </text>
+                </g>
+                <g>
+                    <rect x="365" y="58" width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)"
+                          stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
+                    <text x="390" y="77" font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64"
+                          letter-spacing="1" text-anchor="middle">KIBANA
+                    </text>
+                    <text x="390" y="89" font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"
+                          letter-spacing="0.8" text-anchor="middle">monitoring
+                    </text>
+                </g>
+                <g>
+                    <rect x="365" y="158" width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)"
+                          stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
+                    <text x="390" y="177" font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64"
+                          letter-spacing="1" text-anchor="middle">SPARK
+                    </text>
+                    <text x="390" y="189" font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"
+                          letter-spacing="0.8" text-anchor="middle">processing
+                    </text>
+                </g>
+                <g>
+                    <rect x="365" y="238" width="50" height="44" rx="3" fill="rgba(90,140,100,0.06)"
+                          stroke="rgba(90,140,100,0.25)" stroke-width="1"/>
+                    <text x="390" y="257" font-family="'Jost',sans-serif" font-size="6.5" fill="#5a8c64"
+                          letter-spacing="1" text-anchor="middle">S3 / GCS
+                    </text>
+                    <text x="390" y="269" font-family="'Jost',sans-serif" font-size="5.5" fill="rgba(90,140,100,0.4)"
+                          letter-spacing="0.8" text-anchor="middle">data lake
+                    </text>
+                </g>
+            </svg>
+        </div>
+    </div>
 </section>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  SKILLS                              ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
+<!-- SKILLS -->
 <section id="skills">
-  <p class="section-label reveal">Technical skills</p>
-  <h2 class="reveal" style="transition-delay:0.1s">Tools &amp; technologies<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">of the craft</em></h2>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <span class="skill-icon">⬡</span>
-      <h3>Data Warehousing</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">BigQuery</span><span class="skill-tag">Snowflake</span>
-        <span class="skill-tag">Redshift</span><span class="skill-tag">dbt</span><span class="skill-tag">Looker</span>
-      </div>
+    <p class="section-label reveal">
+        <span data-lang="fr">Compétences techniques</span>
+        <span data-lang="en" style="display:none">Technical skills</span>
+    </p>
+    <h2 class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr">Outils &amp; technologies<br><em
+                style="font-family:'Cormorant Garamond',serif;font-style:italic">du métier</em></span>
+        <span data-lang="en" style="display:none">Tools &amp; technologies<br><em
+                style="font-family:'Cormorant Garamond',serif;font-style:italic">of the craft</em></span>
+    </h2>
+    <div class="skills-grid">
+        <div class="skill-card reveal">
+            <span class="skill-icon">⬡</span>
+            <h3>
+                <span data-lang="fr">Big Data &amp; Traitement</span>
+                <span data-lang="en" style="display:none">Big Data &amp; Processing</span>
+            </h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Apache Spark</span><span class="skill-tag">PySpark</span>
+                <span class="skill-tag">Hadoop</span><span class="skill-tag">Hive</span><span
+                    class="skill-tag">Cloudera</span>
+            </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:0.05s">
+            <span class="skill-icon">⟳</span>
+            <h3>
+                <span data-lang="fr">Orchestration &amp; Pipelines</span>
+                <span data-lang="en" style="display:none">Orchestration &amp; Pipelines</span>
+            </h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Apache Airflow</span><span class="skill-tag">Jenkins</span>
+                <span class="skill-tag">Apache NiFi</span><span class="skill-tag">Argo Workflows</span><span
+                    class="skill-tag">dbt</span>
+            </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:0.1s">
+            <span class="skill-icon">☁</span>
+            <h3>
+                <span data-lang="fr">Cloud &amp; Infrastructure</span>
+                <span data-lang="en" style="display:none">Cloud &amp; Infrastructure</span>
+            </h3>
+            <div class="skill-tags">
+                <span class="skill-tag">GCP</span><span class="skill-tag">AWS S3</span>
+                <span class="skill-tag">IBM Cloud</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span>
+            </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:0.15s">
+            <span class="skill-icon">∑</span>
+            <h3>
+                <span data-lang="fr">Langages</span>
+                <span data-lang="en" style="display:none">Languages</span>
+            </h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+                <span class="skill-tag">Java</span><span class="skill-tag">Bash</span>
+            </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:0.2s">
+            <span class="skill-icon">◈</span>
+            <h3>
+                <span data-lang="fr">Bases de données &amp; Streaming</span>
+                <span data-lang="en" style="display:none">Databases &amp; Streaming</span>
+            </h3>
+            <div class="skill-tags">
+                <span class="skill-tag">MongoDB</span><span class="skill-tag">Kafka</span>
+                <span class="skill-tag">ClickHouse</span><span class="skill-tag">Oracle</span><span class="skill-tag">MySQL</span>
+            </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:0.25s">
+            <span class="skill-icon">⊕</span>
+            <h3>
+                <span data-lang="fr">Qualité &amp; Monitoring</span>
+                <span data-lang="en" style="display:none">Quality &amp; Monitoring</span>
+            </h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Kibana / ELK</span><span class="skill-tag">SonarQube</span>
+                <span class="skill-tag">Git</span><span class="skill-tag">JIRA</span><span
+                    class="skill-tag">Scrum</span>
+            </div>
+        </div>
     </div>
-    <div class="skill-card reveal" style="transition-delay:0.05s">
-      <span class="skill-icon">⟳</span>
-      <h3>Orchestration &amp; Pipelines</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">Apache Airflow</span><span class="skill-tag">Prefect</span>
-        <span class="skill-tag">Dagster</span><span class="skill-tag">Kafka</span><span class="skill-tag">Spark</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.1s">
-      <span class="skill-icon">☁</span>
-      <h3>Cloud &amp; Infrastructure</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">GCP</span><span class="skill-tag">AWS</span>
-        <span class="skill-tag">Terraform</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.15s">
-      <span class="skill-icon">∑</span>
-      <h3>Languages</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
-        <span class="skill-tag">Scala</span><span class="skill-tag">Bash</span><span class="skill-tag">Go</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.2s">
-      <span class="skill-icon">◈</span>
-      <h3>Databases</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">Redis</span><span class="skill-tag">Cassandra</span><span class="skill-tag">Elasticsearch</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.25s">
-      <span class="skill-icon">⊕</span>
-      <h3>ML &amp; Analytics</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">MLflow</span><span class="skill-tag">Feature Store</span>
-        <span class="skill-tag">Pandas</span><span class="skill-tag">dbt metrics</span><span class="skill-tag">Metabase</span>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  PROJECTS                            ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
+<!-- PROJECTS -->
 <section id="projects">
-  <p class="section-label reveal">Selected projects</p>
-  <h2 class="reveal" style="transition-delay:0.1s">What I've<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">built</em></h2>
-  <div class="projects-list">
-    <div class="project-item reveal">
-      <div>
-        <p class="project-num">01</p>
-        <p class="project-title">Real-time Event Streaming Platform</p>
-        <p class="project-desc">Designed and deployed an end-to-end event streaming architecture processing 40M+ events/day for a SaaS analytics company. Reduced data latency from 4 hours to under 90 seconds.</p>
-        <div class="project-stack">
-          <span class="stack-tag">Kafka</span><span class="stack-tag">Apache Flink</span>
-          <span class="stack-tag">BigQuery</span><span class="stack-tag">Terraform</span><span class="stack-tag">GCP</span>
+    <p class="section-label reveal">
+        <span data-lang="fr">Projets sélectionnés</span>
+        <span data-lang="en" style="display:none">Selected projects</span>
+    </p>
+    <h2 class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr">Ce que j'ai<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">construit</em></span>
+        <span data-lang="en" style="display:none">What I've<br><em
+                style="font-family:'Cormorant Garamond',serif;font-style:italic">built</em></span>
+    </h2>
+    <div class="projects-list">
+        <div class="project-item reveal">
+            <div>
+                <p class="project-num">01</p>
+                <p class="project-title">
+                    <span data-lang="fr">Migration HDFS → S3 &amp; Modernisation Plateforme Data</span>
+                    <span data-lang="en"
+                          style="display:none">HDFS → S3 Migration &amp; Data Platform Modernisation</span>
+                </p>
+                <p class="project-desc">
+                    <span data-lang="fr">Migration complète de la plateforme data vers le cloud : passage de HDFS vers S3, industrialisation des workflows de Jenkins vers Airflow, transformation des pipelines avec dbt dans un environnement Cloudera Data Platform. Mission en cours chez Thales Services Numériques.</span>
+                    <span data-lang="en" style="display:none">Full data platform migration to the cloud: HDFS to S3, workflow industrialisation from Jenkins to Airflow, and pipeline transformation with dbt in a Cloudera Data Platform environment. Ongoing mission at Thales Services Numériques.</span>
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Cloudera</span><span class="stack-tag">Apache Spark</span>
+                    <span class="stack-tag">Airflow</span><span class="stack-tag">dbt</span><span class="stack-tag">AWS S3</span>
+                </div>
+            </div>
+            <span class="project-arrow">↗</span>
         </div>
-      </div>
-      <span class="project-arrow">↗</span>
-    </div>
-    <div class="project-item reveal" style="transition-delay:0.05s">
-      <div>
-        <p class="project-num">02</p>
-        <p class="project-title">Data Lakehouse Migration</p>
-        <p class="project-desc">Led the migration of a fragmented data warehouse to a unified Delta Lake architecture. Consolidated 14 source systems, cut query times by 65%, and reduced storage costs by 40%.</p>
-        <div class="project-stack">
-          <span class="stack-tag">Databricks</span><span class="stack-tag">Delta Lake</span>
-          <span class="stack-tag">Spark</span><span class="stack-tag">dbt</span><span class="stack-tag">Airflow</span>
+        <div class="project-item reveal" style="transition-delay:0.05s">
+            <div>
+                <p class="project-num">02</p>
+                <p class="project-title">
+                    <span data-lang="fr">Solution Big Data — Analyse de Transactions Client</span>
+                    <span data-lang="en" style="display:none">Big Data Solution — Customer Transaction Analysis</span>
+                </p>
+                <p class="project-desc">
+                    <span data-lang="fr">Mise en œuvre d'une solution Big Data complète chez Keyrus : évaluation de NiFi, streaming Kafka/Flink, CI/CD GitLab, déploiement IBM Cloud Kubernetes, stockage COS et MongoDB, monitoring ELK, connecteur MongoDB for BI pour Tableau.</span>
+                    <span data-lang="en" style="display:none">Implementation of a full Big Data solution at Keyrus: NiFi evaluation, Kafka/Flink streaming, GitLab CI/CD, IBM Cloud Kubernetes deployment, COS and MongoDB storage, ELK monitoring, and MongoDB for BI connector for Tableau.</span>
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Kafka</span><span class="stack-tag">Apache Flink</span>
+                    <span class="stack-tag">NiFi</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">MongoDB</span>
+                </div>
+            </div>
+            <span class="project-arrow">↗</span>
         </div>
-      </div>
-      <span class="project-arrow">↗</span>
-    </div>
-    <div class="project-item reveal" style="transition-delay:0.1s">
-      <div>
-        <p class="project-num">03</p>
-        <p class="project-title">ML Feature Store Infrastructure</p>
-        <p class="project-desc">Built a centralised feature store serving 12 production ML models, enabling reusable feature computation and eliminating training/serving skew across teams.</p>
-        <div class="project-stack">
-          <span class="stack-tag">Feast</span><span class="stack-tag">Redis</span>
-          <span class="stack-tag">Python</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">MLflow</span>
+        <div class="project-item reveal" style="transition-delay:0.1s">
+            <div>
+                <p class="project-num">03</p>
+                <p class="project-title">
+                    <span data-lang="fr">Ingestion de données COVID-19 — Ministère de l'Intérieur</span>
+                    <span data-lang="en" style="display:none">COVID-19 Data Ingestion — Ministry of the Interior</span>
+                </p>
+                <p class="project-desc">
+                    <span data-lang="fr">Mission ATOS : flux NiFi pour l'ingestion de données COVID-19, développement de pipelines Spark, ordonnancement avec Argo Workflows, monitoring des traitements, déploiement sur Kubernetes et AWS S3.</span>
+                    <span data-lang="en" style="display:none">ATOS mission: NiFi data flows for COVID-19 ingestion, Spark pipeline development, job scheduling with Argo Workflows, processing monitoring, and deployment on Kubernetes and AWS S3.</span>
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">NiFi</span><span class="stack-tag">Spark</span>
+                    <span class="stack-tag">Argo Workflows</span><span class="stack-tag">Kubernetes</span><span
+                        class="stack-tag">AWS S3</span>
+                </div>
+            </div>
+            <span class="project-arrow">↗</span>
         </div>
-      </div>
-      <span class="project-arrow">↗</span>
-    </div>
-    <div class="project-item reveal" style="transition-delay:0.15s">
-      <div>
-        <p class="project-num">04</p>
-        <p class="project-title">Automated Data Quality Framework</p>
-        <p class="project-desc">Developed a configurable data quality monitoring layer integrated into CI/CD pipelines. Detects schema drift, statistical anomalies, and SLA breaches — alerting before stakeholders notice.</p>
-        <div class="project-stack">
-          <span class="stack-tag">Great Expectations</span><span class="stack-tag">dbt tests</span>
-          <span class="stack-tag">PagerDuty</span><span class="stack-tag">Grafana</span>
+        <div class="project-item reveal" style="transition-delay:0.15s">
+            <div>
+                <p class="project-num">04</p>
+                <p class="project-title">
+                    <span data-lang="fr">Dashboards &amp; Datamart LVMH/PCIS</span>
+                    <span data-lang="en" style="display:none">LVMH/PCIS Dashboards &amp; Datamart</span>
+                </p>
+                <p class="project-desc">
+                    <span data-lang="fr">Mission ATOS pour LVMH/PCIS : recueil des besoins, prototypage de tableaux de bord, migration de données blob vers Azure Cloud, préparation de datamarts, développement de dashboards Qlik Sense, optimisation des scripts et automatisation du chargement.</span>
+                    <span data-lang="en" style="display:none">ATOS mission for LVMH/PCIS: requirements gathering, dashboard prototyping, blob file migration to Azure Cloud, datamart preparation, Qlik Sense dashboard development, script optimisation and automated data loading.</span>
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Qlik Sense</span><span class="stack-tag">Azure SQL</span>
+                    <span class="stack-tag">ETL</span><span class="stack-tag">JIRA</span>
+                </div>
+            </div>
+            <span class="project-arrow">↗</span>
         </div>
-      </div>
-      <span class="project-arrow">↗</span>
     </div>
-  </div>
 </section>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  EXPERIENCE                          ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
+<!-- EXPERIENCE -->
 <section id="experience">
-  <div class="section-header reveal">
-    <p class="section-label">Experience</p>
-    <h2>Where I've<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">worked</em></h2>
-  </div>
-  <div class="experience-list">
-    <div class="exp-item reveal">
-      <div class="exp-top">
-        <span class="exp-role">Senior Data Engineer</span>
-        <span class="exp-period">2022 — Present</span>
-      </div>
-      <p class="exp-company">Qonto · Paris</p>
-      <p class="exp-desc">Lead data infrastructure for the analytics platform serving 400k+ business customers. Own the ELT pipelines, data modelling layer, and observability stack.</p>
+    <div class="section-header reveal">
+        <p class="section-label">
+            <span data-lang="fr">Expérience</span>
+            <span data-lang="en" style="display:none">Experience</span>
+        </p>
+        <h2>
+            <span data-lang="fr">Où j'ai<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">travaillé</em></span>
+            <span data-lang="en" style="display:none">Where I've<br><em
+                    style="font-family:'Cormorant Garamond',serif;font-style:italic">worked</em></span>
+        </h2>
     </div>
-    <div class="exp-item reveal" style="transition-delay:0.05s">
-      <div class="exp-top">
-        <span class="exp-role">Data Engineer</span>
-        <span class="exp-period">2019 — 2022</span>
-      </div>
-      <p class="exp-company">Dataiku · Paris</p>
-      <p class="exp-desc">Built and maintained customer-facing data pipelines and integrations for enterprise clients. Contributed to internal tooling for pipeline orchestration and data lineage tracking.</p>
+    <div class="experience-list">
+        <div class="exp-item reveal">
+            <div class="exp-top">
+        <span class="exp-role">
+          <span data-lang="fr">Data Engineer Senior</span>
+          <span data-lang="en" style="display:none">Senior Data Engineer</span>
+        </span>
+                <span class="exp-period">
+          <span data-lang="fr">déc. 2023 — Aujourd'hui</span>
+          <span data-lang="en" style="display:none">Dec. 2023 — Present</span>
+        </span>
+            </div>
+            <p class="exp-company">Thales Services Numériques (Beteam) · Paris</p>
+            <p class="exp-desc">
+                <span data-lang="fr">Consultant Senior Data Engineer spécialisé dans la transformation des données, support d'équipes et leadership technique en environnements Data &amp; Cloud. Migration HDFS → S3, Jenkins → Airflow, pipelines dbt, monitoring Kibana, partage sécurisé GPG/SSH.</span>
+                <span data-lang="en" style="display:none">Senior Data Engineer Consultant specialising in data transformation, team support and technical leadership in Data &amp; Cloud environments. HDFS → S3, Jenkins → Airflow, dbt pipelines, Kibana monitoring, and secure GPG/SSH file sharing.</span>
+            </p>
+        </div>
+        <div class="exp-item reveal" style="transition-delay:0.05s">
+            <div class="exp-top">
+                <span class="exp-role">Data Engineer</span>
+                <span class="exp-period">
+          <span data-lang="fr">sept. 2021 — nov. 2023</span>
+          <span data-lang="en" style="display:none">Sep. 2021 — Nov. 2023</span>
+        </span>
+            </div>
+            <p class="exp-company">Keyrus · Paris</p>
+            <p class="exp-desc">
+                <span data-lang="fr">Solution Big Data pour l'analyse de transactions clients : NiFi, Kafka/Flink, CI/CD GitLab, IBM Cloud Kubernetes, stockage COS et MongoDB, monitoring ELK.</span>
+                <span data-lang="en" style="display:none">Big Data solution for customer transaction analysis: NiFi, Kafka/Flink, GitLab CI/CD, IBM Cloud Kubernetes, COS and MongoDB storage, ELK monitoring.</span>
+            </p>
+        </div>
+        <div class="exp-item reveal" style="transition-delay:0.1s">
+            <div class="exp-top">
+        <span class="exp-role">
+          <span data-lang="fr">Consultant Data Engineer</span>
+          <span data-lang="en" style="display:none">Data Engineer Consultant</span>
+        </span>
+                <span class="exp-period">
+          <span data-lang="fr">mars 2020 — juin 2021</span>
+          <span data-lang="en" style="display:none">Mar. 2020 — Jun. 2021</span>
+        </span>
+            </div>
+            <p class="exp-company">Atos · Paris <span
+                    style="opacity:0.5;font-size:0.82em">(Ministère de l'Intérieur)</span></p>
+            <p class="exp-desc">
+                <span data-lang="fr">Flux NiFi COVID-19, pipelines Spark, ordonnancement Argo Workflows, monitoring, déploiement Kubernetes et AWS S3.</span>
+                <span data-lang="en" style="display:none">NiFi flows for COVID-19 data ingestion, Spark pipelines, Argo Workflows scheduling, monitoring, Kubernetes and AWS S3 deployment.</span>
+            </p>
+        </div>
+        <div class="exp-item reveal" style="transition-delay:0.15s">
+            <div class="exp-top">
+        <span class="exp-role">
+          <span data-lang="fr">Consultant Data &amp; BI</span>
+          <span data-lang="en" style="display:none">Data &amp; BI Consultant</span>
+        </span>
+                <span class="exp-period">
+          <span data-lang="fr">janv. 2018 — mars 2019</span>
+          <span data-lang="en" style="display:none">Jan. 2018 — Mar. 2019</span>
+        </span>
+            </div>
+            <p class="exp-company">Atos · Paris <span style="opacity:0.5;font-size:0.82em">(LVMH / PCIS)</span></p>
+            <p class="exp-desc">
+                <span data-lang="fr">Recueil des besoins, dashboards Qlik Sense, migration Azure Cloud, préparation de datamarts, optimisation des scripts, automatisation du chargement.</span>
+                <span data-lang="en" style="display:none">Requirements gathering, Qlik Sense dashboards, Azure Cloud migration, datamart preparation, script optimisation and automated data loading.</span>
+            </p>
+        </div>
     </div>
-    <div class="exp-item reveal" style="transition-delay:0.1s">
-      <div class="exp-top">
-        <span class="exp-role">Junior Data Analyst → Data Engineer</span>
-        <span class="exp-period">2017 — 2019</span>
-      </div>
-      <p class="exp-company">BlaBlaCar · Paris</p>
-      <p class="exp-desc">Started in analytics and transitioned to engineering, owning the migration of reporting infrastructure to a modern data stack built on Airflow, dbt, and Redshift.</p>
-    </div>
-  </div>
 </section>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  ABOUT                               ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
+<!-- ABOUT -->
 <section id="about">
-  <div class="about-body reveal">
-    <p class="section-label">About</p>
-    <h2>Building systems that make data trustworthy</h2>
-    <p>Marc Kanani is a Paris-based data engineer with 8+ years of experience designing data platforms for high-growth tech companies. He specialises in real-time and batch pipeline architecture, data modelling, and building the infrastructure that analytical teams actually rely on.</p>
-    <p>He holds a Master's in Computer Science from Université Paris-Saclay and is passionate about data observability, dbt best practices, and making data engineering less painful for the teams around him.</p>
-    <p>Outside of data, he paints in oil — a practice that has quietly informed how he thinks about layers, patience, and knowing when something is done.</p>
-  </div>
-  <div class="about-stats reveal" style="transition-delay:0.15s">
-    <p class="section-label">In numbers</p>
-    <div class="stat-item">
-      <p class="stat-num">8+</p>
-      <p class="stat-label">Years in data engineering</p>
+    <div class="about-body reveal">
+        <p class="section-label">
+            <span data-lang="fr">À propos</span>
+            <span data-lang="en" style="display:none">About</span>
+        </p>
+        <h2>
+            <span data-lang="fr">Construire des systèmes qui rendent la donnée fiable</span>
+            <span data-lang="en" style="display:none">Building systems that make data trustworthy</span>
+        </h2>
+        <p>
+            <span data-lang="fr">Marc Kanani est un Data Engineer consultant basé à Paris, avec plus de 10 ans d'expérience dans la conception de plateformes de données. Spécialisé en ETL, Big Data et architectures cloud, avec une expertise profonde en Hadoop, Spark et GCP.</span>
+            <span data-lang="en" style="display:none">Marc Kanani is a Paris-based Data Engineer consultant with over 10 years of experience designing data platforms. Specialising in ETL, Big Data, and cloud architectures, with deep expertise in Hadoop, Spark, and GCP.</span>
+        </p>
+        <p>
+            <span data-lang="fr">Diplômé d'un Master en Génie Logiciel de l'Université de Bordeaux (2016), certifié HDP (2017), Spark (2018) et Google Cloud Professional Data Engineer (2025). Il a collaboré avec de grands groupes : LVMH, BNP Paribas, Thales.</span>
+            <span data-lang="en" style="display:none">Graduated with a Master's in Software Engineering from the University of Bordeaux (2016), certified HDP (2017), Spark (2018), and Google Cloud Professional Data Engineer (2025). He has worked with major organisations including LVMH, BNP Paribas, and Thales.</span>
+        </p>
+        <p>
+            <span data-lang="fr">La qualité des données est son credo : tests automatisés systématiques, documentation complète à chaque livraison. Disponible pour des projets soirs et week-ends autour du Big Data, Hadoop et Cloud.</span>
+            <span data-lang="en" style="display:none">Data quality is his credo: systematic automated testing and full documentation with every delivery. Available for evening and weekend projects around Big Data, Hadoop, and Cloud technologies.</span>
+        </p>
+        <p>
+            <span data-lang="fr">En dehors de la data, il peint à l'huile — une pratique qui a façonné sa façon de penser les couches, la patience et le moment où quelque chose est terminé.</span>
+            <span data-lang="en" style="display:none">Outside of data, he paints in oil — a practice that has quietly informed how he thinks about layers, patience, and knowing when something is done.</span>
+        </p>
     </div>
-    <div class="stat-item">
-      <p class="stat-num">40M+</p>
-      <p class="stat-label">Events processed / day</p>
+    <div class="about-stats reveal" style="transition-delay:0.15s">
+        <p class="section-label">
+            <span data-lang="fr">En chiffres</span>
+            <span data-lang="en" style="display:none">In numbers</span>
+        </p>
+        <div class="stat-item">
+            <p class="stat-num">10+</p>
+            <p class="stat-label">
+                <span data-lang="fr">Années en data engineering</span>
+                <span data-lang="en" style="display:none">Years in data engineering</span>
+            </p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-num">500€</p>
+            <p class="stat-label">
+                <span data-lang="fr">TJM / jour</span>
+                <span data-lang="en" style="display:none">Daily rate</span>
+            </p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-num">3</p>
+            <p class="stat-label">
+                <span data-lang="fr">Certifications cloud &amp; big data</span>
+                <span data-lang="en" style="display:none">Cloud &amp; Big Data certifications</span>
+            </p>
+        </div>
     </div>
-    <div class="stat-item">
-      <p class="stat-num">12</p>
-      <p class="stat-label">Production ML models served</p>
-    </div>
-  </div>
 </section>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  CONTACT                             ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
+<!-- CONTACT -->
 <section id="contact">
-  <p class="section-label" style="justify-content:center">Contact</p>
-  <h2 class="reveal">Open to new<br>data challenges</h2>
-  <p class="reveal" style="transition-delay:0.1s">Available for senior roles, freelance architecture work, and technical advisory.</p>
-  <a href="mailto:marc@marckanani.dev" class="contact-email reveal" style="transition-delay:0.2s">marc@marckanani.dev</a>
-  <div class="contact-socials reveal" style="transition-delay:0.3s">
-    <a href="#">GitHub</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">Resume PDF</a>
-  </div>
+    <p class="section-label" style="justify-content:center">Contact</p>
+    <h2 class="reveal">
+        <span data-lang="fr">Ouvert à de nouveaux<br>défis data</span>
+        <span data-lang="en" style="display:none">Open to new<br>data challenges</span>
+    </h2>
+    <p class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr">Disponible pour des missions freelance, du conseil en architecture et des projets ambitieux autour du Big Data et du Cloud.</span>
+        <span data-lang="en" style="display:none">Available for freelance missions, architecture consulting, and ambitious projects around Big Data and Cloud technologies.</span>
+    </p>
+    <a href="mailto:contact@marckanani.fr" class="contact-email reveal" style="transition-delay:0.2s">contact@marckanani.fr</a>
+    <div class="contact-socials reveal" style="transition-delay:0.3s">
+        <a href="https://www.malt.fr/profile/marckanani" target="_blank">Malt</a>
+        <a href="https://www.credly.com/badges/9db7624f-975b-44fe-bd15-5dcec3d4a227" target="_blank">GCP Cert</a>
+        <a href="../gallery/index.html">
+            <span data-lang="fr">← Galerie</span>
+            <span data-lang="en" style="display:none">← Gallery</span>
+        </a>
+    </div>
 </section>
 
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║  FOOTER  (factorized via layout.js)  ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
-<!-- rendered by JS below -->
+<!-- FOOTER rendered by JS -->
 
 <script type="module">
-  import { renderNav, renderFooter } from '../components/layout.js';
-  import { initReveal }              from '../components/reveal.js';
+    import {renderNav, renderFooter} from '../components/layout.js';
+    import {initReveal} from '../components/reveal.js';
 
-  renderNav({
-    logoHref: '../index.html',
-    links: [
-      { label: 'Skills',     href: '#skills'     },
-      { label: 'Projects',   href: '#projects'   },
-      { label: 'Experience', href: '#experience' },
-      { label: 'About',      href: '#about'      },
-      { label: 'Contact',    href: '#contact'    },
-      { label: '← Gallery',  href: '../gallery/index.html' },
-    ],
-  });
+    renderNav({
+        logoHref: '../index.html',
+        links: [
+            {label: 'Skills', href: '#skills'},
+            {label: 'Projets', href: '#projects'},
+            {label: 'Expérience', href: '#experience'},
+            {label: 'À propos', href: '#about'},
+            {label: 'Contact', href: '#contact'},
+            {label: '← Galerie', href: '../gallery/index.html'},
+        ],
+    });
 
-  renderFooter({ year: 2024 });
-  initReveal();
+    renderFooter({year: 2025});
+    initReveal();
 </script>
 </body>
 </html>

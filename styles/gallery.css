@@ -117,6 +117,8 @@
   transform: translate(-50%, -50%);
   max-width: 100%;
   max-height: 100%;
+  object-fit: cover;
+  object-position: center top;
   width: auto;
   height: auto;
   display: block;
@@ -200,12 +202,22 @@
 
 .lightbox-img {
   width: 100%;
-  aspect-ratio: 3/4;
-  background: #2a2620;
+  max-height: 70vh;
+  background: #1a1814;
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.lightbox-img svg { width: 100%; height: 100%; }
+.lightbox-img img {
+  width: 100%;
+  height: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+}
 
 .lightbox-title {
   font-family: 'Cormorant Garamond', serif;
@@ -243,4 +255,14 @@
 
 @media (max-width: 520px) {
   .works-grid { grid-template-columns: 1fr; }
+}
+
+/* ── FOOTER DARK THEME FIX ── */
+[data-theme="dark"] footer {
+  background: #0a0908;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] footer p {
+  color: rgba(255,255,255,0.25);
 }
