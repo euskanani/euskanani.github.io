@@ -29,10 +29,13 @@
 
     <div class="hero-visual">
         <div class="canvas-placeholder">
-            <img src="../images/gaz_paint.png" alt="Featured painting" onerror="this.style.display='none'"/>
+            <div class="slideshow">
+                <img src="../images/la_mariee.png"   alt="Painting 1" onerror="this.style.display='none'" class="slide active"/>
+                <img src="../images/gaz_paint.png"   alt="Painting 2" onerror="this.style.display='none'" class="slide"/>
+            </div>
         </div>
-        <!-- <p class="hero-caption">Featured work, 2024</p> -->
     </div>
+
 </section>
 
 <!-- ╔══════════════════════════════════════╗ -->
@@ -285,8 +288,21 @@
 </div>
 
 <script type="module">
+
+    // Hero slideshow — rotate every 15 seconds
+    const slides = document.querySelectorAll('.slideshow .slide');
+    let current = 0;
+    if (slides.length > 1) {
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 7000);
+    }
+
     import {renderNav, renderFooter} from '../components/layout.js';
     import {initReveal} from '../components/reveal.js';
+
 
     renderNav({
         logoHref: '../index.html',

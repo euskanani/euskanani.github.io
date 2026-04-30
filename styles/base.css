@@ -162,7 +162,6 @@ nav {
   background: #1e1c18;
   position: relative;
   flex-shrink: 0;
-  box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
   overflow: hidden;
 }
 
