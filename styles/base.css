@@ -392,14 +392,40 @@ footer p {
 
 .reveal.visible { opacity: 1; transform: none; }
 
-/* ── RESPONSIVE ── */
+
+
+/* ── MOBILE HERO FIX (Safari-safe) ── */
 @media (max-width: 900px) {
   nav { padding: 1.2rem 1.5rem; }
   .nav-links { gap: 1.5rem; }
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-text { padding: 6rem 1.5rem 3rem; }
-  .hero-visual { height: 55vw; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-text {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .hero-visual {
+    height: auto;
+    padding: 2.5rem 1.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--paper-warm);
+  }
+
+  .canvas-placeholder {
+    width: 100%;
+    max-width: 360px;
+    /* 4:3 ratio relative to container width */
+    padding-top: calc(min(360px, 100vw - 3rem) * 4 / 3);
+  }
+
   section { padding: 4rem 1.5rem; }
+
   #about { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-stats {
     border-left: none; padding-left: 0;
