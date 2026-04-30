@@ -7,6 +7,17 @@
 .slideshow {
     position: absolute;
     inset: 0;
+    overflow: hidden;
+}
+
+/* darker overlay shadow */
+.slideshow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 28, 24, 0.45);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .slideshow .slide {
@@ -21,6 +32,7 @@
     display: block;
     opacity: 0;
     transition: opacity 4s ease;
+    z-index: 1;
 }
 
 .slideshow .slide.active {
