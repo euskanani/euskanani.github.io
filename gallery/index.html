@@ -473,7 +473,16 @@
         <div class="lightbox-img" id="lightbox-img"></div>
         <p class="lightbox-title" id="lightbox-title"></p>
         <p class="lightbox-meta"  id="lightbox-meta"></p>
+        <p class="lightbox-zoom-hint">
+            <span data-lang="fr">Cliquer sur l'image pour zoomer</span>
+            <span data-lang="en" style="display:none">Click image to zoom</span>
+        </p>
     </div>
+</div>
+
+<!-- ZOOM FULLSCREEN OVERLAY -->
+<div id="zoom-overlay">
+    <button id="zoom-close">×</button>
 </div>
 
 <script type="module">
@@ -526,6 +535,8 @@
     const lbImg    = document.getElementById('lightbox-img');
     const lbTitle  = document.getElementById('lightbox-title');
     const lbMeta   = document.getElementById('lightbox-meta');
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    const zoomClose   = document.getElementById('zoom-close');
 
     function openLightbox(card) {
         const lang  = getCurrentLang();
@@ -536,18 +547,42 @@
             || card.querySelector('.work-meta')?.textContent  || '';
 
         lbImg.innerHTML = img
-            ? `<img src="${img.src}" alt="${img.alt}" style="max-width:100%;max-height:70vh;width:auto;height:auto;display:block;margin:0 auto;object-fit:contain;"/>`
+            ? `<img src="${img.src}" alt="${img.alt}" data-src="${img.src}"/>`
             : '';
         lbTitle.textContent = title;
         lbMeta.textContent  = meta;
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
+
+        // Click image → open fullscreen zoom overlay
+        const lbZoomImg = lbImg.querySelector('img');
+        if (lbZoomImg) {
+            lbZoomImg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Build full-res image in overlay
+                zoomOverlay.innerHTML = `<button id="zoom-close">×</button><img src="${lbZoomImg.src}" alt="${lbZoomImg.alt}" style="display:block;width:auto;height:auto;min-width:100vw;min-height:100vh;object-fit:contain;margin:auto;"/>`;
+                zoomOverlay.classList.add('open');
+                zoomOverlay.scrollTop = 0;
+                document.getElementById('zoom-close').addEventListener('click', closeZoom);
+                zoomOverlay.addEventListener('click', (ev) => { if (ev.target === zoomOverlay || ev.target.tagName === 'IMG') closeZoom(); });
+            });
+        }
+    }
+
+    function closeZoom() {
+        zoomOverlay.classList.remove('open');
+        zoomOverlay.innerHTML = '';
     }
 
     cards.forEach(card => card.addEventListener('click', () => openLightbox(card)));
     document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            if (zoomOverlay.classList.contains('open')) closeZoom();
+            else closeLightbox();
+        }
+    });
 
     function closeLightbox() {
         lightbox.classList.remove('open');
