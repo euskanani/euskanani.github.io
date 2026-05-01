@@ -15,8 +15,13 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-text">
+
+        <a href="../index.html" class="hero-logo-link" style="display:inline-block;margin-bottom:1.5rem;">
+            <img src="../images/icons/logo.png" alt="Marc Kanani" style="height:80px;width:auto;object-fit:contain;mix-blend-mode:lighten;display:block;"/>
+        </a>
+
         <p class="hero-eyebrow">Data Engineer — Paris</p>
-        <h1 class="hero-name">Marc<br><em>Kanani</em></h1>
+        <h1 class="hero-name">Marc <em>Kanani</em></h1>
         <p class="hero-tagline">
             <span data-lang="fr">Conception de pipelines de données robustes, architectures scalables et systèmes analytiques qui transforment les données brutes en intelligence fiable.</span>
             <span data-lang="en" style="display:none">Building robust data pipelines, scalable architectures, and analytical systems that turn raw data into reliable intelligence.</span>
@@ -640,6 +645,22 @@
             {label: 'Contact', href: '#contact'},
             /* {label: '← Galerie', href: '../gallery/index.html'}, */
         ],
+    });
+
+    // Inject logo image into the nav logo anchor rendered by layout.js
+    requestAnimationFrame(() => {
+        // Try common selectors that layout.js might use for the logo anchor
+        const navLogoAnchor = document.querySelector('nav .nav-logo')
+            || document.querySelector('nav .logo')
+            || document.querySelector('nav a[href="../index.html"]');
+        if (navLogoAnchor) {
+            navLogoAnchor.innerHTML = '';
+            const logoImg = document.createElement('img');
+            logoImg.src = '../images/icons/logo.png';
+            logoImg.alt = 'Marc Kanani';
+            logoImg.style.cssText = 'height:44px;width:auto;display:block;object-fit:contain;mix-blend-mode:lighten;';
+            navLogoAnchor.appendChild(logoImg);
+        }
     });
 
     renderFooter({year: 2025});
