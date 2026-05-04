@@ -499,13 +499,14 @@ footer p {
     width: 794px;
     max-height: 90vh;
     overflow-y: auto;
-    background: #fff;
+    background: linear-gradient(to right, #2a2620 230px, #fff 230px);
     font-family: 'Jost', 'Helvetica Neue', sans-serif;
     color: #1a1814;
     display: grid;
     grid-template-columns: 230px 1fr;
-    position: relative;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+    align-items: stretch;
+    position: relative;           /* ← already there, keep it */
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
 }
 
 /* ── Resume: language toggle ── */
@@ -842,10 +843,6 @@ footer p {
 .rs-cert-link {
     color: #b8a98a;
     text-decoration: none;
-    font-size: 0.65rem;
-    margin-left: 0.2rem;
-    opacity: 0.8;
-    border-bottom: 1px solid rgba(184, 169, 138, 0.3);
 }
 
 .rs-cert-link:hover {
@@ -877,6 +874,15 @@ footer p {
     border-top: 1px solid rgba(184, 169, 138, 0.1);
 }
 
+.rs-contact-icon-char {
+    font-size: 0.75rem;
+    width: 14px;
+    flex-shrink: 0;
+    color: rgba(184, 169, 138, 0.7);
+    text-align: center;
+    line-height: 1;
+}
+
 /* ── Print overrides ── */
 @media print {
     body > *:not(#resume-pdf-modal) {
@@ -899,11 +905,17 @@ footer p {
     }
 
     #resume-sheet {
-        width: 100% !important;
+        width: 210mm !important;
+        height: 297mm !important;          /* ← full A4 height */
+        min-height: 297mm !important;
         max-height: none !important;
+        overflow: visible !important;      /* ← no clipping */
         box-shadow: none !important;
         margin: 0 !important;
         padding: 0 !important;
+        background: linear-gradient(to right, #2a2620 230px, #fff 230px) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
     .rs-sheet-footer {

@@ -883,11 +883,12 @@
             const year = item.dataset.resumeCertYear || '';
             const href = item.dataset.resumeCertHref || '';
             const linkHtml = href
-                ? ` <a href="${href}" target="_blank" class="rs-cert-link">Voir le badge ↗</a>`
+                ? ` <a href="${href}" target="_blank" class="rs-cert-link">${href}</a>`
                 : '';
             html += `<div class="rs-cert-item">
-            <strong>${name}${linkHtml}</strong>
-            ${issuer} · ${year}
+            <strong>${name}</strong>
+            ${issuer} · ${year}</br>
+            ${linkHtml}
         </div>`;
         });
         return html;
