@@ -757,80 +757,71 @@
 </script>
 
 <script>
-/* ═══════════════════════════════════════════════════
-   RESUME BUILDER
-   Reads all data from the live DOM at open() time.
-   Add/remove exp-item, cert-item, skill-tag in the HTML
-   and the resume updates automatically.
-═══════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════════════
+       RESUME BUILDER — refactored
+       Changes vs original:
+       - Skills rendered in 2-col grid (halves vertical space)
+       - Phone number added to contact (reads from DOM or constant)
+       - Cert links added to cert items
+       - Footer strip with URL (copyright) at bottom of resume sheet
+       - @page margin / header / footer suppressed via CSS (print overrides)
+    ═══════════════════════════════════════════════════ */
 
-let resumeLang = 'fr'; // tracks current resume language
+    let resumeLang = 'fr';
 
-/* ── Helpers ── */
-function getLangText(el, lang) {
-    const span = el.querySelector(`[data-lang="${lang}"]`);
-    if (span) return span.textContent.trim();
-    const first = el.querySelector('[data-lang]');
-    return first ? first.textContent.trim() : el.textContent.trim();
-}
-
-function dots(level, max = 5) {
-    let html = '<span class="rs-skill-dots">';
-    for (let i = 1; i <= max; i++) {
-        html += `<span class="rs-dot${i <= level ? ' filled' : ''}"></span>`;
+    /* ── Helpers ── */
+    function getLangText(el, lang) {
+        const span = el.querySelector(`[data-lang="${lang}"]`);
+        if (span) return span.textContent.trim();
+        const first = el.querySelector('[data-lang]');
+        return first ? first.textContent.trim() : el.textContent.trim();
     }
-    return html + '</span>';
-}
 
-/* ── Skill level label for resume header ── */
-function levelLabel(n, lang) {
-    const labels = {
-        fr: ['', 'Notions', 'Familier', 'Maîtrisé', 'Avancé', 'Expert'],
-        en: ['', 'Basic', 'Familiar', 'Proficient', 'Advanced', 'Expert'],
-    };
-    return (labels[lang] || labels.fr)[n] || '';
-}
+    function dots(level, max = 5) {
+        let html = '<span class="rs-skill-dots">';
+        for (let i = 1; i <= max; i++) {
+            html += `<span class="rs-dot${i <= level ? ' filled' : ''}"></span>`;
+        }
+        return html + '</span>';
+    }
 
-/* ── Build LEFT column skills from DOM ── */
-function buildSkillsHTML(lang) {
-    const tags = document.querySelectorAll('#skills .skill-tag[data-skill-level]');
-    let html = '';
-    tags.forEach(tag => {
-        const name = tag.textContent.trim();
-        const level = parseInt(tag.dataset.skillLevel, 10) || 3;
-        html += `
+    /* ── Build skills as 2-column grid ── */
+    function buildSkillsHTML(lang) {
+        const tags = document.querySelectorAll('#skills .skill-tag[data-skill-level]');
+        let rows = '';
+        tags.forEach(tag => {
+            const name = tag.textContent.trim();
+            const level = parseInt(tag.dataset.skillLevel, 10) || 3;
+            rows += `
         <div class="rs-skill-row">
             <span class="rs-skill-name">${name}</span>
             ${dots(level)}
         </div>`;
-    });
-    return html;
-}
+        });
+        return `<div class="rs-skills-grid">${rows}</div>`;
+    }
 
-/* ── Build experience rows from DOM ── */
-function buildExpHTML(lang) {
-    const items = document.querySelectorAll('#experience .exp-item[data-resume-company]');
-    let html = '';
-    items.forEach(item => {
-        const role   = item.dataset[`resumeRole${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
-                    || item.dataset.resumeRoleFr || '';
-        const period = item.dataset[`resumePeriod${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
-                    || item.dataset.resumePeriodFr || '';
-        const company = item.dataset.resumeCompany || '';
-        const stack   = item.dataset.resumeStack || '';
+    /* ── Build experience rows ── */
+    function buildExpHTML(lang) {
+        const items = document.querySelectorAll('#experience .exp-item[data-resume-company]');
+        let html = '';
+        items.forEach(item => {
+            const capLang = lang.charAt(0).toUpperCase() + lang.slice(1);
+            const role    = item.dataset[`resumeRole${capLang}`] || item.dataset.resumeRoleFr || '';
+            const period  = item.dataset[`resumePeriod${capLang}`] || item.dataset.resumePeriodFr || '';
+            const company = item.dataset.resumeCompany || '';
+            const stack   = item.dataset.resumeStack || '';
 
-        // Read description text in chosen language
-        const descEl = item.querySelector('.exp-desc');
-        const desc   = descEl ? getLangText(descEl, lang) : '';
+            const descEl = item.querySelector('.exp-desc');
+            const desc   = descEl ? getLangText(descEl, lang) : '';
 
-        // Truncate desc to 2 sentences for compactness
-        const sentences = desc.split(/[.!?。]+/).filter(s => s.trim().length > 2).slice(0, 2);
-        const descShort  = sentences.join('. ').trim() + (sentences.length ? '.' : '');
+            const sentences = desc.split(/[.!?。]+/).filter(s => s.trim().length > 2).slice(0, 2);
+            const descShort = sentences.join('. ').trim() + (sentences.length ? '.' : '');
 
-        const stackTags = stack ? stack.split(',').map(s =>
-            `<span class="rs-stack-tag">${s.trim()}</span>`).join('') : '';
+            const stackTags = stack ? stack.split(',').map(s =>
+                `<span class="rs-stack-tag">${s.trim()}</span>`).join('') : '';
 
-        html += `
+            html += `
         <div class="rs-exp-item">
             <div class="rs-exp-header">
                 <span class="rs-exp-role">${role}</span>
@@ -840,130 +831,154 @@ function buildExpHTML(lang) {
             <ul class="rs-exp-bullets"><li>${descShort}</li></ul>
             ${stackTags ? `<div class="rs-stack">${stackTags}</div>` : ''}
         </div>`;
-    });
-    return html;
-}
+        });
+        return html;
+    }
 
-/* ── Build certifications from DOM ── */
-function buildCertsHTML(lang) {
-    const items = document.querySelectorAll('#certifications .cert-item[data-resume-cert-issuer]');
-    let html = '';
-    items.forEach(item => {
-        const nameKey = `resumeCertName${lang.charAt(0).toUpperCase() + lang.slice(1)}`;
-        const name   = item.dataset[nameKey] || item.dataset.resumeCertNameFr || '';
-        const issuer = item.dataset.resumeCertIssuer || '';
-        const year   = item.dataset.resumeCertYear || '';
-        html += `
+    /* ── Build certifications with links ── */
+    function buildCertsHTML(lang) {
+        const items = document.querySelectorAll('#certifications .cert-item[data-resume-cert-issuer]');
+        let html = '';
+        items.forEach(item => {
+            const capLang = lang.charAt(0).toUpperCase() + lang.slice(1);
+            const name    = item.dataset[`resumeCertName${capLang}`] || item.dataset.resumeCertNameFr || '';
+            const issuer  = item.dataset.resumeCertIssuer || '';
+            const year    = item.dataset.resumeCertYear || '';
+
+            // Grab cert link href from the page if present
+            const linkEl  = item.querySelector('a.cert-link[href]');
+            const href    = linkEl ? linkEl.getAttribute('href') : '';
+            const linkHtml = href
+                ? ` <a href="${href}" target="_blank" class="rs-cert-link">↗</a>`
+                : '';
+
+            html += `
         <div class="rs-cert-item">
-            <strong>${name}</strong>
+            <strong>${name}${linkHtml}</strong>
             ${issuer} · ${year}
         </div>`;
-    });
-    return html;
-}
+        });
+        return html;
+    }
 
-/* ── Build about text ── */
-function buildAbout(lang) {
-    const el = document.querySelector('[data-resume-about]');
-    if (!el) return '';
-    return getLangText(el, lang);
-}
+    /* ── About text ── */
+    function buildAbout(lang) {
+        const el = document.querySelector('[data-resume-about]');
+        if (!el) return '';
+        return getLangText(el, lang);
+    }
 
-/* ── Main builder ── */
-function buildResume(lang) {
-    resumeLang = lang;
-    const modal = document.getElementById('resume-pdf-modal');
+    /* ── Main builder ── */
+    function buildResume(lang) {
+        resumeLang = lang;
+        const modal = document.getElementById('resume-pdf-modal');
 
-    const photoSrc = document.querySelector('.hero-photo-wrap img')?.src || '';
-    const photoHTML = photoSrc
-        ? `<img class="rs-photo" src="${photoSrc}" alt="Marc Kanani"
+        const photoSrc  = document.querySelector('.hero-photo-wrap img')?.src || '';
+        const photoHTML = photoSrc
+            ? `<img class="rs-photo" src="${photoSrc}" alt="Marc Kanani"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
-        : '';
+            : '';
 
-    const titleFr = 'Data Engineer Senior · Paris';
-    const titleEn = 'Senior Data Engineer · Paris';
+        const titleFr = 'Data Engineer Senior · Paris';
+        const titleEn = 'Senior Data Engineer · Paris';
 
-    modal.innerHTML = `
+        // Phone — edit once here, propagates everywhere
+        const phone = '+33 7 51 14 52 92';
+
+        modal.innerHTML = `
     <!-- Language toggle bar -->
-    <div class="rs-lang-toggle">
+        <div class="rs-lang-toggle">
         <button class="rs-lang-btn ${lang === 'fr' ? 'active' : ''}" onclick="buildResume('fr')">FR</button>
         <button class="rs-lang-btn ${lang === 'en' ? 'active' : ''}" onclick="buildResume('en')">EN</button>
-    </div>
+        </div>
 
-    <div id="resume-sheet">
-        <!-- LEFT -->
+        <div id="resume-sheet">
+            <!-- LEFT -->
         <div class="rs-left">
-            ${photoHTML}
-            <div class="rs-photo-placeholder" style="display:none;">MK</div>
+        ${photoHTML}
+        <div class="rs-photo-placeholder" style="display:none;">MK</div>
 
-            <div class="rs-left-section">
-                <p class="rs-section-title">${lang === 'fr' ? 'Contact' : 'Contact'}</p>
-                <div class="rs-contact-item">
-                    <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <rect x="1" y="3" width="12" height="8" rx="1"/>
-                        <path d="M1 3.5l6 4.5 6-4.5"/>
-                    </svg>
-                    contact@marckanani.fr
-                </div>
-                <div class="rs-contact-item">
-                    <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <circle cx="7" cy="6" r="2.5"/>
-                        <path d="M7 1C4.24 1 2 3.24 2 6c0 3.5 5 8 5 8s5-4.5 5-8c0-2.76-2.24-5-5-5z"/>
-                    </svg>
-                    Paris, France
-                </div>
-                <div class="rs-contact-item">
-                    <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <rect x="1" y="2" width="12" height="10" rx="1"/>
-                        <path d="M1 5h12"/>
-                        <path d="M5 2v3"/>
-                        <path d="M9 2v3"/>
-                    </svg>
-                    malt.fr/profile/marckanani
-                </div>
-            </div>
+        <div class="rs-left-section">
+        <p class="rs-section-title">${lang === 'fr' ? 'Contact' : 'Contact'}</p>
 
-            <div class="rs-left-section">
-                <p class="rs-section-title">${lang === 'fr' ? 'Formation' : 'Education'}</p>
-                <div class="rs-cert-item">
-                    <strong>${lang === 'fr' ? 'Master Génie Logiciel' : 'MSc Software Engineering'}</strong>
-                    Université de Bordeaux · 2016
-                </div>
-            </div>
-
-            <div class="rs-left-section">
-                <p class="rs-section-title">${lang === 'fr' ? 'Certifications' : 'Certifications'}</p>
-                ${buildCertsHTML(lang)}
-            </div>
-
-            <div class="rs-left-section">
-                <p class="rs-section-title">${lang === 'fr' ? 'Compétences' : 'Skills'}</p>
-                ${buildSkillsHTML(lang)}
-            </div>
+        <div class="rs-contact-item">
+        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="1" y="3" width="12" height="8" rx="1"/>
+        <path d="M1 3.5l6 4.5 6-4.5"/>
+        </svg>
+        <a href="mailto:contact@marckanani.fr" class="rs-contact-link">contact@marckanani.fr</a>
         </div>
 
-        <!-- RIGHT -->
+        <div class="rs-contact-item">
+        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M2 2h3l1.5 3.5-1.5 1a7 7 0 003.5 3.5l1-1.5L13 10v3a1 1 0 01-1 1C5.4 14 0 8.6 0 2a1 1 0 011-1h3z" fill="none"/>
+        </svg>
+        ${phone}
+        </div>
+
+        <div class="rs-contact-item">
+        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="7" cy="6" r="2.5"/>
+        <path d="M7 1C4.24 1 2 3.24 2 6c0 3.5 5 8 5 8s5-4.5 5-8c0-2.76-2.24-5-5-5z"/>
+        </svg>
+        Paris, France
+        </div>
+
+        <div class="rs-contact-item">
+        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="1" y="2" width="12" height="10" rx="1"/>
+        <path d="M1 5h12M5 2v3M9 2v3"/>
+        </svg>
+        <a href="https://www.malt.fr/profile/marckanani" target="_blank" class="rs-contact-link">malt.fr/profile/marckanani</a>
+        </div>
+        </div>
+
+        <div class="rs-left-section">
+        <p class="rs-section-title">${lang === 'fr' ? 'Formation' : 'Education'}</p>
+        <div class="rs-cert-item">
+        <strong>${lang === 'fr' ? 'Master Génie Logiciel' : 'MSc Software Engineering'}</strong>
+        Université de Bordeaux · 2016
+        </div>
+        </div>
+
+        <div class="rs-left-section">
+        <p class="rs-section-title">${lang === 'fr' ? 'Certifications' : 'Certifications'}</p>
+        ${buildCertsHTML(lang)}
+        </div>
+
+        <div class="rs-left-section">
+        <p class="rs-section-title">${lang === 'fr' ? 'Compétences' : 'Skills'}</p>
+        ${buildSkillsHTML(lang)}
+        </div>
+        </div>
+
+            <!-- RIGHT -->
         <div class="rs-right">
-            <h1 class="rs-name"><strong>Marc</strong> Kanani</h1>
-            <p class="rs-title-bar">${lang === 'fr' ? titleFr : titleEn}</p>
+        <h1 class="rs-name"><strong>Marc</strong> Kanani</h1>
+        <p class="rs-title-bar">${lang === 'fr' ? titleFr : titleEn}</p>
 
-            <div class="rs-r-section">
-                <p class="rs-r-section-title">${lang === 'fr' ? 'Profil' : 'Profile'}</p>
-                <p class="rs-about">${buildAbout(lang)}</p>
-            </div>
-
-            <div class="rs-r-section">
-                <p class="rs-r-section-title">${lang === 'fr' ? 'Expérience professionnelle' : 'Professional Experience'}</p>
-                ${buildExpHTML(lang)}
-            </div>
+        <div class="rs-r-section">
+        <p class="rs-r-section-title">${lang === 'fr' ? 'Profil' : 'Profile'}</p>
+        <p class="rs-about">${buildAbout(lang)}</p>
         </div>
-    </div>`;
+
+        <div class="rs-r-section">
+        <p class="rs-r-section-title">${lang === 'fr' ? 'Expérience professionnelle' : 'Professional Experience'}</p>
+        ${buildExpHTML(lang)}
+        </div>
+        </div>
+
+            <!-- FOOTER strip — full width, sits below both columns -->
+        <div class="rs-sheet-footer">
+        marckanani.fr &nbsp;·&nbsp; contact@marckanani.fr &nbsp;·&nbsp; Paris, France
+        </div>
+        </div>`;
 }
 
 /* ── Open / Close ── */
 function openResume() {
     buildResume(resumeLang);
-    const modal = document.getElementById('resume-pdf-modal');
+    const modal   = document.getElementById('resume-pdf-modal');
     const actions = document.getElementById('rs-actions');
     modal.classList.add('open');
     actions.style.display = 'flex';
@@ -971,17 +986,18 @@ function openResume() {
 }
 
 function closeResume() {
-    const modal = document.getElementById('resume-pdf-modal');
+    const modal   = document.getElementById('resume-pdf-modal');
     const actions = document.getElementById('rs-actions');
     modal.classList.remove('open');
     actions.style.display = 'none';
     document.body.style.overflow = '';
 }
 
-// Close on backdrop click
 document.getElementById('resume-pdf-modal').addEventListener('click', function(e) {
     if (e.target === this) closeResume();
 });
+
 </script>
+
 </body>
 </html>

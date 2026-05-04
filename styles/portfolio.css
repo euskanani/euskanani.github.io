@@ -652,3 +652,94 @@ footer p {
     box-shadow: none !important;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   RESUME ADDITIONS — append to portfolio.css
+   (all new selectors, no overrides of existing ones)
+═══════════════════════════════════════════════ */
+
+/* ── Skills 2-column compact grid ── */
+.rs-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.6rem;
+    row-gap: 0;
+}
+
+/* Tighten individual rows inside the grid */
+.rs-skills-grid .rs-skill-row {
+    margin-bottom: 0.25rem;
+}
+
+/* Slightly smaller skill names so they don't overflow the narrow column */
+.rs-skills-grid .rs-skill-name {
+    font-size: 0.6rem;
+}
+
+/* Shrink dots a touch so they fit beside the name */
+.rs-skills-grid .rs-skill-dots {
+    gap: 1.5px;
+}
+.rs-skills-grid .rs-dot {
+    width: 5px;
+    height: 5px;
+}
+
+/* ── Certification links inside resume left panel ── */
+.rs-cert-link {
+    color: #b8a98a;
+    text-decoration: none;
+    font-size: 0.65rem;
+    margin-left: 0.2rem;
+    opacity: 0.8;
+    border-bottom: 1px solid rgba(184,169,138,0.3);
+}
+.rs-cert-link:hover { opacity: 1; }
+
+/* ── Contact links inside resume (email, malt) ── */
+.rs-contact-link {
+    color: #c8bca8;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,188,168,0.25);
+    word-break: break-all;
+}
+.rs-contact-link:hover { color: #e8e0d0; }
+
+/* ── Resume sheet footer strip (copyright / URL) ── */
+.rs-sheet-footer {
+    grid-column: 1 / -1;
+    background: #1e1b17;
+    color: rgba(184,169,138,0.45);
+    font-family: 'Jost', 'Helvetica Neue', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-align: center;
+    padding: 0.45rem 1.5rem;
+    border-top: 1px solid rgba(184,169,138,0.1);
+}
+
+/* ── Print: suppress browser chrome (URL, title, date, page number) ── */
+@media print {
+    /* Remove the browser-injected header/footer (URL, title, date) */
+    @page {
+        margin: 0;          /* eliminates the default header/footer area */
+        size: A4 portrait;
+    }
+
+    /* Compensate for removed margins so content isn't edge-clipped */
+    #resume-sheet {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Our own footer strip is visible — it carries the URL instead */
+    .rs-sheet-footer {
+        display: block !important;
+    }
+
+    /* Hide interactive chrome */
+    .rs-modal-actions,
+    .rs-lang-toggle {
+        display: none !important;
+    }
+}
