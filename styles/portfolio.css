@@ -843,6 +843,7 @@ footer p {
 .rs-cert-link {
     color: #b8a98a;
     text-decoration: none;
+    font-size: 0.6rem;
 }
 
 .rs-cert-link:hover {
