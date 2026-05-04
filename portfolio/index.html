@@ -222,13 +222,8 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     RESUME PDF MODAL — built dynamically by JS
-     All content is generated from the page sections at open() time.
-════════════════════════════════════════ -->
-<div id="resume-pdf-modal">
-    <!-- populated by buildResume() -->
-</div>
+<!-- RESUME PDF MODAL — populated by buildResume() via resume-template.html -->
+<div id="resume-pdf-modal"></div>
 
 <div class="rs-modal-actions" style="display:none;" id="rs-actions">
     <button class="rs-btn-close" onclick="closeResume()">✕ <span data-lang="fr">Fermer</span><span data-lang="en" style="display:none">Close</span></button>
@@ -285,11 +280,7 @@
     </div>
 </section>
 
-<!-- SKILLS
-     data-skill-level="1-5" drives the resume dots.
-     Levels: 5=expert, 4=advanced, 3=proficient, 2=familiar, 1=basic
-     Add data-lang spans inside each .skill-tag for bilingual display.
--->
+<!-- SKILLS -->
 <section id="skills">
     <p class="section-label reveal">
         <span data-lang="fr">Compétences techniques</span>
@@ -474,11 +465,7 @@
     </div>
 </section>
 
-<!-- EXPERIENCE
-     data-resume-role, data-resume-period, data-resume-company are read by the resume builder.
-     The first data-lang="fr" span inside .exp-desc becomes the resume bullet summary.
-     Add extra data-lang spans for bilingual support.
--->
+<!-- EXPERIENCE -->
 <section id="experience">
     <div class="section-header reveal">
         <p class="section-label">
@@ -626,7 +613,8 @@
              data-resume-cert-name-fr="Professional Data Engineer"
              data-resume-cert-name-en="Professional Data Engineer"
              data-resume-cert-issuer="Google Cloud (GCP)"
-             data-resume-cert-year="2025">
+             data-resume-cert-year="2025"
+             data-resume-cert-href="https://www.credly.com/badges/9db7624f-975b-44fe-bd15-5dcec3d4a227">
             <div class="cert-top">
                 <span class="cert-name">
                     <span data-lang="fr">Professional Data Engineer Certification</span>
@@ -674,7 +662,8 @@
              data-resume-cert-name-fr="HDP Certified Developer"
              data-resume-cert-name-en="HDP Certified Developer"
              data-resume-cert-issuer="Hortonworks"
-             data-resume-cert-year="2017">
+             data-resume-cert-year="2017"
+             data-resume-cert-href="https://bcert.me/sqzpkeom">
             <div class="cert-top">
                 <span class="cert-name">HDP Certified Developer</span>
                 <span class="cert-year">2017</span>
@@ -708,7 +697,8 @@
     </p>
     <a href="mailto:contact@marckanani.fr" class="contact-email reveal" style="transition-delay:0.2s">contact@marckanani.fr</a>
     <div class="contact-socials reveal" style="transition-delay:0.3s">
-        <a href="https://www.malt.fr/profile/marckanani" target="_blank">Malt</a>
+        <!-- ↓ Phone replaces Malt link -->
+        <a href="tel:+33751145555">+33 7 51 14 52 92</a>
         <a href="https://www.credly.com/badges/9db7624f-975b-44fe-bd15-5dcec3d4a227" target="_blank">GCP Cert</a>
         <!-- <a href="../gallery/index.html"> <span data-lang="fr">← Galerie</span><span data-lang="en" style="display:none">← Gallery</span></a> -->
     </div>
@@ -758,18 +748,24 @@
 
 <script>
     /* ═══════════════════════════════════════════════════
-       RESUME BUILDER — refactored
-       Changes vs original:
-       - Skills rendered in 2-col grid (halves vertical space)
-       - Phone number added to contact (reads from DOM or constant)
-       - Cert links added to cert items
-       - Footer strip with URL (copyright) at bottom of resume sheet
-       - @page margin / header / footer suppressed via CSS (print overrides)
+       RESUME BUILDER
+       Template is loaded from resume-template.html once,
+       then token-replaced on each buildResume(lang) call.
     ═══════════════════════════════════════════════════ */
 
-    let resumeLang = 'fr';
+    let resumeLang    = 'fr';
+    let _tplCache     = null;   // cached raw template string
 
-    /* ── Helpers ── */
+    /* ── 1. Load template (once, at first openResume call) ── */
+    async function loadTemplate() {
+        if (_tplCache) return _tplCache;
+        const res = await fetch('./resume-template.html');
+        if (!res.ok) throw new Error('Could not load resume-template.html');
+        _tplCache = await res.text();
+        return _tplCache;
+    }
+
+    /* ── 2. Helpers ── */
     function getLangText(el, lang) {
         const span = el.querySelector(`[data-lang="${lang}"]`);
         if (span) return span.textContent.trim();
@@ -785,15 +781,14 @@
         return html + '</span>';
     }
 
-    /* ── Build skills as 2-column grid ── */
-    function buildSkillsHTML(lang) {
+    /* ── 3. Fragment builders ── */
+    function buildSkillsHTML() {
         const tags = document.querySelectorAll('#skills .skill-tag[data-skill-level]');
         let rows = '';
         tags.forEach(tag => {
-            const name = tag.textContent.trim();
+            const name  = tag.textContent.trim();
             const level = parseInt(tag.dataset.skillLevel, 10) || 3;
-            rows += `
-        <div class="rs-skill-row">
+            rows += `<div class="rs-skill-row">
             <span class="rs-skill-name">${name}</span>
             ${dots(level)}
         </div>`;
@@ -806,23 +801,19 @@
         const items = document.querySelectorAll('#experience .exp-item[data-resume-company]');
         let html = '';
         items.forEach(item => {
-            const capLang = lang.charAt(0).toUpperCase() + lang.slice(1);
-            const role    = item.dataset[`resumeRole${capLang}`] || item.dataset.resumeRoleFr || '';
-            const period  = item.dataset[`resumePeriod${capLang}`] || item.dataset.resumePeriodFr || '';
+            const cap     = lang.charAt(0).toUpperCase() + lang.slice(1);
+            const role    = item.dataset[`resumeRole${cap}`]   || item.dataset.resumeRoleFr || '';
+            const period  = item.dataset[`resumePeriod${cap}`] || item.dataset.resumePeriodFr || '';
             const company = item.dataset.resumeCompany || '';
-            const stack   = item.dataset.resumeStack || '';
-
-            const descEl = item.querySelector('.exp-desc');
-            const desc   = descEl ? getLangText(descEl, lang) : '';
-
+            const stack   = item.dataset.resumeStack   || '';
+            const descEl  = item.querySelector('.exp-desc');
+            const desc    = descEl ? getLangText(descEl, lang) : '';
             const sentences = desc.split(/[.!?。]+/).filter(s => s.trim().length > 2).slice(0, 2);
             const descShort = sentences.join('. ').trim() + (sentences.length ? '.' : '');
 
             const stackTags = stack ? stack.split(',').map(s =>
                 `<span class="rs-stack-tag">${s.trim()}</span>`).join('') : '';
-
-            html += `
-        <div class="rs-exp-item">
+            html += `<div class="rs-exp-item">
             <div class="rs-exp-header">
                 <span class="rs-exp-role">${role}</span>
                 <span class="rs-exp-date">${period}</span>
@@ -840,20 +831,16 @@
         const items = document.querySelectorAll('#certifications .cert-item[data-resume-cert-issuer]');
         let html = '';
         items.forEach(item => {
-            const capLang = lang.charAt(0).toUpperCase() + lang.slice(1);
-            const name    = item.dataset[`resumeCertName${capLang}`] || item.dataset.resumeCertNameFr || '';
-            const issuer  = item.dataset.resumeCertIssuer || '';
-            const year    = item.dataset.resumeCertYear || '';
-
-            // Grab cert link href from the page if present
-            const linkEl  = item.querySelector('a.cert-link[href]');
-            const href    = linkEl ? linkEl.getAttribute('href') : '';
+            const cap    = lang.charAt(0).toUpperCase() + lang.slice(1);
+            const name   = item.dataset[`resumeCertName${cap}`] || item.dataset.resumeCertNameFr || '';
+            const issuer = item.dataset.resumeCertIssuer || '';
+            const year   = item.dataset.resumeCertYear   || '';
+            // Read href from data attribute (set directly on .cert-item) — avoids querying child anchor
+            const href   = item.dataset.resumeCertHref   || '';
             const linkHtml = href
-                ? ` <a href="${href}" target="_blank" class="rs-cert-link">↗</a>`
+                ? ` <a href="${href}" target="_blank" class="rs-cert-link">Voir le badge ↗</a>`
                 : '';
-
-            html += `
-        <div class="rs-cert-item">
+            html += `<div class="rs-cert-item">
             <strong>${name}${linkHtml}</strong>
             ${issuer} · ${year}
         </div>`;
@@ -864,14 +851,15 @@
     /* ── About text ── */
     function buildAbout(lang) {
         const el = document.querySelector('[data-resume-about]');
-        if (!el) return '';
-        return getLangText(el, lang);
+        return el ? getLangText(el, lang) : '';
     }
 
-    /* ── Main builder ── */
-    function buildResume(lang) {
+    /* ── 4. Main builder: fill template tokens ── */
+    async function buildResume(lang) {
         resumeLang = lang;
         const modal = document.getElementById('resume-pdf-modal');
+
+        let tpl = await loadTemplate();
 
         const photoSrc  = document.querySelector('.hero-photo-wrap img')?.src || '';
         const photoHTML = photoSrc
@@ -879,124 +867,62 @@
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
             : '';
 
-        const titleFr = 'Data Engineer Senior · Paris';
-        const titleEn = 'Senior Data Engineer · Paris';
+        // ── phone: edit here once ──
+        const PHONE = '+33 7 51 14 xx xx';
 
-        // Phone — edit once here, propagates everywhere
-        const phone = '+33 7 51 14 52 92';
+        const replacements = {
+            '{{LANG}}':           lang,
+            '{{LANG_FR_ACTIVE}}': lang === 'fr' ? 'active' : '',
+            '{{LANG_EN_ACTIVE}}': lang === 'en' ? 'active' : '',
+            '{{PHOTO_HTML}}':     photoHTML,
+            '{{CONTACT_LABEL}}':  'Contact',
+            '{{PHONE}}':          PHONE,
+            '{{EDUCATION_LABEL}}': lang === 'fr' ? 'Formation'              : 'Education',
+            '{{EDUCATION_DEGREE}}': lang === 'fr' ? 'Master Génie Logiciel' : 'MSc Software Engineering',
+            '{{CERTS_LABEL}}':    'Certifications',
+            '{{CERTS_HTML}}':     buildCertsHTML(lang),
+            '{{SKILLS_LABEL}}':   lang === 'fr' ? 'Compétences'            : 'Skills',
+            '{{SKILLS_HTML}}':    buildSkillsHTML(),
+            '{{TITLE_BAR}}':      lang === 'fr' ? 'Data Engineer Senior · Paris' : 'Senior Data Engineer · Paris',
+            '{{PROFILE_LABEL}}':  lang === 'fr' ? 'Profil'                 : 'Profile',
+            '{{ABOUT_TEXT}}':     buildAbout(lang),
+            '{{EXP_LABEL}}':      lang === 'fr' ? 'Expérience professionnelle' : 'Professional Experience',
+            '{{EXP_HTML}}':       buildExpHTML(lang),
+        };
 
-        modal.innerHTML = `
-    <!-- Language toggle bar -->
-        <div class="rs-lang-toggle">
-        <button class="rs-lang-btn ${lang === 'fr' ? 'active' : ''}" onclick="buildResume('fr')">FR</button>
-        <button class="rs-lang-btn ${lang === 'en' ? 'active' : ''}" onclick="buildResume('en')">EN</button>
-        </div>
+        for (const [token, value] of Object.entries(replacements)) {
+            tpl = tpl.split(token).join(value);   // replaceAll without regex
+        }
 
-        <div id="resume-sheet">
-            <!-- LEFT -->
-        <div class="rs-left">
-        ${photoHTML}
-        <div class="rs-photo-placeholder" style="display:none;">MK</div>
+        modal.innerHTML = tpl;
+    }
 
-        <div class="rs-left-section">
-        <p class="rs-section-title">${lang === 'fr' ? 'Contact' : 'Contact'}</p>
+    /* ── 5. Open / Close ── */
+    async function openResume() {
+        await buildResume(resumeLang);
+        const modal   = document.getElementById('resume-pdf-modal');
+        const actions = document.getElementById('rs-actions');
+        modal.classList.add('open');
+        actions.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
-        <div class="rs-contact-item">
-        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-        <rect x="1" y="3" width="12" height="8" rx="1"/>
-        <path d="M1 3.5l6 4.5 6-4.5"/>
-        </svg>
-        <a href="mailto:contact@marckanani.fr" class="rs-contact-link">contact@marckanani.fr</a>
-        </div>
+    function closeResume() {
+        const modal   = document.getElementById('resume-pdf-modal');
+        const actions = document.getElementById('rs-actions');
+        modal.classList.remove('open');
+        actions.style.display = 'none';
+        document.body.style.overflow = '';
+    }
 
-        <div class="rs-contact-item">
-        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M2 2h3l1.5 3.5-1.5 1a7 7 0 003.5 3.5l1-1.5L13 10v3a1 1 0 01-1 1C5.4 14 0 8.6 0 2a1 1 0 011-1h3z" fill="none"/>
-        </svg>
-        ${phone}
-        </div>
+    document.getElementById('resume-pdf-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeResume();
+    });
 
-        <div class="rs-contact-item">
-        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-        <circle cx="7" cy="6" r="2.5"/>
-        <path d="M7 1C4.24 1 2 3.24 2 6c0 3.5 5 8 5 8s5-4.5 5-8c0-2.76-2.24-5-5-5z"/>
-        </svg>
-        Paris, France
-        </div>
-
-        <div class="rs-contact-item">
-        <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-        <rect x="1" y="2" width="12" height="10" rx="1"/>
-        <path d="M1 5h12M5 2v3M9 2v3"/>
-        </svg>
-        <a href="https://www.malt.fr/profile/marckanani" target="_blank" class="rs-contact-link">malt.fr/profile/marckanani</a>
-        </div>
-        </div>
-
-        <div class="rs-left-section">
-        <p class="rs-section-title">${lang === 'fr' ? 'Formation' : 'Education'}</p>
-        <div class="rs-cert-item">
-        <strong>${lang === 'fr' ? 'Master Génie Logiciel' : 'MSc Software Engineering'}</strong>
-        Université de Bordeaux · 2016
-        </div>
-        </div>
-
-        <div class="rs-left-section">
-        <p class="rs-section-title">${lang === 'fr' ? 'Certifications' : 'Certifications'}</p>
-        ${buildCertsHTML(lang)}
-        </div>
-
-        <div class="rs-left-section">
-        <p class="rs-section-title">${lang === 'fr' ? 'Compétences' : 'Skills'}</p>
-        ${buildSkillsHTML(lang)}
-        </div>
-        </div>
-
-            <!-- RIGHT -->
-        <div class="rs-right">
-        <h1 class="rs-name"><strong>Marc</strong> Kanani</h1>
-        <p class="rs-title-bar">${lang === 'fr' ? titleFr : titleEn}</p>
-
-        <div class="rs-r-section">
-        <p class="rs-r-section-title">${lang === 'fr' ? 'Profil' : 'Profile'}</p>
-        <p class="rs-about">${buildAbout(lang)}</p>
-        </div>
-
-        <div class="rs-r-section">
-        <p class="rs-r-section-title">${lang === 'fr' ? 'Expérience professionnelle' : 'Professional Experience'}</p>
-        ${buildExpHTML(lang)}
-        </div>
-        </div>
-
-            <!-- FOOTER strip — full width, sits below both columns -->
-        <div class="rs-sheet-footer">
-        marckanani.fr &nbsp;·&nbsp; contact@marckanani.fr &nbsp;·&nbsp; Paris, France
-        </div>
-        </div>`;
-}
-
-/* ── Open / Close ── */
-function openResume() {
-    buildResume(resumeLang);
-    const modal   = document.getElementById('resume-pdf-modal');
-    const actions = document.getElementById('rs-actions');
-    modal.classList.add('open');
-    actions.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeResume() {
-    const modal   = document.getElementById('resume-pdf-modal');
-    const actions = document.getElementById('rs-actions');
-    modal.classList.remove('open');
-    actions.style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-document.getElementById('resume-pdf-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeResume();
-});
-
+    // Expose to inline onclick handlers
+    window.openResume  = openResume;
+    window.closeResume = closeResume;
+    window.buildResume = buildResume;
 </script>
 
 </body>

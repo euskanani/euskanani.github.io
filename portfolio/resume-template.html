@@ -1,0 +1,116 @@
+<!--
+  resume-template.html
+  ─────────────────────────────────────────────────────────────────────────
+  Inner HTML for the #resume-pdf-modal sheet.
+  Loaded at runtime by portfolio.js via fetch('./resume-template.html').
+
+  Template tokens replaced by buildResume(lang):
+    {{LANG}}              → 'fr' | 'en'
+    {{LANG_FR_ACTIVE}}    → 'active' when lang=fr
+    {{LANG_EN_ACTIVE}}    → 'active' when lang=en
+    {{PHOTO_HTML}}        → <img> or empty string
+    {{CONTACT_LABEL}}     → 'Contact'
+    {{PHONE}}             → phone number string
+    {{EDUCATION_LABEL}}   → 'Formation' | 'Education'
+    {{EDUCATION_DEGREE}}  → 'Master Génie Logiciel' | 'MSc Software Engineering'
+    {{CERTS_LABEL}}       → 'Certifications'
+    {{CERTS_HTML}}        → built by buildCertsHTML(lang)
+    {{SKILLS_LABEL}}      → 'Compétences' | 'Skills'
+    {{SKILLS_HTML}}       → built by buildSkillsHTML(lang)
+    {{TITLE_BAR}}         → 'Data Engineer Senior · Paris' | 'Senior Data Engineer · Paris'
+    {{PROFILE_LABEL}}     → 'Profil' | 'Profile'
+    {{ABOUT_TEXT}}        → built by buildAbout(lang)
+    {{EXP_LABEL}}         → 'Expérience professionnelle' | 'Professional Experience'
+    {{EXP_HTML}}          → built by buildExpHTML(lang)
+  ─────────────────────────────────────────────────────────────────────────
+-->
+
+<!-- Language toggle bar -->
+<div class="rs-lang-toggle">
+    <button class="rs-lang-btn {{LANG_FR_ACTIVE}}" onclick="buildResume('fr')">FR</button>
+    <button class="rs-lang-btn {{LANG_EN_ACTIVE}}" onclick="buildResume('en')">EN</button>
+</div>
+
+<div id="resume-sheet">
+
+    <!-- ── LEFT COLUMN ── -->
+    <div class="rs-left">
+
+        {{PHOTO_HTML}}
+        <div class="rs-photo-placeholder" style="display:none;">MK</div>
+
+        <!-- Contact -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{CONTACT_LABEL}}</p>
+
+            <div class="rs-contact-item">
+                <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <rect x="1" y="3" width="12" height="8" rx="1"/>
+                    <path d="M1 3.5l6 4.5 6-4.5"/>
+                </svg>
+                <a href="mailto:contact@marckanani.fr" class="rs-contact-link">contact@marckanani.fr</a>
+            </div>
+
+            <div class="rs-contact-item">
+                <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path d="M2 2h3l1.5 3.5-1.5 1a7 7 0 003.5 3.5l1-1.5L13 10v3a1 1 0 01-1 1C5.4 14 0 8.6 0 2a1 1 0 011-1h3z"/>
+                </svg>
+                {{PHONE}}
+            </div>
+
+            <div class="rs-contact-item">
+                <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <circle cx="7" cy="6" r="2.5"/>
+                    <path d="M7 1C4.24 1 2 3.24 2 6c0 3.5 5 8 5 8s5-4.5 5-8c0-2.76-2.24-5-5-5z"/>
+                </svg>
+                Paris, France
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{EDUCATION_LABEL}}</p>
+            <div class="rs-cert-item">
+                <strong>{{EDUCATION_DEGREE}}</strong>
+                Université de Bordeaux · 2016
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{CERTS_LABEL}}</p>
+            {{CERTS_HTML}}
+        </div>
+
+        <!-- Skills -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{SKILLS_LABEL}}</p>
+            {{SKILLS_HTML}}
+        </div>
+
+    </div><!-- /.rs-left -->
+
+    <!-- ── RIGHT COLUMN ── -->
+    <div class="rs-right">
+
+        <h1 class="rs-name"><strong>Marc</strong> Kanani</h1>
+        <p class="rs-title-bar">{{TITLE_BAR}}</p>
+
+        <div class="rs-r-section">
+            <p class="rs-r-section-title">{{PROFILE_LABEL}}</p>
+            <p class="rs-about">{{ABOUT_TEXT}}</p>
+        </div>
+
+        <div class="rs-r-section">
+            <p class="rs-r-section-title">{{EXP_LABEL}}</p>
+            {{EXP_HTML}}
+        </div>
+
+    </div><!-- /.rs-right -->
+
+    <!-- Full-width footer strip -->
+    <div class="rs-sheet-footer">
+        marckanani.fr &nbsp;·&nbsp; contact@marckanani.fr &nbsp;·&nbsp; Paris, France
+    </div>
+
+</div><!-- /#resume-sheet -->
