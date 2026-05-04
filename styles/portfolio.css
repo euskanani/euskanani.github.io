@@ -11,6 +11,66 @@
 .hero-name em  { color: var(--accent-dark); }
 .hero-cta:hover { color: var(--accent-dark); border-color: var(--accent-dark); }
 
+/* ── HERO PHOTO ── */
+.hero-photo-wrap {
+  display: inline-block;
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+.hero-photo-wrap img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border: 2px solid rgba(124,109,85,0.25);
+  box-shadow: 0 4px 24px rgba(124,109,85,0.12);
+}
+.hero-photo-initials {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(124,109,85,0.1);
+  border: 2px solid rgba(124,109,85,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #7c6d55;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.75rem;
+}
+
+/* ── EXPORT PDF BUTTON ── */
+.resume-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding: 0.55rem 1.2rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7c6d55;
+  border: 1px solid rgba(124,109,85,0.45);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.resume-export-btn:hover {
+  background: rgba(124,109,85,0.08);
+  border-color: #7c6d55;
+}
+.resume-export-btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
 /* ── SKILLS ── */
 #skills { background: var(--paper-warm); }
 #skills .section-label { color: var(--ink-muted); }
@@ -290,4 +350,305 @@ footer p {
     font-size: 0.72rem;
     color: rgba(255,255,255,0.3);
     letter-spacing: 0.08em;
+}
+
+
+/* ═══════════════════════════════════════════════
+   RESUME PDF MODAL
+   All styles scoped to #resume-pdf-modal and .rs-*
+═══════════════════════════════════════════════ */
+
+#resume-pdf-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+#resume-pdf-modal.open { display: flex; }
+
+#resume-sheet {
+  width: 794px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  font-family: 'Jost', 'Helvetica Neue', sans-serif;
+  color: #1a1814;
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+}
+
+/* ── Resume: language toggle ── */
+.rs-lang-toggle {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  grid-column: 1 / -1;
+  background: #1e1b17;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0;
+  padding: 0.5rem 1rem;
+}
+.rs-lang-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(184,169,138,0.3);
+  background: transparent;
+  color: rgba(184,169,138,0.5);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.rs-lang-btn.active {
+  background: rgba(124,109,85,0.3);
+  color: #b8a98a;
+}
+
+/* ── Resume: LEFT column ── */
+.rs-left {
+  background: #2a2620;
+  color: #e8e0d0;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.rs-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.12);
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+.rs-photo-placeholder {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15);
+  background: rgba(124,109,85,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: #e8e0d0;
+  margin: 0 auto 1.5rem;
+}
+.rs-left-section { margin-bottom: 1.25rem; }
+.rs-section-title {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b8a98a;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(184,169,138,0.2);
+}
+.rs-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.67rem;
+  color: #c8bca8;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+.rs-contact-icon {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  opacity: 0.65;
+}
+.rs-cert-item {
+  font-size: 0.67rem;
+  color: #c8bca8;
+  margin-bottom: 0.45rem;
+  line-height: 1.4;
+}
+.rs-cert-item strong {
+  color: #e8e0d0;
+  display: block;
+  font-weight: 500;
+}
+
+/* ── Resume: Skills compact with level squares ── */
+.rs-skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+.rs-skill-name {
+  font-size: 0.65rem;
+  color: #c8bca8;
+  letter-spacing: 0.04em;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rs-skill-dots {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.rs-dot {
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(184,169,138,0.4);
+}
+.rs-dot.filled { background: #b8a98a; border-color: #b8a98a; }
+
+/* ── Resume: RIGHT column ── */
+.rs-right {
+  background: #fff;
+  padding: 2rem 1.75rem;
+}
+.rs-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #1a1814;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+.rs-name strong { font-weight: 600; }
+.rs-title-bar {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7c6d55;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1.5px solid #c8a870;
+}
+.rs-r-section { margin-bottom: 1.25rem; }
+.rs-r-section-title {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7c6d55;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(124,109,85,0.18);
+}
+.rs-about {
+  font-size: 0.75rem;
+  color: #3a3630;
+  line-height: 1.7;
+}
+.rs-exp-item { margin-bottom: 0.85rem; }
+.rs-exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.rs-exp-role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1a1814;
+}
+.rs-exp-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  color: #7c6d55;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.rs-exp-company {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7c6d55;
+  margin: 0.12rem 0 0.3rem;
+}
+.rs-exp-bullets {
+  margin: 0;
+  padding-left: 0.9rem;
+  list-style: disc;
+}
+.rs-exp-bullets li {
+  font-size: 0.69rem;
+  color: #3a3630;
+  line-height: 1.55;
+  margin-bottom: 0.1rem;
+}
+.rs-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+}
+.rs-stack-tag {
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid rgba(124,109,85,0.3);
+  color: #7c6d55;
+}
+
+/* ── Resume: modal action buttons ── */
+.rs-modal-actions {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.6rem;
+  z-index: 10000;
+}
+.rs-modal-actions button {
+  padding: 0.55rem 1.1rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.rs-btn-print {
+  background: #7c6d55;
+  color: #fff;
+  border-color: #7c6d55;
+}
+.rs-btn-print:hover { background: #5a4e3a; }
+.rs-btn-close {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+.rs-btn-close:hover { background: rgba(255,255,255,0.22); }
+
+/* ── Print overrides ── */
+@media print {
+  body > *:not(#resume-pdf-modal) { display: none !important; }
+  #resume-pdf-modal {
+    display: flex !important;
+    position: static !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+  .rs-modal-actions { display: none !important; }
+  .rs-lang-toggle   { display: none !important; }
+  #resume-sheet {
+    width: 100% !important;
+    max-height: none !important;
+    box-shadow: none !important;
+  }
 }
