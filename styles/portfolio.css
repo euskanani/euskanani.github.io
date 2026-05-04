@@ -463,6 +463,16 @@ footer p {
     letter-spacing: 0.08em;
 }
 
+/*
+ * FORCE BACKGROUND COLORS IN PRINT
+ * Without this, browsers strip all background-color and background-image.
+ * -webkit-print-color-adjust is Chrome/Safari; print-color-adjust is the standard (Firefox).
+ * Both are needed for cross-browser support.
+ */
+* {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
 
 /* ═══════════════════════════════════════════════
    RESUME PDF MODAL
