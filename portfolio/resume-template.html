@@ -10,7 +10,8 @@
     {{LANG_EN_ACTIVE}}    → 'active' when lang=en
     {{PHOTO_HTML}}        → <img> or empty string
     {{CONTACT_LABEL}}     → 'Contact'
-    {{PHONE}}             → phone number string
+    {{PHONE}}             → phone number string  ← SINGLE SOURCE OF TRUTH (set in portfolio.js)
+    {{PHONE_DISPLAY}}     → same value, used in tel: href
     {{EDUCATION_LABEL}}   → 'Formation' | 'Education'
     {{EDUCATION_DEGREE}}  → 'Master Génie Logiciel' | 'MSc Software Engineering'
     {{CERTS_LABEL}}       → 'Certifications'
@@ -22,6 +23,8 @@
     {{ABOUT_TEXT}}        → built by buildAbout(lang)
     {{EXP_LABEL}}         → 'Expérience professionnelle' | 'Professional Experience'
     {{EXP_HTML}}          → built by buildExpHTML(lang)
+    {{SITE_URL}}          → e.g. 'marckanani.fr'           ← set once in portfolio.js
+    {{CONTACT_EMAIL}}     → e.g. 'contact@marckanani.fr'   ← set once in portfolio.js
   ─────────────────────────────────────────────────────────────────────────
 -->
 
@@ -48,14 +51,14 @@
                     <rect x="1" y="3" width="12" height="8" rx="1"/>
                     <path d="M1 3.5l6 4.5 6-4.5"/>
                 </svg>
-                <a href="mailto:contact@marckanani.fr" class="rs-contact-link">contact@marckanani.fr</a>
+                <a href="mailto:{{CONTACT_EMAIL}}" class="rs-contact-link">{{CONTACT_EMAIL}}</a>
             </div>
 
             <div class="rs-contact-item">
                 <svg class="rs-contact-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
                     <path d="M2 2h3l1.5 3.5-1.5 1a7 7 0 003.5 3.5l1-1.5L13 10v3a1 1 0 01-1 1C5.4 14 0 8.6 0 2a1 1 0 011-1h3z"/>
                 </svg>
-                {{PHONE}}
+                <a href="tel:{{PHONE_DISPLAY}}" class="rs-contact-link">{{PHONE}}</a>
             </div>
 
             <div class="rs-contact-item">
@@ -82,7 +85,7 @@
             {{CERTS_HTML}}
         </div>
 
-        <!-- Skills -->
+        <!-- Skills — single column, no overflow -->
         <div class="rs-left-section">
             <p class="rs-section-title">{{SKILLS_LABEL}}</p>
             {{SKILLS_HTML}}
@@ -110,7 +113,7 @@
 
     <!-- Full-width footer strip -->
     <div class="rs-sheet-footer">
-        marckanani.fr &nbsp;·&nbsp; contact@marckanani.fr &nbsp;·&nbsp; Paris, France
+        {{SITE_URL}} &nbsp;·&nbsp; {{CONTACT_EMAIL}} &nbsp;·&nbsp; Paris, France
     </div>
 
 </div><!-- /#resume-sheet -->

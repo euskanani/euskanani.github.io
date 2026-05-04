@@ -415,11 +415,13 @@ footer p {
 
 /* ── Resume: LEFT column ── */
 .rs-left {
-  background: #2a2620;
-  color: #e8e0d0;
-  padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
+    background: #2a2620;
+    color: #e8e0d0;
+    /* No overflow:hidden — let content breathe; clipping is handled per-section */
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;  /* padding included in the 230px column width */
 }
 .rs-photo {
   width: 90px;
@@ -491,6 +493,7 @@ footer p {
   gap: 0.5rem;
   margin-bottom: 0.35rem;
 }
+
 .rs-skill-name {
   font-size: 0.65rem;
   color: #c8bca8;
@@ -500,11 +503,13 @@ footer p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .rs-skill-dots {
   display: flex;
   gap: 2px;
   flex-shrink: 0;
 }
+
 .rs-dot {
   width: 6px;
   height: 6px;
@@ -635,29 +640,6 @@ footer p {
 }
 .rs-btn-close:hover { background: rgba(255,255,255,0.22); }
 
-/* ── Print overrides ── */
-@media print {
-  body > *:not(#resume-pdf-modal) { display: none !important; }
-  #resume-pdf-modal {
-    display: flex !important;
-    position: static !important;
-    background: none !important;
-    padding: 0 !important;
-  }
-  .rs-modal-actions { display: none !important; }
-  .rs-lang-toggle   { display: none !important; }
-  #resume-sheet {
-    width: 100% !important;
-    max-height: none !important;
-    box-shadow: none !important;
-  }
-}
-
-/* ═══════════════════════════════════════════════
-   RESUME ADDITIONS — append to portfolio.css
-   (all new selectors, no overrides of existing ones)
-═══════════════════════════════════════════════ */
-
 /* ── Skills 2-column compact grid ── */
 .rs-skills-grid {
     display: grid;
@@ -673,16 +655,16 @@ footer p {
 
 /* Slightly smaller skill names so they don't overflow the narrow column */
 .rs-skills-grid .rs-skill-name {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
 }
 
 /* Shrink dots a touch so they fit beside the name */
 .rs-skills-grid .rs-skill-dots {
-    gap: 1.5px;
+    gap: 1px;
 }
 .rs-skills-grid .rs-dot {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
 }
 
 /* ── Certification links inside resume left panel ── */
@@ -696,7 +678,7 @@ footer p {
 }
 .rs-cert-link:hover { opacity: 1; }
 
-/* ── Contact links inside resume (email, malt) ── */
+/* ── Contact links inside resume (email, phone) ── */
 .rs-contact-link {
     color: #c8bca8;
     text-decoration: none;
@@ -718,28 +700,29 @@ footer p {
     border-top: 1px solid rgba(184,169,138,0.1);
 }
 
-/* ── Print: suppress browser chrome (URL, title, date, page number) ── */
+/* ── Print overrides ── */
 @media print {
-    /* Remove the browser-injected header/footer (URL, title, date) */
-    @page {
-        margin: 0;          /* eliminates the default header/footer area */
-        size: A4 portrait;
+    body > *:not(#resume-pdf-modal) { display: none !important; }
+    #resume-pdf-modal {
+        display: flex !important;
+        position: static !important;
+        background: none !important;
+        padding: 0 !important;
     }
-
-    /* Compensate for removed margins so content isn't edge-clipped */
+    .rs-modal-actions { display: none !important; }
+    .rs-lang-toggle   { display: none !important; }
     #resume-sheet {
+        width: 100% !important;
+        max-height: none !important;
+        box-shadow: none !important;
         margin: 0 !important;
         padding: 0 !important;
     }
+    .rs-sheet-footer { display: block !important; }
 
-    /* Our own footer strip is visible — it carries the URL instead */
-    .rs-sheet-footer {
-        display: block !important;
-    }
-
-    /* Hide interactive chrome */
-    .rs-modal-actions,
-    .rs-lang-toggle {
-        display: none !important;
+    /* Remove browser-injected header/footer (URL bar, date, page numbers) */
+    @page {
+        margin: 0;
+        size: A4 portrait;
     }
 }

@@ -746,17 +746,32 @@
     initReveal();
 </script>
 
+<!-- ═══════════════════════════════════════════════════════════
+     RESUME BUILDER  —  drop this <script> block into index.html
+     replacing the existing one that starts with "RESUME BUILDER"
+     ═══════════════════════════════════════════════════════════ -->
 <script>
-    /* ═══════════════════════════════════════════════════
-       RESUME BUILDER
-       Template is loaded from resume-template.html once,
-       then token-replaced on each buildResume(lang) call.
-    ═══════════════════════════════════════════════════ */
+    /* ───────────────────────────────────────────────────────────
+       ① PERSONAL VARIABLES — edit only here, nowhere else
+    ─────────────────────────────────────────────────────────────
+       PHONE        : displayed string (spaces/dashes OK)
+       PHONE_TEL    : machine-readable for the tel: href (digits + +)
+       CONTACT_EMAIL: used in both mailto: link and footer strip
+       SITE_URL     : shown in the footer strip
+    ─────────────────────────────────────────────────────────────*/
+    const RESUME_VARS = {
+        PHONE         : '+33 7 51 14 52 92',
+        PHONE_TEL     : '+33751145292',
+        CONTACT_EMAIL : 'contact@marckanani.fr',
+        SITE_URL      : 'marckanani.fr',
+    };
 
-    let resumeLang    = 'fr';
-    let _tplCache     = null;   // cached raw template string
+    /* ───────────────────────────────────────────────────────────
+       ② TEMPLATE CACHE + LOADER
+    ─────────────────────────────────────────────────────────────*/
+    let resumeLang = 'fr';
+    let _tplCache  = null;
 
-    /* ── 1. Load template (once, at first openResume call) ── */
     async function loadTemplate() {
         if (_tplCache) return _tplCache;
         const res = await fetch('./resume-template.html');
@@ -765,7 +780,9 @@
         return _tplCache;
     }
 
-    /* ── 2. Helpers ── */
+    /* ───────────────────────────────────────────────────────────
+       ③ HELPERS
+    ─────────────────────────────────────────────────────────────*/
     function getLangText(el, lang) {
         const span = el.querySelector(`[data-lang="${lang}"]`);
         if (span) return span.textContent.trim();
@@ -773,6 +790,11 @@
         return first ? first.textContent.trim() : el.textContent.trim();
     }
 
+    /**
+     * Renders 5 level-squares for a skill.
+     * Uses .rs-skill-dots / .rs-dot / .rs-dot.filled
+     * (single-column layout — no overflow risk).
+     */
     function dots(level, max = 5) {
         let html = '<span class="rs-skill-dots">';
         for (let i = 1; i <= max; i++) {
@@ -781,7 +803,15 @@
         return html + '</span>';
     }
 
-    /* ── 3. Fragment builders ── */
+    /* ───────────────────────────────────────────────────────────
+       ④ FRAGMENT BUILDERS
+    ─────────────────────────────────────────────────────────────*/
+
+    /**
+     * Single-column skill list.
+     * Uses class="rs-skills-list" (flex-column) so dots
+     * are never cropped by the narrow left panel.
+     */
     function buildSkillsHTML() {
         const tags = document.querySelectorAll('#skills .skill-tag[data-skill-level]');
         let rows = '';
@@ -793,10 +823,11 @@
             ${dots(level)}
         </div>`;
         });
+        /* return `<div class="rs-skills-list">${rows}</div>`; */
         return `<div class="rs-skills-grid">${rows}</div>`;
     }
 
-    /* ── Build experience rows ── */
+    /** Experience items */
     function buildExpHTML(lang) {
         const items = document.querySelectorAll('#experience .exp-item[data-resume-company]');
         let html = '';
@@ -810,9 +841,9 @@
             const desc    = descEl ? getLangText(descEl, lang) : '';
             const sentences = desc.split(/[.!?。]+/).filter(s => s.trim().length > 2).slice(0, 2);
             const descShort = sentences.join('. ').trim() + (sentences.length ? '.' : '');
-
-            const stackTags = stack ? stack.split(',').map(s =>
-                `<span class="rs-stack-tag">${s.trim()}</span>`).join('') : '';
+            const stackTags = stack
+                ? stack.split(',').map(s => `<span class="rs-stack-tag">${s.trim()}</span>`).join('')
+                : '';
             html += `<div class="rs-exp-item">
             <div class="rs-exp-header">
                 <span class="rs-exp-role">${role}</span>
@@ -826,7 +857,7 @@
         return html;
     }
 
-    /* ── Build certifications with links ── */
+    /** Certification items */
     function buildCertsHTML(lang) {
         const items = document.querySelectorAll('#certifications .cert-item[data-resume-cert-issuer]');
         let html = '';
@@ -835,7 +866,6 @@
             const name   = item.dataset[`resumeCertName${cap}`] || item.dataset.resumeCertNameFr || '';
             const issuer = item.dataset.resumeCertIssuer || '';
             const year   = item.dataset.resumeCertYear   || '';
-            // Read href from data attribute (set directly on .cert-item) — avoids querying child anchor
             const href   = item.dataset.resumeCertHref   || '';
             const linkHtml = href
                 ? ` <a href="${href}" target="_blank" class="rs-cert-link">Voir le badge ↗</a>`
@@ -848,13 +878,15 @@
         return html;
     }
 
-    /* ── About text ── */
+    /** About paragraph */
     function buildAbout(lang) {
         const el = document.querySelector('[data-resume-about]');
         return el ? getLangText(el, lang) : '';
     }
 
-    /* ── 4. Main builder: fill template tokens ── */
+    /* ───────────────────────────────────────────────────────────
+       ⑤ MAIN BUILDER — token-replace template then inject HTML
+    ─────────────────────────────────────────────────────────────*/
     async function buildResume(lang) {
         resumeLang = lang;
         const modal = document.getElementById('resume-pdf-modal');
@@ -867,27 +899,32 @@
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
             : '';
 
-        // ── phone: edit here once ──
-        const PHONE = '+33 7 51 14 xx xx';
-
         const replacements = {
-            '{{LANG}}':           lang,
-            '{{LANG_FR_ACTIVE}}': lang === 'fr' ? 'active' : '',
-            '{{LANG_EN_ACTIVE}}': lang === 'en' ? 'active' : '',
-            '{{PHOTO_HTML}}':     photoHTML,
-            '{{CONTACT_LABEL}}':  'Contact',
-            '{{PHONE}}':          PHONE,
+            /* ── Personal variables (single source of truth) ── */
+            '{{PHONE}}'         : RESUME_VARS.PHONE,
+            '{{PHONE_DISPLAY}}' : RESUME_VARS.PHONE_TEL,
+            '{{CONTACT_EMAIL}}' : RESUME_VARS.CONTACT_EMAIL,
+            '{{SITE_URL}}'      : RESUME_VARS.SITE_URL,
+
+            /* ── Language toggles ── */
+            '{{LANG}}'            : lang,
+            '{{LANG_FR_ACTIVE}}' : lang === 'fr' ? 'active' : '',
+            '{{LANG_EN_ACTIVE}}' : lang === 'en' ? 'active' : '',
+
+            /* ── Dynamic content ── */
+            '{{PHOTO_HTML}}'      : photoHTML,
+            '{{CONTACT_LABEL}}'  : 'Contact',
             '{{EDUCATION_LABEL}}': lang === 'fr' ? 'Formation'              : 'Education',
             '{{EDUCATION_DEGREE}}': lang === 'fr' ? 'Master Génie Logiciel' : 'MSc Software Engineering',
-            '{{CERTS_LABEL}}':    'Certifications',
-            '{{CERTS_HTML}}':     buildCertsHTML(lang),
-            '{{SKILLS_LABEL}}':   lang === 'fr' ? 'Compétences'            : 'Skills',
-            '{{SKILLS_HTML}}':    buildSkillsHTML(),
-            '{{TITLE_BAR}}':      lang === 'fr' ? 'Data Engineer Senior · Paris' : 'Senior Data Engineer · Paris',
-            '{{PROFILE_LABEL}}':  lang === 'fr' ? 'Profil'                 : 'Profile',
-            '{{ABOUT_TEXT}}':     buildAbout(lang),
-            '{{EXP_LABEL}}':      lang === 'fr' ? 'Expérience professionnelle' : 'Professional Experience',
-            '{{EXP_HTML}}':       buildExpHTML(lang),
+            '{{CERTS_LABEL}}'    : 'Certifications',
+            '{{CERTS_HTML}}'     : buildCertsHTML(lang),
+            '{{SKILLS_LABEL}}'   : lang === 'fr' ? 'Compétences'            : 'Skills',
+            '{{SKILLS_HTML}}'    : buildSkillsHTML(),
+            '{{TITLE_BAR}}'      : lang === 'fr' ? 'Data Engineer Senior · Paris' : 'Senior Data Engineer · Paris',
+            '{{PROFILE_LABEL}}'  : lang === 'fr' ? 'Profil'                 : 'Profile',
+            '{{ABOUT_TEXT}}'     : buildAbout(lang),
+            '{{EXP_LABEL}}'      : lang === 'fr' ? 'Expérience professionnelle' : 'Professional Experience',
+            '{{EXP_HTML}}'       : buildExpHTML(lang),
         };
 
         for (const [token, value] of Object.entries(replacements)) {
@@ -897,7 +934,9 @@
         modal.innerHTML = tpl;
     }
 
-    /* ── 5. Open / Close ── */
+    /* ───────────────────────────────────────────────────────────
+       ⑥ OPEN / CLOSE
+    ─────────────────────────────────────────────────────────────*/
     async function openResume() {
         await buildResume(resumeLang);
         const modal   = document.getElementById('resume-pdf-modal');
@@ -919,7 +958,6 @@
         if (e.target === this) closeResume();
     });
 
-    // Expose to inline onclick handlers
     window.openResume  = openResume;
     window.closeResume = closeResume;
     window.buildResume = buildResume;
