@@ -310,7 +310,9 @@ const buildHTML = L => `
         btn('pa-verify', true, lbl.verifying);
         try {
             const result = await confirmResult.confirm(code);
+            console.log("OTP confirmation result:", result); // Add this line
             if (result.user) {
+                console.log("User successfully authenticated:", result.user); // Add this line
                 /* save company name as displayName in Firebase Auth */
                 if (companyName) {
                     await updateProfile(result.user, { displayName: companyName });
@@ -324,11 +326,13 @@ const buildHTML = L => `
                     page:      window.location.href,
                     lang:      document.documentElement.lang || 'fr',
                 }).catch(e => console.warn('[PhoneAuth] Firestore write failed:', e));
+            } else {
+                console.log("Authentication failed, result.user is null."); // Add this line
             }
             closeModal();
             if (typeof originalOpen === 'function') originalOpen();   /* open the CV */
         } catch(e) {
-            console.error('[PhoneAuth] verify:', e);
+            console.error('[PhoneAuth] verify failed:', e); // Change to console.error
             err('pa-err-otp', lbl.err_code);
             btn('pa-verify', false, L().btn_verify);
         }
