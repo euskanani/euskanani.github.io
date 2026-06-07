@@ -32,6 +32,7 @@ const LABELS = {
     fr: {
         title:       'Vérification requise',
         sub:         'Entrez votre numéro pour recevoir un code SMS et accéder au CV.',
+        ph_company:  'Nom de votre entreprise',
         ph_phone:    '+33 6 00 00 00 00',
         btn_send:    'Recevoir le code',
         sending:     'Envoi…',
@@ -41,6 +42,7 @@ const LABELS = {
         resend:      'Renvoyer le code',
         resendIn:    s => `Renvoyer dans ${s}s`,
         back:        '← Changer le numéro',
+        err_company: 'Veuillez entrer le nom de votre entreprise.',
         err_phone:   'Format invalide — ex : +33 6 12 34 56 78',
         err_code:    'Code incorrect ou expiré. Réessayez.',
         err_generic: 'Erreur réseau. Réessayez.',
@@ -49,6 +51,7 @@ const LABELS = {
     en: {
         title:       'Verification required',
         sub:         'Enter your number to receive an SMS code and access the CV.',
+        ph_company:  'Your company name',
         ph_phone:    '+44 7000 000000',
         btn_send:    'Send code',
         sending:     'Sending…',
@@ -58,6 +61,7 @@ const LABELS = {
         resend:      'Resend code',
         resendIn:    s => `Resend in ${s}s`,
         back:        '← Change number',
+        err_company: 'Please enter your company name.',
         err_phone:   'Invalid format — e.g. +44 7000 123456',
         err_code:    'Incorrect or expired code. Please retry.',
         err_generic: 'Network error. Please retry.',
@@ -167,6 +171,8 @@ const buildHTML = L => `
     <h2>${L.title}</h2>
     <p class="pa-sub">${L.sub}</p>
     <div class="pa-err" id="pa-err-ph"></div>
+    <input id="pa-company" class="pa-input" type="text"
+           placeholder="${L.ph_company}" autocomplete="organization"/>
     <input id="pa-phone" class="pa-input" type="tel"
            placeholder="${L.ph_phone}" autocomplete="tel" inputmode="tel"/>
     <div id="pauth-recaptcha"></div>
@@ -197,7 +203,7 @@ const buildHTML = L => `
     document.body.appendChild(overlay);
 
     /* lazy load Firebase ESM */
-    const [{ initializeApp }, { getAuth, RecaptchaVerifier, signInWithPhoneNumber }] =
+    const [{ initializeApp }, { getAuth, RecaptchaVerifier, signInWithPhoneNumber, updateProfile }] =
         await Promise.all([
             import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'),
             import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'),
@@ -213,6 +219,7 @@ const buildHTML = L => `
     let recaptcha      = null;
     let countdown      = null;
     let originalOpen   = null;   /* set when interceptor fires */
+    let companyName    = '';     /* saved from step 1, used after OTP */
 
     /* ── helpers ── */
     const $  = id => overlay.querySelector('#' + id);
@@ -226,7 +233,7 @@ const buildHTML = L => `
         document.body.style.overflow = 'hidden';
         bindEvents();
         setupRecaptcha();
-        setTimeout(() => $('pa-phone')?.focus(), 60);
+        setTimeout(() => $('pa-company')?.focus(), 60);
     }
     function closeModal() {
         overlay.classList.remove('open');
@@ -256,7 +263,7 @@ const buildHTML = L => `
         $('pauth-step-phone').style.display = '';
         err('pa-err-ph', '');
         setupRecaptcha();
-        $('pa-phone').focus();
+        $('pa-company').focus();
     }
     function startCountdown() {
         const { resendIn, resend } = L();
@@ -274,6 +281,8 @@ const buildHTML = L => `
     /* ── send SMS ── */
     async function handleSend() {
         const lbl = L();
+        companyName = $('pa-company').value.trim();
+        if (!companyName) { err('pa-err-ph', lbl.err_company); return; }
         const phone = $('pa-phone').value.trim().replace(/\s/g, '');
         if (!/^\+\d{8,15}$/.test(phone)) { err('pa-err-ph', lbl.err_phone); return; }
         err('pa-err-ph', '');
@@ -298,7 +307,11 @@ const buildHTML = L => `
         err('pa-err-otp', '');
         btn('pa-verify', true, lbl.verifying);
         try {
-            await confirmResult.confirm(code);
+            const result = await confirmResult.confirm(code);
+            /* save company name as displayName in Firebase Auth */
+            if (companyName && result.user) {
+                await updateProfile(result.user, { displayName: companyName });
+            }
             closeModal();
             if (typeof originalOpen === 'function') originalOpen();   /* open the CV */
         } catch(e) {
@@ -315,6 +328,7 @@ const buildHTML = L => `
         $('pa-verify').onclick = handleVerify;
         $('pa-back').onclick   = showPhone;
         $('pa-resend').onclick = () => { showPhone(); };
+        $('pa-company').onkeydown = e => { if (e.key === 'Enter') $('pa-phone').focus(); };
         $('pa-phone').onkeydown = e => { if (e.key === 'Enter') handleSend(); };
         $('pa-code').onkeydown  = e => { if (e.key === 'Enter') handleVerify(); };
     }
