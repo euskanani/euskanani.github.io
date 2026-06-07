@@ -17,12 +17,13 @@
 /* ══ EDIT ONLY THIS BLOCK ══════════════════════════════════════ */
 
 const FIREBASE_CONFIG = {
-    apiKey:            "%%FIREBASE_API_KEY%%",
-    authDomain:        "%%FIREBASE_AUTH_DOMAIN%%",
-    projectId:         "%%FIREBASE_PROJECT_ID%%",
-    storageBucket:     "%%FIREBASE_STORAGE_BUCKET%%",
-    messagingSenderId: "%%FIREBASE_MESSAGING_SENDER_ID%%",
-    appId:             "%%FIREBASE_APP_ID%%",
+    apiKey:            "AIzaSyAqpStV4IEwHISHrs2QCHsiaWj9ByZmwwM",
+    authDomain:        "euskanani-github-io.firebaseapp.com",
+    projectId:         "euskanani-github-io",
+    storageBucket:     "euskanani-github-io.firebasestorage.app",
+    messagingSenderId: "304634828029",
+    appId:             "1:304634828029:web:ad19125e0df9542bd21a94",
+    measurementId:     "G-6XPP82F5GF"
 };
 
 /* ══════════════════════════════════════════════════════════════ */
