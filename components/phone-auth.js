@@ -203,14 +203,16 @@ const buildHTML = L => `
     document.body.appendChild(overlay);
 
     /* lazy load Firebase ESM */
-    const [{ initializeApp }, { getAuth, RecaptchaVerifier, signInWithPhoneNumber, updateProfile }] =
+    const [{ initializeApp }, { getAuth, RecaptchaVerifier, signInWithPhoneNumber, updateProfile }, { getFirestore, collection, addDoc, serverTimestamp }] =
         await Promise.all([
             import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'),
             import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'),
+            import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'),
         ]);
 
     const app  = initializeApp(FIREBASE_CONFIG);
     const auth = getAuth(app);
+    const db   = getFirestore(app);
     auth.languageCode = document.documentElement.lang?.startsWith('en') ? 'en' : 'fr';
 
     const L = () => LABELS[document.documentElement.lang?.startsWith('en') ? 'en' : 'fr'];
@@ -308,9 +310,20 @@ const buildHTML = L => `
         btn('pa-verify', true, lbl.verifying);
         try {
             const result = await confirmResult.confirm(code);
-            /* save company name as displayName in Firebase Auth */
-            if (companyName && result.user) {
-                await updateProfile(result.user, { displayName: companyName });
+            if (result.user) {
+                /* save company name as displayName in Firebase Auth */
+                if (companyName) {
+                    await updateProfile(result.user, { displayName: companyName });
+                }
+                /* save to Firestore for easy visibility in console */
+                await addDoc(collection(db, 'cv_downloads'), {
+                    company:   companyName || '',
+                    phone:     result.user.phoneNumber,
+                    uid:       result.user.uid,
+                    date:      serverTimestamp(),
+                    page:      window.location.href,
+                    lang:      document.documentElement.lang || 'fr',
+                });
             }
             closeModal();
             if (typeof originalOpen === 'function') originalOpen();   /* open the CV */
