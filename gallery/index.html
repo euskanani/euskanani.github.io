@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Marc Kanani — Artiste Peintre</title>
+
+    <link rel="icon" sizes="32x32" href="../images/icons/logo.png">
+    <link rel="icon" sizes="192x192" href="../images/icons/logo.png">
+    <link rel="apple-touch-icon" href="../images/icons/logo.png">
+
+    <link href="../styles/google_fonts.css" rel="stylesheet"/>
+    <link href="../styles/base.css" rel="stylesheet"/>
+    <link href="../styles/gallery.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- NAV rendered by JS -->
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  HERO                                ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="hero">
+    <div class="hero-text">
+
+        <a href="../gallery/index.html" class="hero-logo-link" style="display:inline-block;margin-bottom:1.5rem;">
+            <img src="../images/icons/logo.png" alt="Marc Kanani"
+                 style="height:80px;width:auto;object-fit:contain;mix-blend-mode:lighten;display:block;"/>
+        </a>
+
+        <p class="hero-eyebrow">
+            <span data-lang="fr">Artiste Peintre — Paris</span>
+            <span data-lang="en" style="display:none">Artist &amp; Painter — Paris</span>
+        </p>
+        <h1 class="hero-name">Marc <em>Kanani</em></h1>
+        <p class="hero-tagline">
+            <span data-lang="fr">L'identité, la mémoire et la vie collective du monde contemporain à travers la couleur et le corps.</span>
+            <span data-lang="en" style="display:none">Identity, memory, and the collective life of the contemporary world through colour and the body.</span>
+        </p>
+        <a href="#works" class="hero-cta">
+            <span data-lang="fr">Voir les œuvres →</span>
+            <span data-lang="en" style="display:none">View works →</span>
+        </a>
+    </div>
+
+    <div class="hero-visual">
+        <div class="canvas-placeholder">
+            <div class="slideshow">
+                <img src="../images/works/generation_z.png" alt="Danse Exotique" onerror="this.style.display='none'"
+                     class="slide"/>
+                <img src="../images/works/inconsistences.png" alt="La Mariée" onerror="this.style.display='none'"
+                     class="slide active"/>
+                <img src="../images/works/danse_exotique.png" alt="Les Enfants des Mines"
+                     onerror="this.style.display='none'" class="slide"/>
+                <img src="../images/works/les_enfants_des_mines.png" alt="Incohérences"
+                     onerror="this.style.display='none'" class="slide"/>
+                <img src="../images/works/solitude.png" alt="Danse Exotique" onerror="this.style.display='none'"
+                     class="slide"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  ABOUT                               ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="about">
+    <div class="about-body reveal">
+        <p class="section-label" data-i18n="nav_about">À propos</p>
+
+        <!-- FR -->
+        <div data-lang="fr">
+            <h2>La peinture comme engagement sensible</h2>
+            <p>Marc Kanani est un artiste peintre franco-burundais né en 1987, basé à Paris. Autodidacte, il pratique
+                une peinture figurative contemporaine centrée sur l'exploration des identités culturelles, de la vie
+                collective et de la condition humaine.</p>
+            <p>Son parcours s'est construit en dehors des cadres académiques traditionnels, lui permettant de développer
+                une approche personnelle et engagée. La couleur, le corps et la composition sont au cœur de son travail,
+                utilisés comme des outils narratifs et expressifs.</p>
+            <p>Sa démarche artistique s'inscrit dans une volonté d'engagement sensible, par la représentation de la
+                dignité humaine, de la diversité culturelle et de la vie collective comme espace de résistance, de
+                transmission et d'identité.</p>
+        </div>
+
+        <!-- EN -->
+        <div data-lang="en" style="display:none">
+            <h2>Painting as committed expression</h2>
+            <p>Marc Kanani is a Franco-Burundian painter born in 1987, based in Paris. Self-taught, he practises
+                contemporary figurative painting centred on the exploration of cultural identities, collective life, and
+                the human condition.</p>
+            <p>His path was built outside traditional academic frameworks, allowing him to develop a personal and
+                engaged approach to painting. Colour, the body, and composition are at the heart of his work, used as
+                narrative and expressive tools.</p>
+            <p>His artistic approach is rooted in a desire for sensitive engagement — representing human dignity,
+                cultural diversity, and collective life as a space of resistance, transmission, and identity.</p>
+        </div>
+    </div>
+
+    <div class="about-stats reveal" style="transition-delay:0.15s">
+        <p class="section-label">
+            <span data-lang="fr">En quelques mots</span>
+            <span data-lang="en" style="display:none">At a glance</span>
+        </p>
+        <div class="stat-item">
+            <p class="stat-num">1987</p>
+            <p class="stat-label">
+                <span data-lang="fr">Année de naissance</span>
+                <span data-lang="en" style="display:none">Year of birth</span>
+            </p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-num">12+</p>
+            <p class="stat-label">
+                <span data-lang="fr">Années de pratique</span>
+                <span data-lang="en" style="display:none">Years of practice</span>
+            </p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-num">100+</p>
+            <p class="stat-label">
+                <span data-lang="fr">Œuvres au catalogue</span>
+                <span data-lang="en" style="display:none">Works in catalogue</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  WORKS                               ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="works">
+    <div class="works-header reveal">
+        <p class="section-label" style="margin-bottom:0" data-i18n="nav_works">Œuvres</p>
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">
+                <span data-lang="fr">Tout</span><span data-lang="en" style="display:none">All</span>
+            </button>
+            <button class="filter-btn" data-filter="huile">
+                <span data-lang="fr">Huile</span><span data-lang="en" style="display:none">Oil</span>
+            </button>
+            <button class="filter-btn" data-filter="acrylique">
+                <span data-lang="fr">Acrylique</span><span data-lang="en" style="display:none">Acrylic</span>
+            </button>
+            <button class="filter-btn" data-filter="engagee">
+                <span data-lang="fr">Expression engagée</span><span data-lang="en" style="display:none">Engaged expression</span>
+            </button>
+            <button class="filter-btn" data-filter="africaines">
+                <span data-lang="fr">Influences africaines</span><span data-lang="en" style="display:none">African influences</span>
+            </button>
+        </div>
+    </div>
+    <div class="works-grid">
+
+        <!-- Engaged expression -->
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile engagee"
+             data-title-fr="Génération Z" data-title-en="Generation Z"
+             data-meta-fr="Huile sur toile — 2019 — 90 × 120 cm"
+             data-meta-en="Oil on canvas — 2019 — 90 × 120 cm">
+            <div class="work-img">
+                <img src="../images/works/generation_z.png" alt="Génération Z" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Génération Z</span><span data-lang="en" style="display:none">Generation Z</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2019 — 90 × 120 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2019 — 90 × 120 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="huile engagee"
+             data-title-fr="Danse Exotique" data-title-en="Exotic Dance"
+             data-meta-fr="Huile sur toile — 2019 — 100 × 130 cm"
+             data-meta-en="Oil on canvas — 2019 — 100 × 130 cm">
+            <div class="work-img">
+                <img src="../images/works/danse_exotique.png" alt="Danse Exotique" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Danse Exotique</span><span data-lang="en" style="display:none">Exotic Dance</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2019 — 100 × 130 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2019 — 100 × 130 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="huile engagee"
+             data-title-fr="Solitude" data-title-en="Solitude"
+             data-meta-fr="Huile sur toile — 2019 — 100 × 50 cm"
+             data-meta-en="Oil on canvas — 2019 — 100 × 50 cm">
+            <div class="work-img">
+                <img src="../images/works/solitude.png" alt="Solitude" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">Solitude</p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2019 — 100 × 50 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2019 — 100 × 50 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile engagee"
+             data-title-fr="Les Enfants des Mines" data-title-en="The Children of the Mines"
+             data-meta-fr="Huile sur toile — 2025 — 130 × 150 cm"
+             data-meta-en="Oil on canvas — 2025 — 130 × 150 cm">
+            <div class="work-img">
+                <img src="../images/works/les_enfants_des_mines.png" alt="Les Enfants des Mines"
+                     onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Les Enfants des Mines</span><span data-lang="en" style="display:none">The Children of the Mines</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2025 — 130 × 150 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2025 — 130 × 150 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="huile engagee"
+             data-title-fr="Incohérences" data-title-en="Incoherences"
+             data-meta-fr="Huile sur toile — 2025 — 130 × 100 cm"
+             data-meta-en="Oil on canvas — 2025 — 130 × 100 cm">
+            <div class="work-img">
+                <img src="../images/works/inconsistences.png" alt="Incohérences" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Incohérences</span><span data-lang="en" style="display:none">Incoherences</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2025 — 130 × 100 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2025 — 130 × 100 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="huile engagee"
+             data-title-fr="Femmes au Foyer" data-title-en="Housewives"
+             data-meta-fr="Huile sur toile — 2018 — 160 × 160 cm"
+             data-meta-en="Oil on canvas — 2018 — 160 × 160 cm">
+            <div class="work-img">
+                <img src="../images/works/femmes_au_foyer.png" alt="Femmes au Foyer"
+                     onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Femmes au Foyer</span><span data-lang="en" style="display:none">Housewives</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2018 — 160 × 160 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2018 — 160 × 160 cm</span>
+            </p>
+        </div>
+
+        <!-- African influences -->
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="huile africaines"
+             data-title-fr="La Mariée" data-title-en="The Bride"
+             data-meta-fr="Huile sur toile — 2012 — 100 × 80 cm"
+             data-meta-en="Oil on canvas — 2012 — 100 × 80 cm">
+            <div class="work-img">
+                <img src="../images/works/la_mariee.png" alt="La Mariée" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">La Mariée</span><span data-lang="en" style="display:none">The Bride</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2012 — 100 × 80 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2012 — 100 × 80 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile africaines"
+             data-title-fr="Les Femmes Himbas" data-title-en="The Himba Women"
+             data-meta-fr="Huile sur toile, collage — 2012 — 100 × 80 cm"
+             data-meta-en="Oil on canvas, collage — 2012 — 100 × 80 cm">
+            <div class="work-img">
+                <img src="../images/works/les_femmes_himbas.png" alt="Les Femmes Himbas"
+                     onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Les Femmes Himbas</span><span data-lang="en"
+                                                                   style="display:none">The Himba Women</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile, collage — 2012 — 100 × 80 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas, collage — 2012 — 100 × 80 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="acrylique africaines"
+             data-title-fr="Les Modèles" data-title-en="The Models"
+             data-meta-fr="Acrylique sur toile — 2012 — 100 × 80 cm"
+             data-meta-en="Acrylic on canvas — 2012 — 100 × 80 cm">
+            <div class="work-img">
+                <img src="../images/works/les_modeles.png" alt="Les Modèles" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Les Modèles</span><span data-lang="en" style="display:none">The Models</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Acrylique sur toile — 2012 — 100 × 80 cm</span>
+                <span data-lang="en" style="display:none">Acrylic on canvas — 2012 — 100 × 80 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="acrylique africaines"
+             data-title-fr="Hijab" data-title-en="Hijab"
+             data-meta-fr="Acrylique sur toile — 2012 — 150 × 38 cm"
+             data-meta-en="Acrylic on canvas — 2012 — 150 × 38 cm">
+            <div class="work-img">
+                <img src="../images/works/hijab.png" alt="Hijab" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">Hijab</p>
+            <p class="work-meta">
+                <span data-lang="fr">Acrylique sur toile — 2012 — 150 × 38 cm</span>
+                <span data-lang="en" style="display:none">Acrylic on canvas — 2012 — 150 × 38 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.1s" data-category="huile africaines"
+             data-title-fr="Sourire Africain" data-title-en="African Smile"
+             data-meta-fr="Huile sur toile — 2016 — 50 × 40 cm"
+             data-meta-en="Oil on canvas — 2016 — 50 × 40 cm">
+            <div class="work-img">
+                <img src="../images/works/sourire_africain.png" alt="Sourire Africain"
+                     onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Sourire Africain</span><span data-lang="en"
+                                                                  style="display:none">African Smile</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2016 — 50 × 40 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2016 — 50 × 40 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.15s" data-category="huile africaines"
+             data-title-fr="Jeune Femme Himba" data-title-en="Young Himba Woman"
+             data-meta-fr="Huile sur toile — 2016 — 46 × 37 cm"
+             data-meta-en="Oil on canvas — 2016 — 46 × 37 cm">
+            <div class="work-img">
+                <img src="../images/works/jeune_femme_himba.png" alt="Jeune Femme Himba"
+                     onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">
+                <span data-lang="fr">Jeune Femme Himba</span><span data-lang="en"
+                                                                   style="display:none">Young Himba Woman</span>
+            </p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2016 — 46 × 37 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2016 — 46 × 37 cm</span>
+            </p>
+        </div>
+
+        <div class="work-card reveal" style="transition-delay:0.05s" data-category="huile africaines"
+             data-title-fr="Villageoises" data-title-en="Villageoises"
+             data-meta-fr="Huile sur toile — 2015 — 100 × 50 cm"
+             data-meta-en="Oil on canvas — 2015 — 100 × 50 cm">
+            <div class="work-img">
+                <img src="../images/works/villageoises.png" alt="Villageoises" onerror="this.style.display='none'"/>
+            </div>
+            <p class="work-title">Villageoises</p>
+            <p class="work-meta">
+                <span data-lang="fr">Huile sur toile — 2015 — 100 × 50 cm</span>
+                <span data-lang="en" style="display:none">Oil on canvas — 2015 — 100 × 50 cm</span>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  ARTISTIC UNIVERSE                   ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="process">
+
+    <!-- FR -->
+    <div data-lang="fr">
+        <h2>La démarche<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">artistique</em></h2>
+    </div>
+    <!-- EN -->
+    <div data-lang="en" style="display:none">
+        <h2>The artistic<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic">approach</em></h2>
+    </div>
+
+    <div class="process-steps">
+        <div class="step reveal">
+            <p class="step-num">01</p>
+            <div>
+                <h3>
+                    <span data-lang="fr">L'humain dans sa dimension collective</span>
+                    <span data-lang="en" style="display:none">The human in its collective dimension</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Mon travail représente des personnes dans des situations sociales concrètes — moments de partage, gestes du quotidien, scènes de rassemblement — et interroge la manière dont les individus existent au sein d'un groupe.</span>
+                    <span data-lang="en" style="display:none">My work depicts people in concrete social situations — moments of sharing, everyday gestures, scenes of gathering — questioning how individuals exist within a group.</span>
+                </p>
+            </div>
+        </div>
+        <div class="step reveal" style="transition-delay:0.1s">
+            <p class="step-num">02</p>
+            <div>
+                <h3>
+                    <span data-lang="fr">Identité et mémoire</span>
+                    <span data-lang="en" style="display:none">Identity and memory</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Les figures que je peins sont ancrées dans une culture et une histoire. À travers elles, je questionne l'identité, l'appartenance et la transmission, en montrant des scènes simples où le présent dialogue avec la mémoire collective.</span>
+                    <span data-lang="en" style="display:none">The figures I paint are rooted in a culture and a history. Through them, I question identity, belonging, and transmission — showing simple scenes where the present dialogues with collective memory.</span>
+                </p>
+            </div>
+        </div>
+        <div class="step reveal" style="transition-delay:0.2s">
+            <p class="step-num">03</p>
+            <div>
+                <h3>
+                    <span data-lang="fr">Une peinture du temps présent</span>
+                    <span data-lang="en" style="display:none">A painting of the present time</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Je cherche à créer des images accessibles dans lesquelles le spectateur peut se reconnaître et se projeter. Mes peintures sont conçues comme des espaces de rencontre entre les figures représentées et celui qui regarde.</span>
+                    <span data-lang="en" style="display:none">I seek to create accessible images in which the viewer can recognise themselves and project their own experience. My paintings are conceived as spaces of encounter between the depicted figures and the viewer.</span>
+                </p>
+            </div>
+        </div>
+        <div class="step reveal" style="transition-delay:0.3s">
+            <p class="step-num">04</p>
+            <div>
+                <h3>
+                    <span data-lang="fr">Engagement par l'expression artistique</span>
+                    <span data-lang="en" style="display:none">Commitment through artistic expression</span>
+                </h3>
+                <p>
+                    <span data-lang="fr">Ma démarche s'inscrit dans une volonté d'engagement sensible, par la représentation de la dignité humaine, de la diversité culturelle et de la vie collective comme espace de résistance, de transmission et d'identité.</span>
+                    <span data-lang="en" style="display:none">My approach is rooted in a desire for sensitive commitment — representing human dignity, cultural diversity, and collective life as a space of resistance, transmission, and identity.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  TECHNIQUES                          ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="exhibitions" id="techniques">
+    <p class="section-label reveal">
+        <span data-lang="fr">Techniques &amp; médiums</span>
+        <span data-lang="en" style="display:none">Techniques &amp; mediums</span>
+    </p>
+    <h2 class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr">Les outils <em
+                style="font-family:'Cormorant Garamond',serif;font-style:italic">du peintre</em></span>
+        <span data-lang="en" style="display:none">The painter's <em
+                style="font-family:'Cormorant Garamond',serif;font-style:italic">tools</em></span>
+    </h2>
+    <div class="exhibition-list">
+        <div class="exhibition-item reveal">
+            <span class="ex-year">
+                <span data-lang="fr">Styles</span><span data-lang="en" style="display:none">Styles</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Expressionnisme, Réalisme</span><span data-lang="en" style="display:none">Expressionism, Realism</span>
+            </span>
+            <span class="ex-place">
+                <span data-lang="fr">Influences d'art africain</span><span data-lang="en" style="display:none">African art influences</span>
+            </span>
+        </div>
+        <div class="exhibition-item reveal" style="transition-delay:0.05s">
+            <span class="ex-year">
+                <span data-lang="fr">Techniques</span><span data-lang="en" style="display:none">Techniques</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Collage, techniques mixtes</span><span data-lang="en" style="display:none">Collage, mixed media</span>
+            </span>
+            <span class="ex-place"></span>
+        </div>
+        <div class="exhibition-item reveal" style="transition-delay:0.1s">
+            <span class="ex-year">
+                <span data-lang="fr">Médiums</span><span data-lang="en" style="display:none">Mediums</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Peinture acrylique</span><span data-lang="en"
+                                                                    style="display:none">Acrylic paint</span>
+            </span>
+            <span class="ex-place">
+                <span data-lang="fr">Peinture à l'huile</span><span data-lang="en" style="display:none">Oil paint</span>
+            </span>
+        </div>
+        <div class="exhibition-item reveal" style="transition-delay:0.15s">
+            <span class="ex-year">
+                <span data-lang="fr">Formation</span><span data-lang="en" style="display:none">Education</span>
+            </span>
+            <span class="ex-title">
+                <span data-lang="fr">Master Informatique — Université de Bordeaux, 2016</span>
+                <span data-lang="en" style="display:none">MSc Computer Science — University of Bordeaux, 2016</span>
+            </span>
+            <span class="ex-place">
+                <span data-lang="fr">Artiste autodidacte</span><span data-lang="en" style="display:none">Self-taught artist</span>
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  EXHIBITIONS                         ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="expositions">
+    <p class="section-label reveal">
+        <span data-lang="fr">Expositions</span>
+        <span data-lang="en" style="display:none">Exhibitions</span>
+    </p>
+
+    <h2 class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr"><em style="font-family:'Cormorant Garamond',serif;font-style:italic">Performance de peinture en direct au Centre Commercial Bab Ezzouar<br>2013 · Alger </em></span>
+        <span data-lang="en" style="display:none"><em style="font-family:'Cormorant Garamond',serif;font-style:italic">Live painting performance at Bab Ezzouar Mole<br>2013 · Alger </em></span>
+    </h2>
+
+    <div class="expo-grid">
+
+        <div class="expo-card reveal" style="transition-delay:0.05s; max-width: 50%">
+            <div class="expo-img">
+                <img src="../images/exhibitions/performance_2015.jpg"
+                     alt="Vernissage 2015 — Marc Kanani avec visiteurs devant Hijab"
+                     loading="lazy"/>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <hr>
+    <br>
+
+    <h2 class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr"><em style="font-family:'Cormorant Garamond',serif;font-style:italic">Exposition au Centre Culturel Mustafa Kateb <br>2013 · Alger </em></span>
+        <span data-lang="en" style="display:none"><em style="font-family:'Cormorant Garamond',serif;font-style:italic">Exhibition at the Mustafa Kateb Cultural Center <br>2013 · Alger</em></span>
+    </h2>
+
+    <div class="expo-grid">
+
+        <div class="expo-card reveal" style="transition-delay:0.1s">
+            <div class="expo-img">
+                <img src="../images/exhibitions/expo_2015_vernissage.jpg"
+                     alt="Exposition 2015 — œuvre Les Modèles sur chevalet"
+                     loading="lazy"/>
+            </div>
+        </div>
+
+        <div class="expo-card reveal" style="transition-delay:0.1s">
+            <div class="expo-img">
+                <img src="../images/exhibitions/expo_2015_vernissage1.jpg"
+                     alt="Exposition 2015 — œuvre Les Modèles sur chevalet"
+                     loading="lazy"/>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <h2 class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr"><em style="font-family:'Cormorant Garamond',serif;font-style:italic">Exposition à l' Hôtel Hilton<br>2013 · Alger </em></span>
+        <span data-lang="en" style="display:none"><em style="font-family:'Cormorant Garamond',serif;font-style:italic">Exhibition at Hilton Hotel<br>2013 · Alger</em></span>
+    </h2>
+
+    <div class="expo-grid">
+
+        <div class="expo-card reveal" style="transition-delay:0.1s">
+            <div class="expo-img">
+                <img src="../images/exhibitions/expo_2015_hotel.jpg"
+                     alt="Exposition 2015 — œuvre Les Modèles sur chevalet"
+                     loading="lazy"/>
+            </div>
+        </div>
+
+        <div class="expo-card reveal" style="transition-delay:0.1s">
+            <div class="expo-img">
+                <img src="../images/exhibitions/expo_2015_painting.jpg"
+                     alt="Exposition 2015 — œuvre Les Modèles sur chevalet"
+                     loading="lazy"/>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║  CONTACT                             ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="contact">
+    <p class="section-label" style="justify-content:center" data-i18n="nav_contact">Contact</p>
+    <p class="reveal" style="transition-delay:0.1s">
+        <span data-lang="fr">Disponible pour des commandes et des collaborations d'exposition.</span>
+        <span data-lang="en" style="display:none">Available for commissions and exhibition collaborations.</span>
+    </p>
+
+    <div class="contact-socials reveal" style="transition-delay:0.3s">
+
+        <a href="mailto:marc.euskan@gmail.com" class="social-link reveal" style="transition-delay:0.1s"
+           aria-label="Email">
+            <span class="social-icon"
+                  style="-webkit-mask-image: url('../images/icons/email.svg'); mask-image: url('../images/icons/email.svg');"></span>
+            <span>marc.euskan@gmail.com</span>
+        </a>
+
+        <a href="tel:+33751145292" class="social-link reveal" style="transition-delay:0.2s" aria-label="Téléphone">
+            <span class="social-icon"
+                  style="-webkit-mask-image: url('../images/icons/phone.svg'); mask-image: url('../images/icons/phone.svg');"></span>
+            <span>+33 7 51 14 52 92</span>
+        </a>
+
+        <a href="https://www.facebook.com/marckanani.gallery" target="_blank" rel="noopener noreferrer"
+           class="social-link reveal" style="transition-delay:0.3s" aria-label="Facebook">
+            <span class="social-icon"
+                  style="-webkit-mask-image: url('../images/icons/facebook.svg'); mask-image: url('../images/icons/facebook.svg');"></span>
+            <span>Facebook</span>
+        </a>
+
+        <a href="https://www.instagram.com/marckanani.gallery" target="_blank" rel="noopener noreferrer"
+           class="social-link reveal" style="transition-delay:0.4s" aria-label="Instagram">
+            <span class="social-icon"
+                  style="-webkit-mask-image: url('../images/icons/instagram.svg'); mask-image: url('../images/icons/instagram.svg');"></span>
+            <span>Instagram</span>
+        </a>
+
+    </div>
+</section>
+
+<!-- FOOTER rendered by JS -->
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">×</button>
+    <div class="lightbox-inner">
+        <div class="lightbox-img" id="lightbox-img"></div>
+        <p class="lightbox-title" id="lightbox-title"></p>
+        <p class="lightbox-meta" id="lightbox-meta"></p>
+        <p class="lightbox-zoom-hint">
+            <span data-lang="fr">Cliquer sur l'image pour zoomer</span>
+            <span data-lang="en" style="display:none">Click image to zoom</span>
+        </p>
+    </div>
+</div>
+
+<!-- ZOOM FULLSCREEN OVERLAY -->
+<div id="zoom-overlay">
+    <button id="zoom-close">×</button>
+</div>
+
+<script type="module">
+    import {renderNav, renderFooter, getCurrentLang} from '../components/layout.js';
+    import {initReveal} from '../components/reveal.js';
+
+    renderNav({
+        logoHref: '../gallery/index.html',
+        links: [
+            {label: 'À propos / About', href: '#about', i18nKey: 'nav_about'},
+            {label: 'Œuvres / Works', href: '#works', i18nKey: 'nav_works'},
+            {label: 'Démarche', href: '#process', i18nKey: 'nav_process'},
+            {label: 'Expositions', href: '#expositions', i18nKey: 'nav_expositions'},
+            {label: 'Contact', href: '#contact', i18nKey: 'nav_contact'},
+            /*{ label: '→ Portfolio',      href: '../portfolio/index.html', i18nKey: 'nav_portfolio' }, */
+        ],
+    });
+
+    // Inject logo image into the nav logo anchor rendered by layout.js
+    requestAnimationFrame(() => {
+        // Try common selectors that layout.js might use for the logo anchor
+        const navLogoAnchor = document.querySelector('nav .nav-logo')
+            || document.querySelector('nav .logo')
+            || document.querySelector('nav a[href="../gallery/index.html"]');
+        if (navLogoAnchor) {
+            navLogoAnchor.innerHTML = '';
+            const logoImg = document.createElement('img');
+            logoImg.src = '../images/icons/logo.png';
+            logoImg.alt = 'Marc Kanani';
+            logoImg.style.cssText = 'height:44px;width:auto;display:block;object-fit:contain;mix-blend-mode:lighten;';
+            navLogoAnchor.appendChild(logoImg);
+        }
+    });
+
+    renderFooter({year: 2025});
+    initReveal();
+
+    // Hero slideshow
+    const slides = document.querySelectorAll('.slideshow .slide');
+    let current = 0;
+    if (slides.length > 1) {
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 7000);
+    }
+
+    // Gallery filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.work-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            cards.forEach(card => {
+                const cats = card.dataset.category || '';
+                card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+            });
+        });
+    });
+
+    // Lightbox — uses bilingual title/meta
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbTitle = document.getElementById('lightbox-title');
+    const lbMeta = document.getElementById('lightbox-meta');
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    const zoomClose = document.getElementById('zoom-close');
+
+    function openLightbox(card) {
+        const lang = getCurrentLang();
+        const img = card.querySelector('.work-img img');
+        const title = card.dataset[`title${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
+            || card.querySelector('.work-title')?.textContent || '';
+        const meta = card.dataset[`meta${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
+            || card.querySelector('.work-meta')?.textContent || '';
+
+        lbImg.innerHTML = img
+            ? `<img src="${img.src}" alt="${img.alt}" data-src="${img.src}"/>`
+            : '';
+        lbTitle.textContent = title;
+        lbMeta.textContent = meta;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+
+        // Click image → open fullscreen zoom overlay
+        const lbZoomImg = lbImg.querySelector('img');
+        if (lbZoomImg) {
+            lbZoomImg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Build full-res image in overlay
+                zoomOverlay.innerHTML = `<button id="zoom-close">×</button><img src="${lbZoomImg.src}" alt="${lbZoomImg.alt}" style="display:block;width:auto;height:auto;min-width:100vw;min-height:100vh;object-fit:contain;margin:auto;"/>`;
+                zoomOverlay.classList.add('open');
+                zoomOverlay.scrollTop = 0;
+                document.getElementById('zoom-close').addEventListener('click', closeZoom);
+                zoomOverlay.addEventListener('click', (ev) => {
+                    if (ev.target === zoomOverlay || ev.target.tagName === 'IMG') closeZoom();
+                });
+            });
+        }
+    }
+
+    function closeZoom() {
+        zoomOverlay.classList.remove('open');
+        zoomOverlay.innerHTML = '';
+    }
+
+    cards.forEach(card => card.addEventListener('click', () => openLightbox(card)));
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            if (zoomOverlay.classList.contains('open')) closeZoom();
+            else closeLightbox();
+        }
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+</script>
+</body>
+</html>

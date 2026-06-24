@@ -1,0 +1,445 @@
+/* ─────────────────────────────────────────────
+   gallery.css — Art / Gallery profile
+   Theme : DARK  (overrides base.css via data-theme="dark")
+   Requires: base.css loaded first
+───────────────────────────────────────────── */
+
+.slideshow {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+/* darker overlay shadow */
+.slideshow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 28, 24, 0.45);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.slideshow .slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transition: opacity 4s ease;
+    z-index: 1;
+}
+
+.slideshow .slide.active {
+    opacity: 1;
+}
+
+/* Gallery filter bar */
+.gallery-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+/* ── WORKS ── */
+#works { background: var(--paper-warm); }
+
+.works-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 1200px) {
+  .works-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.work-card { cursor: pointer; }
+
+.work-img {
+  width: 100%;
+  /* Safari-safe: padding-top trick for 3:4 ratio */
+  padding-top: calc(100% * 4 / 3);
+  background: #2a2620;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: transform 0.4s ease;
+}
+
+.work-card:hover .work-img { transform: translateY(-4px); }
+
+/* SVG fallback — fills container */
+.work-img svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* Real image — centered, transparent-safe, no crop */
+.work-img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.work-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+  color: var(--ink);
+}
+
+.work-meta { font-size: 0.75rem; color: var(--ink-muted); letter-spacing: 0.08em; }
+
+/* ── PROCESS ── */
+#process {
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+#process h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1.2;
+  position: sticky;
+  top: 8rem;
+  color: var(--ink);
+}
+
+/* ── EXHIBITIONS ── */
+.exhibitions { background: var(--paper-warm); }
+
+.exhibitions h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  color: var(--ink);
+}
+
+.exhibition-list { display: flex; flex-direction: column; gap: 0; }
+
+.exhibition-item {
+  display: grid;
+  grid-template-columns: 5rem 1fr auto;
+  gap: 2rem;
+  align-items: baseline;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ex-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.ex-title { font-size: 0.9rem; font-weight: 400; color: var(--ink); }
+.ex-place { font-size: 0.75rem; color: var(--ink-muted); letter-spacing: 0.08em; text-align: right; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10,9,7,0.95);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox.open { display: flex; }
+
+.lightbox-inner { max-width: 600px; width: 100%; text-align: center; }
+
+.lightbox-img {
+  width: 100%;
+  max-height: 70vh;
+  background: #1a1814;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: overflow 0.1s;
+}
+
+.lightbox-img img {
+  width: 100%;
+  height: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--paper);
+  margin-bottom: 0.4rem;
+}
+
+.lightbox-meta { font-size: 0.78rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); }
+
+.lightbox-zoom-hint {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-top: 0.75rem;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.lightbox-close:hover { color: var(--paper); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .works-grid { grid-template-columns: repeat(2, 1fr); }
+  .exhibitions { padding: 4rem 1.5rem; }
+  .exhibition-item { grid-template-columns: 4rem 1fr; gap: 1rem; }
+  .ex-place { grid-column: 2; text-align: left; }
+  #process { grid-template-columns: 1fr; gap: 2rem; }
+  #process h2 { position: static; font-size: 1.8rem; }
+}
+
+@media (max-width: 520px) {
+  .works-grid { grid-template-columns: 1fr; }
+}
+
+/* ── FOOTER DARK THEME FIX ── */
+[data-theme="dark"] footer {
+  background: #0a0908;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] footer p {
+  color: rgba(255,255,255,0.25);
+}
+
+footer {
+    background: #1a1814;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 1.5rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+}
+#contact {
+    background: #1a1814;
+    color: #e8e4df;
+}
+#contact h2 { color: #e8e4df; }
+#contact p  { color: rgba(255,255,255,0.55); }
+#contact .section-label { color: var(--accent); }
+#contact .section-label::after { background: rgba(255,255,255,0.15); }
+.contact-email {
+    color: #e8e4df;
+    border-bottom-color: rgba(255,255,255,0.3);
+}
+.contact-email:hover { border-color: #e8e4df; }
+.contact-socials a { color: rgba(255,255,255,0.35); }
+.contact-socials a:hover { color: #e8e4df; }
+
+/* Lightbox image base */
+#lightbox-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+/* Fullscreen zoom overlay */
+#zoom-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: #000;
+    cursor: zoom-out;
+    overflow: auto;
+}
+#zoom-overlay.open { display: block; }
+#zoom-overlay img {
+    display: block;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: auto;
+}
+#zoom-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    z-index: 1101;
+    line-height: 1;
+}
+#zoom-close:hover { color: #fff; }
+
+
+/* ── Exhibitions photo grid ── */
+.expo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.expo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.expo-card .expo-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.04);
+}
+
+.expo-card .expo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.expo-card:hover .expo-img img {
+    transform: scale(1.03);
+}
+
+.expo-card .expo-caption {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    text-transform: uppercase;
+}
+
+.expo-card .expo-label {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+/* ── Contact Socials ── */
+.contact-socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.social-link:hover {
+    color: #ffffff;
+    transform: translateY(-4px);
+}
+
+.social-icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.social-link span:last-child {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}

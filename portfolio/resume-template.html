@@ -1,0 +1,130 @@
+<!--
+  resume-template.html
+  ─────────────────────────────────────────────────────────────────────────
+  Inner HTML for the #resume-pdf-modal sheet.
+  Loaded at runtime by portfolio.js via fetch('./resume-template.html').
+
+  Template tokens replaced by buildResume(lang):
+    {{LANG}}              → 'fr' | 'en'
+    {{LANG_FR_ACTIVE}}    → 'active' when lang=fr
+    {{LANG_EN_ACTIVE}}    → 'active' when lang=en
+    {{PHOTO_HTML}}        → <img> or empty string
+    {{CONTACT_LABEL}}     → 'Contact'
+    {{PHONE}}             → phone number string  ← SINGLE SOURCE OF TRUTH (set in portfolio.js)
+    {{PHONE_DISPLAY}}     → same value, used in tel: href
+    {{EDUCATION_LABEL}}   → 'Formation' | 'Education'
+    {{EDUCATION_DEGREE}}  → 'Master Génie Logiciel' | 'MSc Software Engineering'
+    {{CERTS_LABEL}}       → 'Certifications'
+    {{CERTS_HTML}}        → built by buildCertsHTML(lang)
+    {{SKILLS_LABEL}}      → 'Compétences' | 'Skills'
+    {{SKILLS_HTML}}       → built by buildSkillsHTML(lang)
+    {{TITLE_BAR}}         → 'Data Engineer Senior · Paris' | 'Senior Data Engineer · Paris'
+    {{PROFILE_LABEL}}     → 'Profil' | 'Profile'
+    {{ABOUT_TEXT}}        → built by buildAbout(lang)
+    {{EXP_LABEL}}         → 'Expérience professionnelle' | 'Professional Experience'
+    {{EXP_HTML}}          → built by buildExpHTML(lang)
+    {{SITE_URL}}          → e.g. 'marckanani.fr'           ← set once in portfolio.js
+    {{CONTACT_EMAIL}}     → e.g. 'marc.euskan@gmail.com'   ← set once in portfolio.js
+  ─────────────────────────────────────────────────────────────────────────
+-->
+
+<!-- Language toggle bar -->
+<div class="rs-lang-toggle">
+    <button class="rs-lang-btn {{LANG_FR_ACTIVE}}" onclick="buildResume('fr')">FR</button>
+    <button class="rs-lang-btn {{LANG_EN_ACTIVE}}" onclick="buildResume('en')">EN</button>
+</div>
+
+<div id="resume-sheet">
+
+    <!-- ── LEFT COLUMN ── -->
+    <div class="rs-left">
+
+        {{PHOTO_HTML}}
+        <div class="rs-photo-placeholder" style="display:none;">MK</div>
+
+        <!-- Contact -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{CONTACT_LABEL}}</p>
+
+            <!-- Email -->
+            <div class="rs-contact-item">
+                <span class="rs-contact-icon-char">✉</span>
+                <a href="mailto:{{CONTACT_EMAIL}}" class="rs-contact-link">{{CONTACT_EMAIL}}</a>
+            </div>
+
+            <!-- Phone -->
+            <div class="rs-contact-item">
+                <span class="rs-contact-icon-char">✆</span>
+                <a href="tel:{{PHONE_DISPLAY}}" class="rs-contact-link">{{PHONE}}</a>
+            </div>
+
+            <!-- website -->
+            <div class="rs-contact-item">
+                <span class="rs-contact-icon-char" style="filter: grayscale(100%);">🌐</span>
+                <a href="{{SITE_URL}}" class="rs-contact-link" target="_blank" rel="noopener noreferrer">portfolio</a>
+            </div>
+
+            <!-- Location -->
+            <div class="rs-contact-item">
+                <span class="rs-contact-icon-char">⌖</span>
+                <span>Paris, France</span>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{EDUCATION_LABEL}}</p>
+            <div class="rs-cert-item">
+                <strong>{{EDUCATION_DEGREE}}</strong>
+                Université de Bordeaux · 2016
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{CERTS_LABEL}}</p>
+            {{CERTS_HTML}}
+        </div>
+
+        <!-- Skills — single column, no overflow -->
+        <div class="rs-left-section">
+            <p class="rs-section-title">{{SKILLS_LABEL}}</p>
+            {{SKILLS_HTML}}
+        </div>
+
+    </div><!-- /.rs-left -->
+
+    <!-- ── RIGHT COLUMN ── -->
+    <div class="rs-right">
+
+        <h1 class="rs-name"><strong>Marc</strong> Kanani</h1>
+        <p class="rs-title-bar">{{TITLE_BAR}}</p>
+
+        <div class="rs-r-section">
+            <p class="rs-r-section-title">{{PROFILE_LABEL}}</p>
+            <p class="rs-about">{{ABOUT_TEXT}}</p>
+        </div>
+
+        <div class="rs-r-section">
+            <p class="rs-r-section-title">{{EXP_LABEL}}</p>
+            {{EXP_HTML}}
+        </div>
+
+        <div class="rs-r-section">
+            <p class="rs-r-section-title">Languages</p>
+            <div style="font-size: 0.7rem;">
+                <ul class="rs-exp-bullets">
+                    <li>Français</li>
+                    <li>Anglais courant</li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- /.rs-right -->
+
+    <!-- Full-width footer strip -->
+    <div class="rs-sheet-footer">
+        {{SITE_URL}} &nbsp;·&nbsp; {{CONTACT_EMAIL}} &nbsp;·&nbsp; Paris, France
+    </div>
+
+</div><!-- /#resume-sheet -->
