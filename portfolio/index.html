@@ -954,6 +954,14 @@
         return el ? getLangText(el, lang) : '';
     }
 
+    /** Spoken languages list */
+    function buildLanguagesHTML(lang) {
+        const items = lang === 'fr'
+            ? ['Français', 'Anglais courant']
+            : ['French', 'Fluent English'];
+        return items.map(i => `<li>${i}</li>`).join('');
+    }
+
     /* ───────────────────────────────────────────────────────────
        ⑤ MAIN BUILDER — token-replace template then inject HTML
     ─────────────────────────────────────────────────────────────*/
@@ -995,6 +1003,8 @@
             '{{ABOUT_TEXT}}': buildAbout(lang),
             '{{EXP_LABEL}}': lang === 'fr' ? 'Expérience professionnelle' : 'Professional Experience',
             '{{EXP_HTML}}': buildExpHTML(lang),
+            '{{LANGUAGES_LABEL}}': lang === 'fr' ? 'Langues' : 'Languages',
+            '{{LANGUAGES_HTML}}': buildLanguagesHTML(lang),
         };
 
         for (const [token, value] of Object.entries(replacements)) {
