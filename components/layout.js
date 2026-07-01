@@ -77,7 +77,7 @@ export function renderNav({logoHref = '#', links = [], activeHref = ''} = {}) {
 
     const nav = document.createElement('nav');
     nav.innerHTML = `
-  <a href="${logoHref}" class="nav-logo">Marc Kanani</a>
+  <a href="${logoHref}" class="nav-logo">Marc Eusebe Kanani</a>
   <ul class="nav-links">
     ${items}
   </ul>
@@ -105,7 +105,7 @@ export function renderNav({logoHref = '#', links = [], activeHref = ''} = {}) {
 export function renderFooter({year = new Date().getFullYear()} = {}) {
     const footer = document.createElement('footer');
     footer.innerHTML = `
-  <p>© ${year} Marc Kanani. <span data-i18n="footer_rights">${t('footer_rights')}</span></p>
+  <p>© ${year} Marc Eusebe Kanani. <span data-i18n="footer_rights">${t('footer_rights')}</span></p>
   <p>Paris, France</p>`;
     document.body.appendChild(footer);
 }
