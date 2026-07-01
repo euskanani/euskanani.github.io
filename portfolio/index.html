@@ -1007,7 +1007,16 @@
     /* ───────────────────────────────────────────────────────────
        ⑥ OPEN / CLOSE
     ─────────────────────────────────────────────────────────────*/
+
+    function getCurrentSiteLang() {
+        // find any element with both fr/en variants and see which is visible
+        const enSpan = document.querySelector('[data-lang="en"]');
+        if (enSpan && enSpan.style.display !== 'none') return 'en';
+        return 'fr';
+    }
+
     async function openResume() {
+        resumeLang = getCurrentSiteLang(); // sync before building
         await buildResume(resumeLang);
         const modal = document.getElementById('resume-pdf-modal');
         const actions = document.getElementById('rs-actions');
